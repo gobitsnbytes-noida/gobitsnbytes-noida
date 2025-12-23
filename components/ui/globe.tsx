@@ -349,14 +349,38 @@ export function World(props: WorldProps) {
           enableZoom={false}
           minDistance={cameraZ}
           maxDistance={cameraZ}
-          autoRotateSpeed={isLowPerfBrowser ? 0.5 : 1}
-          autoRotate={true}
+          autoRotateSpeed={
+            globeConfig.autoRotateSpeed ?? (isLowPerfBrowser ? 0.5 : 1)
+          }
+          autoRotate={globeConfig.autoRotate ?? true}
           minPolarAngle={Math.PI / 3.5}
           maxPolarAngle={Math.PI - Math.PI / 3}
+          // Start at India (Lucknow ~80.9° longitude)
+          // Azimuthal angle is offset from default view, converting lng to radians
+          target={[0, 0, 0]}
         />
+        <InitialRotation lng={globeConfig.initialPosition?.lng ?? 80.9462} />
       </Canvas>
     </div>
   );
+}
+
+// Component to set initial globe rotation to focus on a longitude
+function InitialRotation({ lng }: { lng: number }) {
+  const { scene } = useThree();
+  const initialized = useRef(false);
+
+  useEffect(() => {
+    if (!initialized.current) {
+      // Rotate the scene to show the target longitude
+      // Convert longitude to radians and adjust for globe orientation
+      const rotation = (-lng - 90) * (Math.PI / 180);
+      scene.rotation.y = rotation;
+      initialized.current = true;
+    }
+  }, [scene, lng]);
+
+  return null;
 }
 
 export function hexToRgb(hex: string) {
