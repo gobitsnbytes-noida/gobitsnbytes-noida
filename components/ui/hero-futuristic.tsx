@@ -26,14 +26,14 @@ const stats = [
 
 export const HeroFuturistic = () => {
   return (
-    <section className="relative overflow-hidden rounded-b-[2rem] sm:rounded-b-[3rem] md:rounded-b-[3.5rem] text-white">
+    <section className="relative overflow-hidden rounded-b-[2rem] sm:rounded-b-[3rem] md:rounded-b-[3.5rem] text-white w-full max-w-full">
       <WebGLShader />
       <div className="absolute inset-0 bg-black/30" />
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col gap-6 sm:gap-8 md:gap-12 px-4 pb-8 pt-16 sm:px-6 sm:pb-16 sm:pt-24 md:pb-20 md:pt-28 lg:flex-row lg:items-stretch lg:gap-16">
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-6 sm:gap-8 md:gap-12 px-4 pb-8 pt-16 sm:px-6 sm:pb-16 sm:pt-24 md:pb-20 md:pt-28 lg:flex-row lg:items-stretch lg:gap-16 box-border">
         {/* Left content card */}
-        <div className="flex-1">
-          <div className="relative isolate flex h-full flex-col gap-5 sm:gap-6 md:gap-8 rounded-2xl sm:rounded-3xl md:rounded-[32px] border border-white/30 bg-white/70 p-5 sm:p-6 md:p-8 text-foreground shadow-xl dark:border-white/10 dark:bg-white/10 dark:text-white">
+        <div className="flex-1 min-w-0">
+          <div className="relative isolate flex h-full flex-col gap-5 sm:gap-6 md:gap-8 rounded-2xl sm:rounded-3xl md:rounded-[32px] border border-white/30 bg-white/70 p-4 sm:p-6 md:p-8 text-foreground shadow-xl dark:border-white/10 dark:bg-white/10 dark:text-white overflow-hidden">
             <LiquidGlassBackdrop radiusClassName="rounded-[inherit]" />
 
             {/* Teen-led badge */}
@@ -44,7 +44,7 @@ export const HeroFuturistic = () => {
 
             {/* Main content */}
             <div className="relative z-10 space-y-4 sm:space-y-5 md:space-y-6">
-              <h1 className="font-display text-2xl font-bold leading-tight text-foreground dark:text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
+              <h1 className="font-display text-xl font-bold leading-tight text-foreground dark:text-white sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
                 India&apos;s boldest builders club for ambitious teens
               </h1>
               <p className="text-sm text-foreground/80 dark:text-white/70 sm:text-base md:text-lg lg:text-xl max-w-prose">
@@ -55,7 +55,7 @@ export const HeroFuturistic = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="relative z-10 flex flex-col gap-2 sm:gap-3 sm:flex-row">
+            <div className="relative z-10 flex flex-col gap-2 sm:gap-3 sm:flex-row w-full">
               <Button
                 asChild
                 className="h-11 sm:h-12 rounded-full bg-[var(--brand-pink)] text-sm sm:text-base font-semibold text-white shadow-[var(--glow-strong)] w-full sm:w-auto justify-center"
@@ -75,16 +75,16 @@ export const HeroFuturistic = () => {
             </div>
 
             {/* Stats */}
-            <div className="relative z-10 grid grid-cols-3 gap-3 sm:gap-4 md:gap-6 rounded-2xl sm:rounded-3xl border border-white/30 bg-white/30 p-4 sm:p-5 md:p-6 text-foreground shadow-lg backdrop-blur-3xl dark:border-white/10 dark:bg-white/5 dark:text-white">
+            <div className="relative z-10 grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 rounded-2xl sm:rounded-3xl border border-white/30 bg-white/30 p-3 sm:p-5 md:p-6 text-foreground shadow-lg backdrop-blur-3xl dark:border-white/10 dark:bg-white/5 dark:text-white">
               {stats.map((stat) => (
                 <div
                   key={stat.label}
                   className="space-y-0.5 sm:space-y-1 text-center sm:text-left"
                 >
-                  <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-foreground dark:text-white">
+                  <p className="text-lg sm:text-2xl md:text-3xl font-semibold text-foreground dark:text-white">
                     {stat.value}
                   </p>
-                  <p className="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-[0.2em] sm:tracking-[0.3em] text-foreground/60 dark:text-white/60 leading-tight">
+                  <p className="text-[8px] sm:text-[10px] md:text-xs uppercase tracking-[0.15em] sm:tracking-[0.3em] text-foreground/60 dark:text-white/60 leading-tight">
                     {stat.label}
                   </p>
                 </div>

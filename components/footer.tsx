@@ -32,8 +32,8 @@ const quickLinks = [
 
 export function Footer() {
   return (
-    <footer className="mt-12 sm:mt-16 border-t border-white/20 bg-white/70 text-sm text-muted-foreground backdrop-blur-xl dark:border-white/10 dark:bg-white/5">
-      <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:py-12 md:py-16 sm:px-6 lg:px-8">
+    <footer className="mt-12 sm:mt-16 border-t border-white/20 bg-white/70 text-sm text-muted-foreground backdrop-blur-xl dark:border-white/10 dark:bg-white/5 w-full min-w-full">
+      <div className="mx-auto w-full max-w-6xl px-4 py-8 sm:py-12 md:py-16 sm:px-6 lg:px-8 box-border">
         {/* Mobile: Stack vertically, Desktop: 4 columns */}
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-10 lg:grid-cols-4">
           {/* Brand section */}
@@ -128,7 +128,7 @@ export function Footer() {
       </div>
 
       {/* Copyright bar */}
-      <div className="border-t border-white/10 text-center text-[10px] sm:text-xs py-3 sm:py-4 px-4">
+      <div className="border-t border-white/10 text-center text-[10px] sm:text-xs py-3 sm:py-4 px-4 w-full">
         © {new Date().getFullYear()} Bits&Bytes. Built with club love.
       </div>
     </footer>

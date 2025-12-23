@@ -49,7 +49,7 @@ const GlassIcons: React.FC<GlassIconsProps> = ({ items, className }) => {
     <>
       {/* Responsive grid - 2 cols on mobile, 3 on tablet+ */}
       <div
-        className={`grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8 md:gap-12 lg:gap-16 mx-auto py-8 sm:py-12 md:py-16 px-4 sm:px-0 overflow-visible ${className || ""}`}
+        className={`grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-8 md:gap-12 lg:gap-16 mx-auto py-8 sm:py-12 md:py-16 px-2 sm:px-4 md:px-0 w-full max-w-full overflow-hidden ${className || ""}`}
       >
         {items.map((item, index) => (
           <button
@@ -57,12 +57,12 @@ const GlassIcons: React.FC<GlassIconsProps> = ({ items, className }) => {
             type="button"
             aria-label={item.label}
             onClick={() => handleCardClick(index)}
-            className={`relative bg-transparent outline-none flex flex-col items-center justify-center [-webkit-tap-highlight-color:transparent] group cursor-pointer ${
+            className={`relative bg-transparent outline-none flex flex-col items-center justify-center [-webkit-tap-highlight-color:transparent] group cursor-pointer w-full max-w-[140px] sm:max-w-none mx-auto ${
               item.customClass || ""
             }`}
           >
             {/* Icon container - responsive sizing */}
-            <div className="relative w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] md:w-20 md:h-20 [perspective:24em] [transform-style:preserve-3d]">
+            <div className="relative w-14 h-14 sm:w-[4.5rem] sm:h-[4.5rem] md:w-20 md:h-20 [perspective:24em] [transform-style:preserve-3d]">
               {/* Ambient glow background matching icon color */}
               <span
                 className="absolute top-0 left-0 w-full h-full rounded-2xl sm:rounded-[1.25em] -z-10 scale-125 sm:scale-150 opacity-30 sm:opacity-40 blur-lg sm:blur-xl transition-opacity duration-300"
@@ -93,7 +93,7 @@ const GlassIcons: React.FC<GlassIconsProps> = ({ items, className }) => {
             </div>
 
             {/* Label - always visible on mobile, hover on desktop */}
-            <span className="mt-3 sm:mt-4 text-center text-xs sm:text-sm md:text-base font-medium text-foreground/80 dark:text-white/80 sm:opacity-0 sm:translate-y-0 transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.83,0,0.17,1)] group-hover:opacity-100 group-hover:translate-y-1">
+            <span className="mt-2 sm:mt-4 text-center text-[11px] sm:text-sm md:text-base font-medium text-foreground/80 dark:text-white/80 sm:opacity-0 sm:translate-y-0 transition-[opacity,transform] duration-300 ease-[cubic-bezier(0.83,0,0.17,1)] group-hover:opacity-100 group-hover:translate-y-1 truncate max-w-full">
               {item.label}
             </span>
           </button>

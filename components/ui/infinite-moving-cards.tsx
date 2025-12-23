@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 
 export const InfiniteMovingCards = ({
@@ -118,7 +118,7 @@ export const InfiniteMovingCards = ({
     isDuplicate: boolean = false,
   ) => (
     <li
-      className="glass-card relative isolate w-[260px] xs:w-[280px] sm:w-[320px] md:w-[380px] lg:w-[420px] max-w-[85vw] shrink-0 p-4 sm:p-5 md:p-6 text-foreground shadow-xl dark:text-white"
+      className="glass-card relative isolate w-[280px] sm:w-[320px] md:w-[380px] lg:w-[420px] shrink-0 p-4 sm:p-5 md:p-6 text-foreground shadow-xl dark:text-white"
       key={
         isDuplicate ? `${item.name}-duplicate-${idx}` : `${item.name}-${idx}`
       }
@@ -168,20 +168,20 @@ export const InfiniteMovingCards = ({
   );
 
   return (
-    <div className="flex flex-col items-center gap-6">
+    <div className="flex flex-col items-center gap-6 w-full max-w-full overflow-hidden">
       <div
         ref={containerRef}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         className={cn(
-          "scroller relative z-20 max-w-7xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
+          "scroller relative z-20 w-full max-w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)] sm:[mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]",
           className,
         )}
       >
         <ul
           ref={scrollerRef}
           className={cn(
-            "flex w-max min-w-full shrink-0 flex-nowrap gap-4 py-4",
+            "flex w-max min-w-full shrink-0 flex-nowrap gap-3 sm:gap-4 py-4 px-2 sm:px-0",
             start && "animate-scroll",
             pauseOnHover && "hover:[animation-play-state:paused]",
           )}

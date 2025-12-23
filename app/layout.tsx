@@ -1,49 +1,61 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Poppins, Space_Grotesk, JetBrains_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Suspense } from "react"
+import type React from "react";
+import type { Metadata } from "next";
+import { Poppins, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Suspense } from "react";
 
-import "./globals.css"
-import { ThemeProvider } from "@/components/theme-provider"
-import { PageBackground } from "@/components/page-background"
-import Navigation from "@/components/navigation"
-import Footer from "@/components/footer"
-import { FloatingAiAssistant } from "@/components/client-only-components"
+import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { PageBackground } from "@/components/page-background";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
+import { FloatingAiAssistant } from "@/components/client-only-components";
 
 const poppins = Poppins({
   subsets: ["latin"],
   variable: "--font-sans",
   weight: ["300", "400", "500", "600", "700"],
   display: "swap",
-})
+});
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
-})
+});
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
   display: "swap",
-})
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://gobitsnbytes.org'),
+  metadataBase: new URL("https://gobitsnbytes.org"),
   title: {
     default: "Bits&Bytes - Teen Led Code Club | India",
-    template: "%s | Bits&Bytes"
+    template: "%s | Bits&Bytes",
   },
-  description: "Innovate. Collaborate. Hack. Join the most creative code club for teens in India. Build real projects, attend hackathons, and grow as a developer.",
-  keywords: ["bits&bytes", "teen code club", "india hackathons", "student developers", "coding club", "tech events india", "learn coding", "teen programmers", "hackathons in india", "coding classes for teens"],
+  description:
+    "Innovate. Collaborate. Hack. Join the most creative code club for teens in India. Build real projects, attend hackathons, and grow as a developer.",
+  keywords: [
+    "bits&bytes",
+    "teen code club",
+    "india hackathons",
+    "student developers",
+    "coding club",
+    "tech events india",
+    "learn coding",
+    "teen programmers",
+    "hackathons in india",
+    "coding classes for teens",
+  ],
   authors: [{ name: "Bits&Bytes Team", url: "https://gobitsnbytes.org" }],
   creator: "Bits&Bytes",
   publisher: "Bits&Bytes",
   alternates: {
-    canonical: '/',
+    canonical: "/",
   },
   robots: {
     index: true,
@@ -62,7 +74,8 @@ export const metadata: Metadata = {
     url: "https://gobitsnbytes.org",
     siteName: "Bits&Bytes",
     title: "Bits&Bytes - Teen Led Code Club | India",
-    description: "Innovate. Collaborate. Hack. Join the most creative code club for teens in India.",
+    description:
+      "Innovate. Collaborate. Hack. Join the most creative code club for teens in India.",
     images: [
       {
         url: "/og-image.png",
@@ -75,7 +88,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Bits&Bytes - Teen Led Code Club | India",
-    description: "Innovate. Collaborate. Hack. Join the most creative code club for teens in India.",
+    description:
+      "Innovate. Collaborate. Hack. Join the most creative code club for teens in India.",
     images: ["/og-image.png"],
     creator: "@bitsnbytes_lko",
     site: "@bitsnbytes_lko",
@@ -83,37 +97,38 @@ export const metadata: Metadata = {
   category: "education",
   classification: "Nonprofit Code Club",
   other: {
-    "google-site-verification": process.env.GOOGLE_SITE_VERIFICATION || "google-site-verification=1234567890",
+    "google-site-verification":
+      process.env.GOOGLE_SITE_VERIFICATION ||
+      "google-site-verification=1234567890",
   },
   icons: {
     icon: "/logo.svg",
     shortcut: "/logo.svg",
     apple: "/logo.svg",
   },
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "Bits&Bytes",
-    "url": "https://gobitsnbytes.org",
-    "logo": "https://gobitsnbytes.org/logo.svg",
-    "sameAs": [
-      "https://www.linkedin.com/company/gobitsbytes"
-    ],
-    "description": "Innovate. Collaborate. Hack. Join the most creative code club for teens in India.",
-    "address": {
+    name: "Bits&Bytes",
+    url: "https://gobitsnbytes.org",
+    logo: "https://gobitsnbytes.org/logo.svg",
+    sameAs: ["https://www.linkedin.com/company/gobitsbytes"],
+    description:
+      "Innovate. Collaborate. Hack. Join the most creative code club for teens in India.",
+    address: {
       "@type": "PostalAddress",
-      "addressLocality": "Lucknow",
-      "addressRegion": "Uttar Pradesh",
-      "addressCountry": "IN"
-    }
-  }
+      addressLocality: "Lucknow",
+      addressRegion: "Uttar Pradesh",
+      addressCountry: "IN",
+    },
+  };
 
   return (
     <html
@@ -121,18 +136,16 @@ export default function RootLayout({
       className={`${poppins.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}
       suppressHydrationWarning
     >
-      <body className="font-sans antialiased bg-background text-foreground selection:bg-accent/30 selection:text-primary">
+      <body className="font-sans antialiased bg-background text-foreground selection:bg-accent/30 selection:text-primary overflow-x-hidden">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <ThemeProvider>
           <PageBackground />
-          <div className="relative flex min-h-screen flex-col">
+          <div className="relative flex min-h-screen flex-col overflow-x-hidden">
             <Navigation />
-            <main className="flex-1">
-              {children}
-            </main>
+            <main className="flex-1 w-full overflow-x-hidden">{children}</main>
             <Footer />
             <Suspense fallback={null}>
               <FloatingAiAssistant />
@@ -143,5 +156,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
