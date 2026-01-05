@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 
 import { HeroFuturistic } from "@/components/ui/hero-futuristic";
 import { PageSection } from "@/components/page-section";
+import { Features } from "@/components/ui/features-8";
 import {
   Card,
   CardContent,
@@ -41,92 +42,16 @@ const Testimonial = dynamic(
   },
 );
 
-const GlassIcons = dynamic(() => import("@/components/GlassIcons"), {
-  loading: () => <LoadingInline />,
-  ssr: true,
-});
+// GlassIcons removed in favor of Features bento grid
 
 const stats = [
-  { value: "120+", label: "Active members", detail: "across India" },
-  { value: "60+", label: "Projects shipped", detail: "from apps to AI" },
-  { value: "10", label: "Partner schools", detail: "and growing" },
+  { value: "200+", label: "Active members", detail: "across India" },
+  { value: "15+", label: "Projects shipped", detail: "from apps to AI" },
+  { value: "10+", label: "Partner schools", detail: "and growing" },
 ];
 
 
-const focusAreas = [
-  {
-    icon: <Trophy className="w-full h-full" />,
-    color: "deep-purple",
-    label: "Hackathons",
-    description: "Competitive coding events where creativity meets execution",
-    content: [
-      "40+ teens building together at Scrapyard, our flagship hackathon born in Lucknow",
-      "24-hour sprints turning ideas into working prototypes",
-      "Judging panels with industry mentors and startup founders",
-      "Prizes, networking, and real opportunities for standout projects",
-    ],
-  },
-  {
-    icon: <Lightbulb className="w-full h-full" />,
-    color: "vibrant-pink",
-    label: "Workshops",
-    description: "Hands-on learning sessions covering modern tech stacks",
-    content: [
-      "Weekly workshops on web dev, AI/ML, mobile apps, and design systems",
-      "Beginner-friendly sessions paired with advanced deep-dives",
-      "Live coding, Q&A, and take-home projects",
-      "Led by experienced teen developers and guest industry speakers",
-    ],
-  },
-  {
-    icon: <CodeXml className="w-full h-full" />,
-    color: "purple-pink",
-    label: "Projects",
-    description: "Real-world builds that ship to production",
-    content: [
-      "60+ projects launched—from apps to AI tools",
-      "Collaborate with design, dev, and club teams",
-      "Portfolio-ready work with mentorship at every stage",
-      "Open-source contributions and team project squads",
-    ],
-  },
-  {
-    icon: <Users className="w-full h-full" />,
-    color: "rich-plum",
-    label: "Club",
-    description: "A tight-knit crew of ambitious teen builders",
-    content: [
-      "120+ active members across India",
-      "Discord workspace for daily code help and project collabs",
-      "Study groups, pair programming sessions, and code reviews",
-      "Safe, inclusive environment where everyone ships something real",
-    ],
-  },
-  {
-    icon: <Rocket className="w-full h-full" />,
-    color: "plum-coral",
-    label: "Innovation",
-    description: "Experimenting with cutting-edge tech and bold ideas",
-    content: [
-      "AI/ML experiments, blockchain prototypes, and creative tech art",
-      "Pitch nights where anyone can propose their wildest ideas",
-      "Access to beta tools, APIs, and sponsor resources",
-      "Encouragement to fail fast, learn faster, and iterate boldly",
-    ],
-  },
-  {
-    icon: <Sparkles className="w-full h-full" />,
-    color: "soft-coral",
-    label: "Mentorship",
-    description: "Experienced teens guiding first-time builders",
-    content: [
-      "One-on-one pairing with mentors who've shipped projects",
-      "Office hours for technical questions and career guidance",
-      "Portfolio reviews, resume tips, and interview prep",
-      "Alumni network connecting you to internships and opportunities",
-    ],
-  },
-];
+// Focus Areas are now handled within the Features component
 
 export default function Home() {
   return (
@@ -166,11 +91,7 @@ export default function Home() {
         description="Explore the different ways we help teens build, learn, and grow in tech"
         align="center"
       >
-        <Suspense fallback={<LoadingInline />}>
-          <div className="relative mx-auto">
-            <GlassIcons items={focusAreas} className="max-w-4xl" />
-          </div>
-        </Suspense>
+        <Features />
       </PageSection>
 
       <PageSection

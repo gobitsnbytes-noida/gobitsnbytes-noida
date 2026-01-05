@@ -60,7 +60,7 @@ const coreTeam = [
   {
     id: 1,
     name: "Yash",
-    role: "Founder",
+    role: "Founder & Local Lead",
     image: "/team/yash.jpeg",
     bio: "Leads the entire organization, coordinating between all teams, organizing events, setting timelines, and ensuring that work gets executed efficiently.",
     expertise: [
@@ -132,25 +132,16 @@ const coreTeam = [
     ],
     linkedin: "https://www.linkedin.com/in/maryam-fatima-9719aa377/",
   },
-  {
-    id: 11,
-    name: "Oviyaa",
-    role: "Founder & Local Lead",
-    image: "/team/oviyaa.jpeg",
-    bio: "Co-founded the Lucknow chapter, leading local outreach, community building, and scaling our presence across regional schools and tech hubs.",
-    expertise: [
-      "Community Leadership",
-      "Strategic Outreach",
-      "Local Operations",
-      "Growth Strategy",
-    ],
-    linkedin: "https://www.linkedin.com/in/oviyaa-singh-3a183a370/",
-    isFounder: true,
-  },
 ];
 
 // Volunteers - smaller cards section
 const volunteers = [
+  {
+    id: 11,
+    name: "Oviyaa",
+    image: "/team/oviyaa.jpeg",
+    linkedin: "https://www.linkedin.com/in/oviyaa-singh-3a183a370/",
+  },
   {
     id: 5,
     name: "Saksham",
