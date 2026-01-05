@@ -111,7 +111,7 @@ export const HeroFuturistic = () => {
                   Archive highlight
                 </p>
                 <p className="font-display text-sm sm:text-base font-bold text-foreground dark:text-white">
-                  Scrapyard Lucknow · 2024
+                  Scrapyard Lucknow · 2025
                 </p>
               </div>
             </div>
@@ -136,7 +136,7 @@ export const HeroFuturistic = () => {
                   Archive highlight
                 </p>
                 <p className="font-display text-xs sm:text-sm font-bold text-foreground dark:text-white">
-                  Scrapyard Lucknow · 2024
+                  Scrapyard Lucknow · 2025
                 </p>
               </div>
             </div>

@@ -41,7 +41,7 @@ export const TEAM_MEMBERS: TeamMember[] = [
     department: "Community",
   },
   {
-    name: "Akshat",
+    name: "Akshat Kushwaha",
     role: "Project Manager",
     superpowers: ["Project planning", "Timelines", "Coordination", "Strategy"],
     talkToMeWhen: [
@@ -127,7 +127,7 @@ export function recommendRoles(skills: string[], interests: string[]): string {
       (k) => k.includes("people") || k.includes("event") || k.includes("manage") || k.includes("lead")
     )
   ) {
-    recommendations.push("Community & Leadership (Talk to Aadrika or Akshat)")
+    recommendations.push("Community & Leadership (Talk to Aadrika or Akshat Kushwaha)")
   }
   if (
     userKeywords.some(

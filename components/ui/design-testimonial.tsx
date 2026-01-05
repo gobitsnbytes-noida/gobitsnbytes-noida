@@ -20,7 +20,7 @@ const testimonials = [
   },
   {
     quote: "Scaling our infrastructure to support hundreds of builders while maintaining a seamless developer experience is my top priority. We're building real tech for real impact.",
-    author: "Akshat",
+    author: "Akshat Kushwaha",
     role: "Co-Founder & Technical Lead",
     company: "Bits&Bytes",
   },

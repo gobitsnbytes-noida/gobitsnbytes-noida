@@ -77,11 +77,11 @@ const events: Event[] = [
     status: "upcoming",
   },
   {
-    id: "scrapyard-lucknow-2024",
-    title: "Scrapyard Lucknow 2024",
+    id: "scrapyard-lucknow-2025-archived",
+    title: "Scrapyard Lucknow 2025",
     description:
       "Our debut hackathon united 40+ coders, designers, filmmakers, and builders to tackle civic, education, and sustainability problems.",
-    date: "December 2024",
+    date: "December 2025",
     time: "24 Hours",
     location: "Lucknow, India",
     type: "hackathon",

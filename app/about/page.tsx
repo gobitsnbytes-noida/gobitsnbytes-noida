@@ -91,7 +91,7 @@ const coreTeam = [
   },
   {
     id: 3,
-    name: "Akshat",
+    name: "Akshat Kushwaha",
     role: "Co-Founder & Technical Lead",
     image: "/team/akshat.webp",
     bio: "Builds and maintains the website, leads programming projects, evaluates tech stacks, and ensures the technical stability of all projects.",
