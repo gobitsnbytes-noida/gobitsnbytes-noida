@@ -77,18 +77,20 @@ export const HeroFuturistic = () => {
               </div>
 
               {/* Stats Grid */}
-              <div className="mt-auto grid grid-cols-3 gap-4 sm:gap-6 rounded-[2rem] border border-white/10 bg-white/5 p-6 backdrop-blur-xl">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="text-center sm:text-left">
-                    <p className="text-xl sm:text-3xl font-black text-white">
-                      {stat.value}
-                    </p>
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
+              <GlassContainer className="mt-auto p-6" glowColor="none" animated={false}>
+                <div className="grid grid-cols-3 gap-4 sm:gap-6">
+                  {stats.map((stat) => (
+                    <div key={stat.label} className="text-center sm:text-left">
+                      <p className="text-xl sm:text-3xl font-black text-white">
+                        {stat.value}
+                      </p>
+                      <p className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold">
+                        {stat.label}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </GlassContainer>
             </div>
           </GlassContainer>
         </div>

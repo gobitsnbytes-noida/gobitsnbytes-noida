@@ -9,7 +9,11 @@ export function Features() {
             <div className="relative">
                 <div className="relative z-10 grid grid-cols-6 gap-3">
                     {/* Card 1: 200+ Members (Replaces Customizable) */}
-                    <GlassContainer className="col-span-full flex lg:col-span-2 p-0 overflow-hidden" glowColor="pink">
+                    <GlassContainer
+                        containerClassName="col-span-full lg:col-span-2"
+                        className="flex p-0 overflow-hidden"
+                        glowColor="pink"
+                    >
                         <div className="relative m-auto h-full w-full flex flex-col items-center justify-center p-8 md:p-12">
                             <div className="relative flex h-24 w-56 items-center">
                                 <svg className="text-(--brand-pink) absolute inset-0 size-full opacity-50" viewBox="0 0 254 104" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -25,7 +29,11 @@ export function Features() {
                     </GlassContainer>
 
                     {/* Card 2: Workshops */}
-                    <GlassContainer className="col-span-full overflow-hidden sm:col-span-3 lg:col-span-2 p-8 md:p-12" glowColor="purple">
+                    <GlassContainer
+                        containerClassName="col-span-full sm:col-span-3 lg:col-span-2"
+                        className="overflow-hidden p-8 md:p-12"
+                        glowColor="purple"
+                    >
                         <div className="relative mx-auto flex aspect-square size-32 rounded-3xl border border-white/10 bg-white/5 transition-transform group-hover:scale-110 group-hover:rotate-3">
                             <Lightbulb className="m-auto h-14 w-14 text-(--brand-pink)" />
                         </div>
@@ -36,7 +44,11 @@ export function Features() {
                     </GlassContainer>
 
                     {/* Card 3: 15+ Projects */}
-                    <GlassContainer className="col-span-full overflow-hidden sm:col-span-3 lg:col-span-2 p-8 md:p-12" glowColor="pink">
+                    <GlassContainer
+                        containerClassName="col-span-full sm:col-span-3 lg:col-span-2"
+                        className="overflow-hidden p-8 md:p-12"
+                        glowColor="pink"
+                    >
                         <div className="w-full">
                             <svg className="w-full h-32" viewBox="0 0 386 123" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <g clipPath="url(#clip0_0_106)">
@@ -73,7 +85,11 @@ export function Features() {
                     </GlassContainer>
 
                     {/* Card 4: Innovation */}
-                    <GlassContainer className="col-span-full overflow-hidden lg:col-span-3 p-8 md:p-12" glowColor="purple">
+                    <GlassContainer
+                        containerClassName="col-span-full lg:col-span-3"
+                        className="overflow-hidden p-8 md:p-12"
+                        glowColor="purple"
+                    >
                         <div className="grid sm:grid-cols-2 h-full">
                             <div className="relative z-10 flex flex-col justify-between space-y-12 h-full">
                                 <div className="relative flex aspect-square size-14 rounded-2xl border border-white/10 bg-white/5 transition-transform group-hover:scale-110">
@@ -103,41 +119,45 @@ export function Features() {
                     </GlassContainer>
 
                     {/* Card 5: Team & Mentorship */}
-                    <Card className="relative col-span-full overflow-hidden lg:col-span-3 glass-panel border-white/10 bg-white/5 backdrop-blur-xl">
-                        <CardContent className="grid h-full pt-8 pb-8 sm:grid-cols-2">
-                            <div className="relative z-10 flex flex-col justify-between space-y-12 lg:space-y-6">
-                                <div className="relative flex aspect-square size-12 rounded-full border border-white/10 before:absolute before:-inset-2 before:rounded-full before:border before:border-white/5">
-                                    <Users className="m-auto size-6 text-[var(--brand-pink)]" strokeWidth={1} />
+                    <GlassContainer
+                        containerClassName="col-span-full lg:col-span-3"
+                        className="overflow-hidden p-8 md:p-12"
+                        glowColor="pink"
+                    >
+                        <div className="grid sm:grid-cols-2 h-full">
+                            <div className="relative z-10 flex flex-col justify-between space-y-12 h-full">
+                                <div className="relative flex aspect-square size-14 rounded-2xl border border-white/10 bg-white/5 transition-transform group-hover:scale-110">
+                                    <Users className="m-auto size-7 text-(--brand-pink)" />
                                 </div>
-                                <div className="space-y-2">
-                                    <h2 className="text-xl font-bold text-white transition">Team & Mentorship</h2>
-                                    <p className="text-sm text-zinc-400">Collaborating with the best teen developers and designers in the country.</p>
+                                <div className="space-y-4">
+                                    <h2 className="text-3xl font-black text-white tracking-tight">Team & Mentorship</h2>
+                                    <p className="text-base text-white/60 font-medium leading-relaxed">Collaborating with the best teen developers and designers in the country.</p>
                                 </div>
                             </div>
-                            <div className="before:bg-white/10 relative mt-6 before:absolute before:inset-0 before:mx-auto before:w-px sm:-my-6 sm:-mr-6">
+                            <div className="before:bg-white/10 relative mt-10 sm:mt-0 before:absolute before:inset-0 before:mx-auto before:w-px sm:-my-12 sm:-mr-12">
                                 <div className="relative flex h-full flex-col justify-center space-y-8 py-12">
-                                    <div className="relative flex w-[calc(50%+0.875rem)] items-center justify-end gap-3">
-                                        <span className="block h-fit rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-300 shadow-sm backdrop-blur-md">Yash Singh</span>
-                                        <div className="ring-background size-10 ring-4 rounded-full overflow-hidden">
-                                            <Image className="size-full object-cover" src="/team/yash.jpeg" alt="Yash" width={40} height={40} />
+                                    <div className="relative flex w-[calc(50%+1.5rem)] items-center justify-end gap-3 transition-transform hover:scale-105">
+                                        <span className="block h-fit rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-bold text-white shadow-sm backdrop-blur-md">Yash Singh</span>
+                                        <div className="ring-white/10 size-12 ring-2 rounded-2xl overflow-hidden border border-white/20">
+                                            <Image className="size-full object-cover" src="/team/yash.jpeg" alt="Yash" width={48} height={48} />
                                         </div>
                                     </div>
-                                    <div className="relative ml-[calc(50%-1.25rem)] flex items-center gap-3">
-                                        <div className="ring-background size-12 ring-4 rounded-full overflow-hidden">
-                                            <Image className="size-full object-cover" src="/team/akshat.webp" alt="Akshat" width={48} height={48} />
+                                    <div className="relative ml-[calc(50%-1.25rem)] flex items-center gap-3 transition-transform hover:scale-105">
+                                        <div className="ring-white/10 size-14 ring-2 rounded-2xl overflow-hidden border border-white/20">
+                                            <Image className="size-full object-cover" src="/team/akshat.webp" alt="Akshat" width={56} height={56} />
                                         </div>
-                                        <span className="block h-fit rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-300 shadow-sm backdrop-blur-md">Akshat Kushwaha</span>
+                                        <span className="block h-fit rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-bold text-white shadow-sm backdrop-blur-md">Akshat Kushwaha</span>
                                     </div>
-                                    <div className="relative flex w-[calc(50%+0.875rem)] items-center justify-end gap-3">
-                                        <span className="block h-fit rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-zinc-300 shadow-sm backdrop-blur-md">Aadrika Maurya</span>
-                                        <div className="ring-background size-10 ring-4 rounded-full overflow-hidden">
-                                            <Image className="size-full object-cover" src="/team/aadrika.png" alt="Aadrika" width={40} height={40} />
+                                    <div className="relative flex w-[calc(50%+1.5rem)] items-center justify-end gap-3 transition-transform hover:scale-105">
+                                        <span className="block h-fit rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-bold text-white shadow-sm backdrop-blur-md">Aadrika Maurya</span>
+                                        <div className="ring-white/10 size-12 ring-2 rounded-2xl overflow-hidden border border-white/20">
+                                            <Image className="size-full object-cover" src="/team/aadrika.png" alt="Aadrika" width={48} height={48} />
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </CardContent>
-                    </Card>
+                        </div>
+                    </GlassContainer>
                 </div>
             </div>
         </div>
