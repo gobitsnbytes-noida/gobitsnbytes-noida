@@ -138,9 +138,8 @@ const coreTeam = [
 const volunteers = [
   {
     id: 11,
-    name: "Oviyaa",
-    image: "/team/oviyaa.jpeg",
-    linkedin: "https://www.linkedin.com/in/oviyaa-singh-3a183a370/",
+    name: "Jaagruti",
+    image: "/team/jaagruti.jpeg",
   },
   {
     id: 5,
