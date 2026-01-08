@@ -79,7 +79,7 @@ export const CardContainer = ({
           onMouseMove={handleMouseMove}
           onMouseLeave={handleMouseLeave}
           className={cn(
-            "flex items-center justify-center relative transition-all duration-200 ease-linear",
+            "flex items-center justify-center relative transition-transform duration-200 ease-linear",
             className
           )}
           style={{
@@ -124,7 +124,7 @@ export const CardItem = ({
   rotateZ = 0,
   ...rest
 }: {
-  as?: React.ElementType;
+  as?: any;
   children: React.ReactNode;
   className?: string;
   translateX?: number | string;
@@ -135,7 +135,7 @@ export const CardItem = ({
   rotateZ?: number | string;
   [key: string]: any;
 }) => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<any>(null);
   const [isMouseEntered] = useMouseEnter();
 
   useEffect(() => {
@@ -155,7 +155,7 @@ export const CardItem = ({
   return (
     <Tag
       ref={ref}
-      className={cn("w-fit transition duration-200 ease-linear", className)}
+      className={cn("w-fit transition-transform duration-200 ease-linear", className)}
       {...rest}
     >
       {children}

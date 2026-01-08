@@ -66,8 +66,8 @@ function TeamCard({
         b = 0,
         count = 0;
 
-      // Sample every 10th pixel for performance
-      for (let i = 0; i < data.length; i += 40) {
+      // Sample every 100th pixel for performance (was 40th)
+      for (let i = 0; i < data.length; i += 400) {
         r += data[i];
         g += data[i + 1];
         b += data[i + 2];
@@ -107,7 +107,8 @@ function TeamCard({
     <CometCard className="w-full">
       <div
         className={cn(
-          "relative flex h-full cursor-pointer flex-col items-stretch rounded-xl sm:rounded-2xl p-3 sm:p-4 backdrop-blur-xl transition-all duration-700",
+          "relative flex h-full cursor-pointer flex-col items-stretch rounded-xl sm:rounded-2xl p-3 sm:p-4 transition-all duration-700",
+          "md:backdrop-blur-lg", // Only apply blur on larger screens
           member.isFounder
             ? "border-2 border-[var(--brand-pink)]/50 shadow-[0_0_30px_rgba(228,90,146,0.3)]"
             : "border border-white/10",
@@ -257,7 +258,7 @@ export default function TeamCaseStudy({ coreTeam, volunteers }: TeamCaseStudyPro
   return (
     <div className="flex flex-col gap-8 sm:gap-16">
       {/* Core Team - Flex wrap centered for 5 members */}
-      <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8">
+      <div className="flex flex-wrap items-stretch justify-center gap-4 sm:gap-6 md:gap-8">
         {coreTeam.map((member, index) => {
           const bgColor = brandColors[index % brandColors.length];
 

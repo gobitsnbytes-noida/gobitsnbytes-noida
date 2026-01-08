@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ArrowUpRight, Github } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import logo from "@public/logo.svg";
 
@@ -115,13 +116,17 @@ export function MiniNavbar() {
     return (
         <header
             className={cn(
-                "fixed top-6 left-1/2 transform -translate-x-1/2 z-50",
+                "fixed top-6 z-50",
                 "flex flex-col items-center",
-                "pl-4 pr-4 sm:pl-6 sm:pr-6 py-2.5 backdrop-blur-md",
+                "px-4 sm:px-6 py-2.5",
+                "backdrop-blur-none md:backdrop-blur-lg", // Disable blur on mobile for performance
                 headerShapeClass,
-                "border border-white/10 bg-black/60 shadow-2xl",
-                "w-[calc(100%-2rem)] sm:w-auto",
-                "transition-[border-radius] duration-300 ease-in-out"
+                "border border-white/10 bg-black/95 md:bg-black/70 shadow-2xl",
+                // Positioning: fixed padding on mobile, centered on desktop
+                "left-4 right-4 sm:left-1/2 sm:right-auto sm:w-auto",
+                "transform translate-x-0 sm:-translate-x-1/2",
+                "transition-[border-radius,background-color,left,right,transform] duration-300 ease-in-out",
+                "will-change-transform" // Hardware acceleration hint
             )}
         >
             <div className="flex items-center justify-between w-full gap-x-6 sm:gap-x-10">
@@ -159,34 +164,37 @@ export function MiniNavbar() {
                 </button>
             </div>
 
-            <div
-                className={cn(
-                    "sm:hidden flex flex-col items-center w-full transition-all ease-in-out duration-300 overflow-hidden",
-                    isOpen
-                        ? "max-h-[1000px] opacity-100 pt-6 pb-2"
-                        : "max-h-0 opacity-0 pt-0 pointer-events-none"
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="sm:hidden flex flex-col items-center w-full overflow-hidden"
+                    >
+                        <nav className="flex flex-col items-center space-y-4 w-full pt-6">
+                            {NAV_LINKS.map((link) => (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    onClick={() => setIsOpen(false)}
+                                    className={cn(
+                                        "text-lg font-bold transition-colors w-full text-center py-2",
+                                        pathname === link.href ? "text-[var(--brand-pink)]" : "text-white/70 hover:text-white"
+                                    )}
+                                >
+                                    {link.label}
+                                </Link>
+                            ))}
+                        </nav>
+                        <div className="flex flex-col items-center gap-3 mt-6 pb-4 w-full">
+                            {signupButtonElement}
+                            {loginButtonElement}
+                        </div>
+                    </motion.div>
                 )}
-            >
-                <nav className="flex flex-col items-center space-y-4 w-full">
-                    {NAV_LINKS.map((link) => (
-                        <Link
-                            key={link.href}
-                            href={link.href}
-                            onClick={() => setIsOpen(false)}
-                            className={cn(
-                                "text-lg font-bold transition-colors w-full text-center",
-                                pathname === link.href ? "text-[var(--brand-pink)]" : "text-white/70 hover:text-white"
-                            )}
-                        >
-                            {link.label}
-                        </Link>
-                    ))}
-                </nav>
-                <div className="flex flex-col items-center gap-3 mt-6 w-full">
-                    {signupButtonElement}
-                    {loginButtonElement}
-                </div>
-            </div>
+            </AnimatePresence>
         </header>
     );
 }

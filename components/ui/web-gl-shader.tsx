@@ -90,19 +90,11 @@ export function WebGLShader() {
 
         void main() {
           vec2 uv = gl_FragCoord.xy / resolution;
-
-          // Simplified wave calculation
-          float wave = sin(uv.x * 3.0 + time * 0.5) * 0.5 + 0.5;
-          wave *= sin(uv.y * 2.0 - time * 0.3) * 0.5 + 0.5;
-
-          // Brand colors
+          float wave = sin(uv.x * 2.0 + time * 0.3) * 0.5 + 0.5;
           vec3 purple = vec3(0.243, 0.118, 0.408);
           vec3 pink = vec3(0.894, 0.353, 0.573);
-
-          vec3 color = mix(purple, pink, wave * 0.6);
-          float alpha = 0.4 + wave * 0.3;
-
-          gl_FragColor = vec4(color * alpha, alpha);
+          vec3 color = mix(purple, pink, wave * 0.4);
+          gl_FragColor = vec4(color * 0.5, 0.5);
         }
       `
       : `
@@ -112,22 +104,20 @@ export function WebGLShader() {
 
         void main() {
           vec2 p = (gl_FragCoord.xy * 2.0 - resolution) / min(resolution.x, resolution.y);
-
-          float d = length(p) * 0.05;
           float gx = p.x;
 
-          vec3 deepPurple = vec3(0.243, 0.118, 0.408);
-          vec3 vibrantPink = vec3(0.894, 0.353, 0.573);
-          vec3 softCoral = vec3(1.0, 0.675, 0.675);
+          vec3 deepPurple = vec3(0.24, 0.12, 0.41);
+          vec3 vibrantPink = vec3(0.89, 0.35, 0.57);
+          vec3 softCoral = vec3(1.0, 0.68, 0.68);
 
-          float wave = 0.05 / abs(p.y + sin((gx + time) * 1.0) * 0.5);
+          // The "line" effect comes from this 1.0/abs() logic
+          float wave = 0.015 / abs(p.y + sin(gx + time * 0.8) * 0.4);
           wave = clamp(wave, 0.0, 1.0);
 
-          vec3 color1 = mix(deepPurple, vibrantPink, wave * 0.5);
-          vec3 color2 = mix(vibrantPink, softCoral, wave * 0.3);
-          vec3 finalColor = mix(color1, color2, sin(time * 0.5) * 0.5 + 0.5);
+          vec3 color = mix(deepPurple, vibrantPink, wave * 0.5);
+          color = mix(color, softCoral, wave * 0.2 * sin(time * 0.5));
 
-          gl_FragColor = vec4(finalColor * wave, 1.0);
+          gl_FragColor = vec4(color * wave, wave * 0.8);
         }
       `;
 

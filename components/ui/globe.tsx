@@ -178,7 +178,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
     // Configure globe
     globe
       .hexPolygonsData(countries.features)
-      .hexPolygonResolution(isLowPerfBrowser ? 2 : 3) // Lower resolution on Safari/Firefox
+      .hexPolygonResolution(isLowPerfBrowser ? 1 : 2) // Lower resolution for better performance
       .hexPolygonMargin(0.7)
       .showAtmosphere(defaultProps.showAtmosphere)
       .atmosphereColor(defaultProps.atmosphereColor)

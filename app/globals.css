@@ -34,9 +34,9 @@
     --ring: rgba(228, 90, 146, 0.4);
     --radius: 18px;
 
-    --glow-strong: 0 25px 80px rgba(228, 90, 146, 0.35);
-    --glow-soft: 0 12px 45px rgba(62, 30, 104, 0.18);
-    --shadow-card: 0 25px 70px rgba(17, 8, 31, 0.08);
+    --glow-strong: 0 15px 50px rgba(228, 90, 146, 0.25);
+    --glow-soft: 0 8px 30px rgba(62, 30, 104, 0.12);
+    --shadow-card: 0 15px 45px rgba(17, 8, 31, 0.05);
 
     --chart-1: oklch(0.646 0.222 41.116);
     --chart-2: oklch(0.6 0.118 184.704);
@@ -77,9 +77,9 @@
 
     --ring: rgba(255, 172, 172, 0.45);
 
-    --glow-strong: 0 35px 120px rgba(228, 90, 146, 0.45);
-    --glow-soft: 0 18px 60px rgba(9, 0, 25, 0.75);
-    --shadow-card: 0 35px 90px rgba(1, 0, 8, 0.8);
+    --glow-strong: 0 25px 90px rgba(228, 90, 146, 0.35);
+    --glow-soft: 0 12px 40px rgba(9, 0, 25, 0.6);
+    --shadow-card: 0 25px 70px rgba(1, 0, 8, 0.7);
 
     --sidebar: rgba(5, 2, 10, 0.78);
     --sidebar-foreground: #f8f0ff;
@@ -163,7 +163,7 @@
         max-width: min(72rem, 100vw);
         /* Performance optimizations for off-screen rendering */
         content-visibility: auto;
-        contain-intrinsic-size: 1px 500px;
+        contain-intrinsic-size: auto 1000px;
     }
 
     .section-eyebrow {
@@ -180,11 +180,11 @@
     }
 
     /* Only apply backdrop-filter on devices that handle it well */
-    @supports (backdrop-filter: blur(12px)) {
+    @supports (backdrop-filter: blur(8px)) {
         @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
             .glass-panel {
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
             }
         }
     }
@@ -207,11 +207,11 @@
     }
 
     /* Only apply backdrop-filter on devices that handle it well and not on mobile for battery saving */
-    @supports (backdrop-filter: blur(12px)) {
+    @supports (backdrop-filter: blur(8px)) {
         @media (prefers-reduced-motion: no-preference) and (min-width: 768px) {
             .glass-card {
-                backdrop-filter: blur(12px);
-                -webkit-backdrop-filter: blur(12px);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
             }
         }
     }
