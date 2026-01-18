@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   ArrowRight,
@@ -10,22 +12,6 @@ import {
 } from "lucide-react";
 import dynamic from "next/dynamic";
 import { Suspense } from "react";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
-  description:
-    "Join India's boldest teen-led code club. Build real projects, attend hackathons, workshops & grow as a developer. 200+ active members, 15+ shipped projects. 100% free to join!",
-  alternates: {
-    canonical: "https://gobitsnbytes.org",
-  },
-  openGraph: {
-    title: "Bits&Bytes - India's Teen-Led Code Club",
-    description: "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer.",
-    url: "https://gobitsnbytes.org",
-    type: "website",
-  },
-};
 
 import { HeroFuturistic } from "@/components/ui/hero-futuristic";
 import { PageSection } from "@/components/page-section";
@@ -40,6 +26,17 @@ import { Button } from "@/components/ui/button";
 import { LoadingInline } from "@/components/loading-wrapper";
 
 // Lazy load heavy components
+const WebGLShader = dynamic(
+  () =>
+    import("@/components/ui/web-gl-shader").then((mod) => ({
+      default: mod.WebGLShader,
+    })),
+  {
+    loading: () => null,
+    ssr: false,
+  },
+);
+
 const Testimonial = dynamic(
   () =>
     import("@/components/ui/design-testimonial").then((mod) => ({
@@ -66,57 +63,60 @@ import { GlassContainer } from "@/components/ui/glass-container";
 
 export default function Home() {
   return (
-    <div className="flex flex-col w-full max-w-full overflow-x-hidden">
-      <HeroFuturistic />
+    <>
+      <WebGLShader />
+      <div className="flex flex-col w-full max-w-full overflow-x-hidden">
+        <HeroFuturistic />
 
-      <PageSection
-        eyebrow="Impact"
-        title="Club-powered learning with real outcomes"
-        description="We're a teen-led code club where workshops, hackathons, and build nights lead directly to shipped projects and new opportunities."
-      >
-        <div className="grid gap-6 md:grid-cols-3">
-          {stats.map((stat) => (
-            <GlassContainer
-              key={stat.label}
-              className="p-8"
-              glowColor={stat.label === "Projects shipped" ? "pink" : "purple"}
-            >
-              <div className="space-y-4">
-                <p className="text-5xl font-black text-white tracking-tighter">
-                  {stat.value}
-                </p>
-                <div>
-                  <h3 className="text-xl font-bold text-white uppercase tracking-tight">
-                    {stat.label}
-                  </h3>
-                  <p className="text-base text-white/60 font-medium">
-                    {stat.detail}
+        <PageSection
+          eyebrow="Impact"
+          title="Club-powered learning with real outcomes"
+          description="We're a teen-led code club where workshops, hackathons, and build nights lead directly to shipped projects and new opportunities."
+        >
+          <div className="grid gap-6 md:grid-cols-3">
+            {stats.map((stat) => (
+              <GlassContainer
+                key={stat.label}
+                className="p-8"
+                glowColor={stat.label === "Projects shipped" ? "pink" : "purple"}
+              >
+                <div className="space-y-4">
+                  <p className="text-5xl font-black text-white tracking-tighter">
+                    {stat.value}
                   </p>
+                  <div>
+                    <h3 className="text-xl font-bold text-white uppercase tracking-tight">
+                      {stat.label}
+                    </h3>
+                    <p className="text-base text-white/60 font-medium">
+                      {stat.detail}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </GlassContainer>
-          ))}
-        </div>
-      </PageSection>
+              </GlassContainer>
+            ))}
+          </div>
+        </PageSection>
 
-      <PageSection
-        eyebrow="What We Do"
-        title="Our Focus Areas"
-        description="Explore the different ways we help teens build, learn, and grow in tech"
-        align="center"
-      >
-        <Features />
-      </PageSection>
+        <PageSection
+          eyebrow="What We Do"
+          title="Our Focus Areas"
+          description="Explore the different ways we help teens build, learn, and grow in tech"
+          align="center"
+        >
+          <Features />
+        </PageSection>
 
-      <PageSection
-        eyebrow="Stories"
-        title="Voices from the crew"
-        align="center"
-      >
-        <Suspense fallback={<LoadingInline />}>
-          <Testimonial />
-        </Suspense>
-      </PageSection>
-    </div>
+        <PageSection
+          eyebrow="Stories"
+          title="Voices from the crew"
+          align="center"
+        >
+          <Suspense fallback={<LoadingInline />}>
+            <Testimonial />
+          </Suspense>
+        </PageSection>
+      </div>
+    </>
   );
 }
