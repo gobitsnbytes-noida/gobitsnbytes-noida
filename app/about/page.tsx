@@ -108,7 +108,7 @@ const coreTeam = [
     id: 4,
     name: "Devansh",
     role: "Founding Member & Backend Lead",
-    image: "/team/devaansh.jpeg",
+    image: "/team/devansh.jpeg",
     bio: "Manages backend development, collaborates on technical features, and builds relationships with schools, students, and external communities for participation and support.",
     expertise: [
       "Backend Development",
