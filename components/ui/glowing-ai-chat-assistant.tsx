@@ -28,7 +28,7 @@ const QUICK_PROMPTS = [
 type StreamPayload =
   | { type: "meta"; model: string }
   | { type: "token"; content: string }
-  | { type: "done"; action?: { type: string; path?: string } | null }
+  | { type: "done"; action?: { type: string; path?: string; textSnippet?: string } | null }
   | { type: "error"; message?: string }
 
 type StoredAssistantState = {
@@ -263,6 +263,53 @@ const FloatingAiAssistant: React.FC = () => {
             const actionData = payload.action
             if (actionData?.type === "navigate" && typeof actionData.path === "string") {
               navigatePath = actionData.path
+            } else if (actionData?.type === "highlight" && typeof actionData.textSnippet === "string") {
+              setTimeout(() => {
+                const text = actionData.textSnippet as string
+                if ((window as any).find && (window as any).find(text)) {
+                  const selection = window.getSelection()
+                  if (selection && selection.rangeCount > 0) {
+                    const range = selection.getRangeAt(0)
+                    const span = document.createElement("span")
+                    span.className = "bg-[#e45a92]/40 rounded px-1 ring-2 ring-[#e45a92] transition-all animate-pulse"
+                    try {
+                      range.surroundContents(span)
+                      span.scrollIntoView({ behavior: "smooth", block: "center" })
+                      setTimeout(() => {
+                        span.className = ""
+                        const parent = span.parentNode
+                        while (span.firstChild) {
+                          parent?.insertBefore(span.firstChild, span)
+                        }
+                        parent?.removeChild(span)
+                      }, 5000)
+                    } catch {
+                      // Ignore surround errors
+                    }
+                    selection.removeAllRanges()
+                  }
+                } else {
+                  const treeWalker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null)
+                  let node
+                  while ((node = treeWalker.nextNode())) {
+                    if (node.nodeValue?.toLowerCase().includes(text.toLowerCase())) {
+                      const element = node.parentElement
+                      if (element) {
+                        element.scrollIntoView({ behavior: "smooth", block: "center" })
+                        const origColor = element.style.backgroundColor
+                        const origTransition = element.style.transition
+                        element.style.transition = "background-color 0.5s"
+                        element.style.backgroundColor = "rgba(228, 90, 146, 0.4)"
+                        setTimeout(() => {
+                          element.style.backgroundColor = origColor
+                          setTimeout(() => element.style.transition = origTransition, 500)
+                        }, 3000)
+                        break
+                      }
+                    }
+                  }
+                }
+              }, 100)
             }
           }
         }
@@ -392,9 +439,8 @@ const FloatingAiAssistant: React.FC = () => {
       <div className="relative w-full max-w-[420px]">
         {/* Floating AI button */}
         <button
-          className={`floating-ai-button relative ml-auto flex h-14 w-14 items-center justify-center rounded-full border border-white/40 bg-[var(--brand-pink)] shadow-lg shadow-[#e45a92]/40 transition-all duration-300 hover:scale-110 hover:shadow-xl ${
-            isChatOpen ? "rotate-90" : "rotate-0"
-          }`}
+          className={`floating-ai-button relative ml-auto flex h-14 w-14 items-center justify-center rounded-full border border-white/40 bg-[var(--brand-pink)] shadow-lg shadow-[#e45a92]/40 transition-all duration-300 hover:scale-110 hover:shadow-xl ${isChatOpen ? "rotate-90" : "rotate-0"
+            }`}
           onClick={handleToggle}
           aria-label={isChatOpen ? "Close Bits&Bytes assistant" : "Open Bits&Bytes assistant"}
         >
@@ -472,11 +518,10 @@ const FloatingAiAssistant: React.FC = () => {
                 {messages.map((m) => (
                   <div key={m.id} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                     <div
-                      className={`max-w-[85%] rounded-2xl px-3 py-2 text-[0.75rem] leading-relaxed sm:max-w-[80%] ${
-                        m.role === "user"
-                          ? "bg-[#e45a92] text-white"
-                          : "border border-zinc-700/70 bg-zinc-900/80 text-zinc-100 prose prose-invert prose-p:my-1 prose-headings:my-2 prose-ul:my-1 prose-li:my-0.5 max-w-none"
-                      }`}
+                      className={`max-w-[85%] rounded-2xl px-3 py-2 text-[0.75rem] leading-relaxed sm:max-w-[80%] ${m.role === "user"
+                        ? "bg-[#e45a92] text-white"
+                        : "border border-zinc-700/70 bg-zinc-900/80 text-zinc-100 prose prose-invert prose-p:my-1 prose-headings:my-2 prose-ul:my-1 prose-li:my-0.5 max-w-none"
+                        }`}
                     >
                       {m.role === "user" ? (
                         m.content
@@ -534,11 +579,10 @@ const FloatingAiAssistant: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => void handleVoiceToggle()}
-                    className={`group flex items-center gap-1 rounded-lg border px-2 py-1 text-[0.7rem] transition-colors ${
-                      isRecording
-                        ? "border-red-500/60 bg-red-500/20 text-red-300"
-                        : "border-zinc-800/60 bg-zinc-900/80 text-zinc-500 hover:border-zinc-700 hover:text-zinc-200"
-                    }`}
+                    className={`group flex items-center gap-1 rounded-lg border px-2 py-1 text-[0.7rem] transition-colors ${isRecording
+                      ? "border-red-500/60 bg-red-500/20 text-red-300"
+                      : "border-zinc-800/60 bg-zinc-900/80 text-zinc-500 hover:border-zinc-700 hover:text-zinc-200"
+                      }`}
                     aria-label="Voice input"
                   >
                     <Mic className={`h-3 w-3 ${isRecording ? "animate-pulse text-red-400" : ""}`} />

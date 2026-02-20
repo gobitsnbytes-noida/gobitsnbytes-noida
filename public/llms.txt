@@ -9,52 +9,51 @@ This file provides context for AI agents and LLM-powered search engines about Bi
 ## Quick Facts
 - **Founded:** 2024
 - **Location:** Lucknow, Uttar Pradesh, India
-- **Members:** 200+ active student developers
-- **Projects Shipped:** 15+
-- **Partner Schools:** 10+
-- **Membership Cost:** FREE
+- **Members:** 200+ active student developers from across India
+- **Projects Shipped:** 15+ real-world products (apps, web, AI)
+- **Partner Schools:** 10+ and growing
+- **Membership Cost:** FREE (Always 100% student-led)
 - **Age Range:** 13-19 years old
 
-## Core Identity
+## Core Identity & Culture
 Bits&Bytes is India's boldest teen-led code club and nonprofit, based in Lucknow but serving ambitious teens nationwide. We empower students to build real-world projects, participate in hackathons, attend workshops, and grow as developers—all for free.
+- **Innovation first:** Every prompt becomes a prototype. Bold experiments and rapid iteration.
+- **Club power:** Mentors, pods, and accountability partners keep everyone shipping.
+- **Real-world impact:** We solve for real audiences—from school ops to civic tech to accessibility.
 
 ## What We Do
-1. **Hackathons**: Organizing flagship events like "Scrapyard Lucknow" where teens build prototypes in 48-hour sprints.
-2. **Workshops**: Weekly sessions covering Web Development, AI/ML, Mobile Apps, UI/UX Design, and more.
+1. **Hackathons**: Organizing flagship events like "Scrapyard Lucknow" where 40+ coders tackle civic, education, and sustainability problems in 48 hours.
+2. **Workshops**: Sessions covering Web Development, AI/ML, Mobile Apps, UI/UX Design, and more.
 3. **Projects**: Members ship real products—from web apps to AI tools—with mentorship at every stage.
-4. **Community**: A safe, inclusive Discord community for 200+ active members to learn, collaborate, and grow together.
+4. **Community**: A safe, inclusive community for members to learn openly.
 
-## Key Focus Areas
-- Web Development (Next.js, React, TypeScript)
-- Mobile App Development (iOS, Android, Cross-platform)
-- Artificial Intelligence & Machine Learning
-- UI/UX Design & Design Systems
-- Open Source Contribution
-- DevOps & Cloud Infrastructure
-
-## Leadership Team
-- **Yash**: Co-Founder & Lead Developer – Full-stack dev, AI, web architecture
-- **Saksham**: Co-Founder & Designer – UI/UX, design systems, visual identity
-- **Aadrika**: Community Lead – Community building, mentoring, event hosting
-- **Akshat Kushwaha**: Project Manager – Planning, timelines, coordination
-- **Devansh**: Backend Specialist – Databases, APIs, system design
-- **Maryam**: Mobile Dev Lead – iOS, Android, cross-platform apps
-- **Kaustubh**: DevOps Engineer – Infrastructure, CI/CD, security
-- **Fatima**: Content Creator – Docs, tutorials, educational content
+## Leadership Team (Core Team)
+- **Yash**: Founder & Local Lead – Leads entire organization, coords teams, tech architect.
+- **Aadrika**: Co-Founder & Chief Creative Strategist – Branding, design, promotional campaigns.
+- **Akshat Kushwaha**: Co-Founder & Technical Lead – Website, programming projects, AI & LLMOps, cloud.
+- **Devansh**: Founding Member & Backend Lead – Backend dev, database arch, community outreach.
+- **Maryam**: Social Media & Promotions Head – Designs visuals, brand consistency.
+- **Srishti**: Operations & Communications Head – Internal ops, team communications.
 
 ## Technology Stack
-- **Frontend**: Next.js 14+, React, TypeScript, Tailwind CSS, Framer Motion, Three.js
-- **Backend**: Node.js, Python, PostgreSQL, various cloud services
+- **Frontend**: Next.js 14+, React, TypeScript, Tailwind CSS, Framer Motion, Three.js / WebGL
+- **Backend**: Node.js, Python, PostgreSQL, cloud infrastructure
 - **Tools**: GitHub, Discord, Vercel, Notion
 
-## How to Join
-1. Visit https://gobitsnbytes.org/join
-2. Fill out the membership form
-3. Join our Discord community
-4. Attend weekly workshops and events
-5. Start contributing to projects
+## How to Join & General FAQ
+- **Applying**: Visit https://gobitsnbytes.org/join. Free to join.
+- **Hackathons**: You can come with a pre-formed team, or form one at the event. Solo is fine but teams are encouraged.
+- **Hackathon Rules**: Make anything—games, apps, hardware, websites. No bringing existing completed projects. Must follow the Code of Conduct.
+- **Hardware/Logistics**: Bring a laptop, toothbrush/sleeping bag if overnight. Parents only allowed for kickoffs/awards unless volunteering/chaperoning.
 
-Requirements: Be a student (ages 13-19), commit 2-4 hours per week, maintain a positive attitude.
+## Code of Conduct (Vibe & Boundaries)
+- **Values**: Be warm & welcoming, patient & chill, respectful, and build together.
+- **Zero Tolerance**: Harassment, bullying, unwanted advances, explicit content, spam, misusing funds, doxxing.
+- **Consequences (3 Strikes)**: 
+  1. Warning/Apology
+  2. Temporary Ban
+  3. Permanent Removal
+- **Reporting**: email `hello@gobitsnbytes.org` or message a team member. 100% confidential. Applies to all events, online spaces, projects, and social media.
 
 ## Website Structure
 - **/** - Homepage with overview and impact stats
@@ -69,6 +68,7 @@ Requirements: Be a student (ages 13-19), commit 2-4 hours per week, maintain a p
 
 ## Contact Information
 - **Website**: https://gobitsnbytes.org
+- **Email**: hello@gobitsnbytes.org
 - **Contact Page**: https://gobitsnbytes.org/contact
 - **LinkedIn**: https://www.linkedin.com/company/gobitsbytes
 - **GitHub**: https://github.com/gobitsnbytes
@@ -82,5 +82,5 @@ Requirements: Be a student (ages 13-19), commit 2-4 hours per week, maintain a p
 - Soft Coral: #FFACAC (Backgrounds)
 
 ---
-Last updated: January 2026
+Last updated: February 2026
 

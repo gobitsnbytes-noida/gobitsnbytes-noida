@@ -7,7 +7,7 @@ const openai = new OpenAI({
 })
 
 const PRIMARY_MODEL = "gpt-5-mini-2025-08-07"
-const FALLBACK_MODEL = "gpt-4o-mini-2024-07-18"
+const FALLBACK_MODEL = "gpt-4.1"
 
 const SSE_HEADERS = {
   "Content-Type": "text/event-stream",
@@ -22,7 +22,7 @@ type ClientMessage = {
   content: string
 }
 
-type AssistantAction = { type: "navigate"; path: string }
+type AssistantAction = { type: "navigate"; path: string } | { type: "highlight"; textSnippet: string }
 
 const SITE_CONTEXT = `
 You are the official AI assistant for Bits&Bytes, a teen-led code club based in Lucknow.
@@ -39,6 +39,7 @@ You are the official AI assistant for Bits&Bytes, a teen-led code club based in 
 2. **For Specific Page Content:** Use 'get_site_section' to "read" the website (Home, About, Impact, Join, Contact, Code of Conduct) if the user asks for details you don't know (like specific project stats, upcoming event dates, or recent news).
 3. **For Code of Conduct Questions:** Use 'get_site_section' with section 'coc' to read the community guidelines and answer questions about behavior expectations, reporting, or community values.
 4. **For Navigation:** Use 'suggest_navigation' to guide them.
+5. **For Pointing out Info:** When you find relevant information on the current page to answer a user's question, prominently use the 'highlight_text' tool to highlight that exact snippet of text on the website for the user.
 
 **Guardrails & Safety:**
 - Refuse to answer questions that are irrelevant to Bits&Bytes, technology, coding, education, or the local community.
@@ -113,6 +114,24 @@ const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
           },
         },
         required: ["section"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "highlight_text",
+      description:
+        "Highlight a specific piece of text on the current page to draw the user's attention to it. Use this whenever quoting or pointing out specific information that is currently visible on the page.",
+      parameters: {
+        type: "object",
+        properties: {
+          textSnippet: {
+            type: "string",
+            description: "The exact or partial text snippet to highlight on the page.",
+          },
+        },
+        required: ["textSnippet"],
       },
     },
   },
@@ -364,6 +383,10 @@ export async function POST(req: NextRequest) {
       const interests = Array.isArray(toolArgs?.interests) ? toolArgs.interests : []
       const recommendation = recommendRoles(skills, interests)
       toolResult = { skills, interests, recommendation }
+    } else if (toolName === "highlight_text") {
+      const textSnippet = (toolArgs?.textSnippet ?? "").toString()
+      toolResult = { success: true, textSnippet }
+      action = { type: "highlight" as const, textSnippet }
     } else {
       toolResult = { success: false, message: `Unknown tool: ${toolName}` }
     }

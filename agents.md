@@ -1,3 +1,4 @@
+
 # Bits&Bytes Team – Agents Handbook
 
 > **Mission:** Building India's boldest teen-led hackathons & tech movements  
@@ -31,14 +32,12 @@ Quick reference for “who to ping for what”.
 
 | Name      | Role                      | Superpowers                                             |
 |-----------|---------------------------|---------------------------------------------------------|
-| **Yash**  | Co‑Founder & Lead Dev     | Full‑stack dev, AI, web architecture                    |
-| **Saksham** | Co‑Founder & Designer   | UI/UX, design systems, visual identity                  |
-| **Aadrika** | Community Lead          | Community building, mentoring, event hosting            |
-| **Akshat Kushwaha**  | Project Manager         | Project planning, timelines, coordination               |
-| **Devansh** | Backend Specialist      | Databases, APIs, system design                          |
-| **Maryam**  | Mobile Dev Lead         | iOS, Android, cross‑platform apps                       |
-| **Kaustubh**| DevOps Engineer         | Infra, CI/CD, deployment, security                      |
-| **Fatima**  | Content Creator         | Docs, tutorials, educational & social content           |
+| **Yash** | Founder & Local Lead | Leadership, Event Management, Team Coordination, Strategic Planning |
+| **Aadrika** | Co-Founder & Chief Creative Strategist | Creative Strategy, Brand Development, Campaign Planning, Design Direction |
+| **Akshat Kushwaha** | Co-Founder & Technical Lead | AI & LLMOps, Cloud Infrastructure, Full-Stack Development |
+| **Devansh** | Founding Member & Backend Lead | Backend Development, Database Architecture, Community Outreach, Partnership Building |
+| **Maryam** | Social Media & Promotions Head | Social Media, Brand Identity, Visual Communication, Design Systems |
+| **Srishti** | Operations & Communications Head | Operations Management, Team Communications, Project Coordination, Process Optimization |
 
 ---
 
@@ -46,105 +45,83 @@ Quick reference for “who to ping for what”.
 
 ### 3.1 Leadership
 
-#### Yash – Co‑Founder & Lead Developer
-- **Expertise:** Full‑stack development, AI/ML, modern web frameworks  
+#### Yash – Founder & Local Lead
+- **Expertise:** Leadership, Event Management, Team Coordination, Strategic Planning
 - **Owns:**
-  - Technical direction & architecture for projects
-  - High‑impact features and core platform decisions
-  - Mentoring junior devs & running technical reviews
+  - Leading the entire organization and coordinating between all teams
+  - Organizing events and setting timelines
+  - Ensuring work is executed efficiently
 - **Talk to Yash when…**
-  - You’re designing a new system or feature and need architecture input  
-  - You’re blocked on complex implementation details or performance issues  
-  - You want to explore AI/ML ideas for a project or event
+  - You need clarity on organizational goals or timelines
+  - You want to coordinate cross-team efforts
+  - You have questions about events or strategic planning
 
-#### Saksham – Co‑Founder & Designer
-- **Expertise:** UI/UX, visual identity, accessibility, design systems  
+#### Aadrika – Co-Founder & Chief Creative Strategist
+- **Expertise:** Creative Strategy, Brand Development, Campaign Planning, Design Direction
 - **Owns:**
-  - Overall visual direction & brand consistency
-  - Design systems, components, and reusable patterns
-  - UX reviews and polish before launch
-- **Talk to Saksham when…**
-  - You’re starting a new product/page and want a high‑quality UI  
-  - You need flows, wireframes, or interaction design  
-  - You want feedback on accessibility or visual consistency
-
----
-
-### 3.2 Community & Operations
-
-#### Aadrika – Community Lead
-- **Expertise:** Community building, mentoring, event organization  
-- **Owns:**
-  - Onboarding new members and helping them find their place
-  - Community events, engagement, and mentorship programs
-  - Keeping the environment welcoming, safe, and inclusive
+  - Branding, design decisions, and idea generation
+  - Promotional campaign planning
+  - Guiding the overall direction of the organization
 - **Talk to Aadrika when…**
-  - You’re new and don’t know where to start  
-  - You want to host a community activity or workshop  
-  - You see community issues that need care or support
+  - You need input on visual direction or design decisions
+  - You are planning a promotional campaign
+  - You want to align a project with the overall brand strategy
 
-#### Akshat Kushwaha – Project Manager
-- **Expertise:** Planning, coordination, strategy, execution tracking  
+#### Akshat Kushwaha – Co-Founder & Technical Lead
+- **Expertise:** AI & LLMOps, Cloud Infrastructure, Full-Stack Development
 - **Owns:**
-  - Project timelines, milestones, and sprint planning
-  - Cross‑team coordination (dev, design, community, content)
-  - Ensuring we ship on time without burning people out
+  - Building and maintaining the website
+  - Leading programming projects and evaluating tech stacks
+  - Technical stability of all projects
 - **Talk to Akshat when…**
-  - You’re unsure about priorities or what to work on next  
-  - A project feels stuck and needs structure  
-  - You want to propose a new initiative or cross‑team collab
+  - You need to propose or evaluate a technical stack
+  - You need help with agent development or cloud infrastructure
+  - You want to implement AI integrations or backend systems
 
 ---
 
-### 3.3 Engineering
+### 3.2 Engineering & Development
 
-#### Devansh – Backend Specialist
-- **Expertise:** Database design, APIs, system architecture, scalability  
+#### Devansh – Founding Member & Backend Lead
+- **Expertise:** Backend Development, Database Architecture, Community Outreach, Partnership Building
 - **Owns:**
-  - Backend infrastructure and data modeling
-  - Performance tuning and reliability of APIs/services
-  - Best practices around security and data integrity
+  - Backend development and technical features
+  - Building relationships with schools and students
+  - Engaging with external communities for participation
 - **Talk to Devansh when…**
-  - You’re designing a new API or database schema  
-  - You have performance or scaling questions  
-  - You want to validate backend architecture decisions
-
-#### Maryam – Mobile Development Lead
-- **Expertise:** iOS, Android, cross‑platform frameworks, mobile UX  
-- **Owns:**
-  - Mobile app architecture and platform strategy
-  - UX best practices specifically for mobile devices
-  - App store deployment and maintenance cycles
-- **Talk to Maryam when…**
-  - You’re starting or integrating a mobile app  
-  - You need help making something feel “native” on mobile  
-  - You’re dealing with device‑specific bugs or optimizations
-
-#### Kaustubh – DevOps Engineer
-- **Expertise:** Infrastructure, CI/CD, cloud, security, monitoring  
-- **Owns:**
-  - Deployment pipelines and automation
-  - Infrastructure reliability and observability
-  - Security baselines and incident readiness
-- **Talk to Kaustubh when…**
-  - You’re deploying a new service and need a safe pipeline  
-  - You want logging/monitoring added or improved  
-  - You have questions about infra costs, security, or scaling
+  - You are designing database schemas or backend APIs
+  - You need outreach support for schools or students
+  - You want to explore partnerships with external communities
 
 ---
 
-### 3.4 Content & Education
+### 3.3 Media & Communications
 
-#### Fatima – Content Creator
-- **Expertise:** Technical writing, tutorials, educational content, social posts  
+#### Maryam – Social Media & Promotions Head
+- **Expertise:** Social Media, Brand Identity, Visual Communication, Design Systems
 - **Owns:**
-  - Project documentation and contributor guides
-  - Workshop materials, slide decks, and coding exercises
-  - Public‑facing content for socials and community channels
-- **Talk to Fatima when…**
-  - You’re shipping a feature that needs good docs or a blog  
-  - You’re running a workshop and want clear, fun content  
-  - You want to share a project story with the wider community
+  - Designing visuals for posts, events, and campaigns
+  - Maintaining brand consistency across platforms
+  - Coordinating with social media and content teams
+- **Talk to Maryam when…**
+  - You need visuals designed for an event or social media post
+  - You want to ensure branding consistency for a campaign
+  - You have questions regarding social media promotions
+
+---
+
+### 3.4 Operations
+
+#### Srishti – Operations & Communications Head
+- **Expertise:** Operations Management, Team Communications, Project Coordination, Process Optimization
+- **Owns:**
+  - Internal operations and team communications
+  - Smooth collaboration across all departments
+  - Coordinating various initiatives
+- **Talk to Srishti when…**
+  - You need help with internal operations or processes
+  - You want to optimize communication within your team
+  - You need assistance coordinating cross-department initiatives
 
 ---
 
@@ -158,16 +135,16 @@ Quick reference for “who to ping for what”.
 
 ### 4.2 Decision Making
 - **Technical decisions:**  
-  Led by the engineering team (Yash, Devansh, Maryam, Kaustubh) with input from others.
+  Led by Akshat Kushwaha and Devansh, with input from others.
 
-- **Design & UX decisions:**  
-  Led by Saksham, with feedback from devs and community where relevant.
+- **Design, Branding & Promotional decisions:**  
+  Led by Aadrika and Maryam, with feedback from the community where relevant.
 
-- **Community & program decisions:**  
-  Led by Aadrika, with community feedback and support from the team.
+- **Operations & Cross‑team coordination:**  
+  Led by Yash and Srishti, with support from the team.
 
 - **Major changes (brand, org‑level strategy, big launches):**  
-  Require discussion with the co‑founders plus broad team alignment.
+  Require discussion with the founders plus broad team alignment.
 
 ### 4.3 Project Workflow
 1. **Ideation** – Open brainstorm, collect ideas from the community.  
@@ -176,6 +153,13 @@ Quick reference for “who to ping for what”.
 4. **Review** – Code reviews, design reviews, and testing.  
 5. **Deploy** – Staged rollout with monitoring and a rollback plan.  
 6. **Iterate** – Use feedback, metrics, and retrospectives to improve.
+
+### 4.4 Technical & Engineering Guidelines
+To ensure the highest quality of our projects, all team members must adhere to the following standards:
+1. **Performance First** – Our website and applications must always be highly optimized for speed (e.g. fast TTFB, LCP, INP).
+2. **Responsive Design** – All user interfaces must be fully responsive and work seamlessly across all devices and screen sizes.
+3. **Use PNPM** – We strictly use `pnpm` as our package manager to ensure fast, consistent, and space-efficient builds.
+4. **Security Mindset** – Proper security considerations and best practices must always be applied to safeguard our platforms and user data.
 
 ---
 
@@ -203,7 +187,7 @@ Quick reference for “who to ping for what”.
 - **Documentation:** Notion workspace as the central knowledge base
 
 ### External
-- **Website:** `https://www.lucknow.codes/`  
+- **Website:** `https://www.gobitsnbytes.org/`  
 - **LinkedIn:** `https://www.linkedin.com/company/gobitsbytes`  
 - **Community Discord:** Linked from the website and social profiles  
 - **Social Media:** GitHub, Twitter/X, and other channels for announcements
@@ -218,6 +202,4 @@ Special thanks to all our volunteers, mentors, and supporters. Together, we’re
 
 ---
 
-*Last updated: November 17, 2025*
-
- 
+*Last updated: February 20, 2026*
