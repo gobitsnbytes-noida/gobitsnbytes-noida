@@ -135,7 +135,7 @@ export default function Join() {
                   data-tally-align-left="1"
                   data-tally-hide-title="1"
                   data-tally-overlay="1"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-(--brand-pink) px-10 py-4 text-lg md:text-xl font-black text-white shadow-[0_0_30px_rgba(228,90,146,0.5)] transition-all hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(228,90,146,0.7)] w-full sm:w-auto max-w-xs"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-(--brand-pink) px-10 py-4 text-lg md:text-xl font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-all hover:scale-[1.03] w-full sm:w-auto max-w-xs"
                 >
                   Apply to Join
                   <ArrowRight className="h-6 w-6 shrink-0 transition-transform group-hover:translate-x-1" />
@@ -247,7 +247,7 @@ export default function Join() {
               data-tally-align-left="1"
               data-tally-hide-title="1"
               data-tally-overlay="1"
-              className="group rounded-full bg-[var(--brand-pink)] px-8 sm:px-10 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-[var(--glow-strong)] transition-all hover:scale-105 w-full sm:w-auto"
+              className="group rounded-full bg-[var(--brand-pink)] px-8 sm:px-10 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-all hover:scale-105 w-full sm:w-auto"
             >
               Apply Now
               <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />

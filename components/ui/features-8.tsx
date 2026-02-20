@@ -7,7 +7,7 @@ export function Features() {
     return (
         <div className="mx-auto max-w-6xl">
             <div className="relative">
-                <div className="relative z-10 grid grid-cols-6 gap-3">
+                <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3">
                     {/* Card 1: 200+ Members (Replaces Customizable) */}
                     <GlassContainer
                         containerClassName="col-span-full lg:col-span-2"

@@ -329,7 +329,7 @@ export default function CodeOfConduct() {
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 asChild
-                className="group rounded-full bg-(--brand-pink) px-10 py-7 text-lg font-black text-white shadow-[0_0_30px_rgba(228,90,146,0.5)] transition-all hover:scale-105 hover:shadow-[0_0_50px_rgba(228,90,146,0.7)] w-full sm:w-auto"
+                className="group rounded-full bg-(--brand-pink) px-10 py-7 text-lg font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-all hover:scale-105 w-full sm:w-auto"
               >
                 <Link href="/join">
                   Join the Community

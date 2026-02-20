@@ -122,7 +122,7 @@ function TeamCard({
         }}
       >
         {/* Image section - larger for better portraits */}
-        <div className="mx-1 sm:mx-2 h-[300px] sm:h-[320px] md:h-[340px] flex-shrink-0">
+        <div className="mx-1 sm:mx-2 h-[220px] sm:h-[280px] md:h-[320px] lg:h-[340px] flex-shrink-0">
           <div className="relative h-full w-full rounded-xl sm:rounded-2xl overflow-hidden">
             {/* Ambient glow background */}
             <div className="absolute inset-0 -z-10 scale-110 opacity-40 blur-2xl sm:blur-3xl">
@@ -250,7 +250,7 @@ export default function TeamCaseStudy({ coreTeam, volunteers }: TeamCaseStudyPro
   return (
     <div className="flex flex-col gap-8 sm:gap-16">
       {/* Core Team - CSS Grid with explicit 2 rows for equal heights */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-4 sm:gap-6 md:gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-2 gap-3 sm:gap-4 md:gap-6 lg:gap-8">
         {coreTeam.map((member, index) => {
           const bgColor = brandColors[index % brandColors.length];
 

@@ -301,12 +301,12 @@ export function FlickeringFooter() {
                     </div>
                 </div>
             </div>
-            <div className="w-full h-32 md:h-48 relative mt-8 z-0">
+            <div className="w-full h-24 sm:h-32 md:h-48 relative mt-8 z-0">
                 <div className="absolute inset-0 bg-gradient-to-t from-transparent to-background z-10 from-40%" />
                 <div className="absolute inset-0 mx-4">
                     <FlickeringGrid
                         text={tablet ? "B&B" : "Bits&Bytes"}
-                        fontSize={tablet ? 60 : 80}
+                        fontSize={tablet ? 50 : 80}
                         className="h-full w-full"
                         squareSize={2}
                         gridGap={tablet ? 2 : 3}
