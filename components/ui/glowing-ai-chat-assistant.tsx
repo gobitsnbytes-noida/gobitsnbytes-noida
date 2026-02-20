@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 
-import { Mic, Send, Info, Bot, X } from "lucide-react"
+import { Mic, Send, Info, Bot, X, Trash } from "lucide-react"
 
 interface ChatMessage {
   id: number
@@ -15,7 +15,7 @@ interface ChatMessage {
 }
 
 const MAX_CHARS = 2000
-const MAX_HISTORY = 40
+const MAX_HISTORY = 8
 const STORAGE_KEY = "bb-floating-assistant-state-v1"
 const QUICK_PROMPTS = [
   "What is Bits&Bytes?",
@@ -229,6 +229,7 @@ const FloatingAiAssistant: React.FC = () => {
       const decoder = new TextDecoder()
       let buffer = ""
       let navigatePath: string | null = null
+      let highlightSnippet: string | null = null
 
       while (true) {
         const { value, done } = await reader.read()
@@ -264,6 +265,7 @@ const FloatingAiAssistant: React.FC = () => {
             if (actionData?.type === "navigate" && typeof actionData.path === "string") {
               navigatePath = actionData.path
             } else if (actionData?.type === "highlight" && typeof actionData.textSnippet === "string") {
+              highlightSnippet = actionData.textSnippet
               setTimeout(() => {
                 const text = actionData.textSnippet as string
                 if ((window as any).find && (window as any).find(text)) {
@@ -315,11 +317,12 @@ const FloatingAiAssistant: React.FC = () => {
         }
       }
 
-      updateMessageContent(assistantMessageId, (prev) =>
-        prev && prev.trim().length > 0
-          ? prev
-          : "I'm not sure about that based on the information publicly available on this site."
-      )
+      updateMessageContent(assistantMessageId, (prev) => {
+        if (prev && prev.trim().length > 0) return prev
+        if (navigatePath) return "Taking you there! 🚀"
+        if (highlightSnippet) return "Here's what I found for you! ✨"
+        return "I'm not sure about that based on the information publicly available on this site."
+      })
 
       if (navigatePath) {
         router.push(navigatePath)
@@ -479,6 +482,19 @@ const FloatingAiAssistant: React.FC = () => {
                   <span className="rounded-2xl bg-zinc-800/70 px-2 py-1 text-[0.65rem] font-medium text-zinc-200">
                     {modelName}
                   </span>
+                  <button
+                    onClick={() => {
+                      setMessages([])
+                      setCharCount(0)
+                      setMessage("")
+                      window.localStorage.removeItem(STORAGE_KEY)
+                    }}
+                    className="inline-flex h-7 w-7 items-center justify-center rounded-full text-zinc-400 hover:bg-zinc-800/80 hover:text-red-400 transition-colors"
+                    aria-label="Clear chat"
+                    title="Clear chat"
+                  >
+                    <Trash className="h-3.5 w-3.5" />
+                  </button>
                   <button
                     onClick={() => {
                       streamControllerRef.current?.abort()

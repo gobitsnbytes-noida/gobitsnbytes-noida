@@ -3,102 +3,82 @@ export interface TeamMember {
   role: string
   superpowers: string[]
   talkToMeWhen: string[]
-  department: "Leadership" | "Engineering" | "Design" | "Community" | "Content"
+  department: "Leadership" | "Engineering" | "Design" | "Community" | "Content" | "Operations"
 }
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
     name: "Yash",
-    role: "Co-Founder & Local Lead",
-    superpowers: ["Full-stack dev", "AI", "Web architecture", "Modern web frameworks"],
+    role: "Founder & Local Lead",
+    superpowers: ["Leadership", "Event Management", "Team Coordination", "Strategic Planning", "Great guy", "Awesome developer"],
     talkToMeWhen: [
-      "Designing a new system or feature",
-      "Blocked on complex implementation details",
-      "Exploring AI/ML ideas",
+      "You need clarity on organizational goals or timelines",
+      "You want to coordinate cross-team efforts",
+      "You have questions about events or strategic planning"
     ],
-    department: "Leadership",
-  },
-  {
-    name: "Saksham",
-    role: "Co-Founder & Designer",
-    superpowers: ["UI/UX", "Design systems", "Visual identity", "Accessibility"],
-    talkToMeWhen: [
-      "Starting a new product/page and want high-quality UI",
-      "Need flows, wireframes, or interaction design",
-      "Need feedback on accessibility or visual consistency",
-    ],
-    department: "Design",
+    department: "Leadership"
   },
   {
     name: "Aadrika",
-    role: "Community Lead",
-    superpowers: ["Community building", "Mentoring", "Event hosting", "Onboarding"],
+    role: "Co-Founder & Chief Creative Strategist",
+    superpowers: ["Creative Strategy", "Brand Development", "Campaign Planning", "Design Direction", "Very creative and welcoming!"],
     talkToMeWhen: [
-      "You're new and don't know where to start",
-      "Want to host a community activity or workshop",
-      "See community issues needing care or support",
+      "You need input on visual direction or design decisions",
+      "You are planning a promotional campaign",
+      "You want to align a project with the overall brand strategy"
     ],
-    department: "Community",
+    department: "Design"
   },
   {
     name: "Akshat Kushwaha",
-    role: "Project Manager",
-    superpowers: ["Project planning", "Timelines", "Coordination", "Strategy"],
+    role: "Co-Founder & Technical Lead",
+    superpowers: ["AI & LLMOps", "Cloud Infrastructure", "Full-Stack Development", "Amazing human being", "Great software engineer"],
     talkToMeWhen: [
-      "Unsure about priorities or what to work on next",
-      "A project feels stuck and needs structure",
-      "Want to propose a new initiative or cross-team collab",
+      "You need to propose or evaluate a technical stack",
+      "You need help with agent development or cloud infrastructure",
+      "You want to implement AI integrations or backend systems"
     ],
-    department: "Leadership",
+    department: "Engineering"
   },
   {
     name: "Devansh",
-    role: "Backend Specialist",
-    superpowers: ["Databases", "APIs", "System design", "Scalability"],
+    role: "Founding Member & Backend Lead",
+    superpowers: ["Backend Development", "Database Architecture", "Community Outreach", "Partnership Building"],
     talkToMeWhen: [
-      "Designing a new API or database schema",
-      "Have performance or scaling questions",
-      "Validating backend architecture decisions",
+      "You are designing database schemas or backend APIs",
+      "You need outreach support for schools or students",
+      "You want to explore partnerships with external communities"
     ],
-    department: "Engineering",
+    department: "Engineering"
   },
   {
     name: "Maryam",
-    role: "Mobile Dev Lead",
-    superpowers: ["iOS", "Android", "Cross-platform frameworks", "Mobile UX"],
+    role: "Social Media & Promotions Head",
+    superpowers: ["Social Media", "Brand Identity", "Visual Communication", "Design Systems"],
     talkToMeWhen: [
-      "Starting or integrating a mobile app",
-      "Need help making something feel 'native'",
-      "Dealing with device-specific bugs or optimizations",
+      "You need visuals designed for an event or social media post",
+      "You want to ensure branding consistency for a campaign",
+      "You have questions regarding social media promotions"
     ],
-    department: "Engineering",
+    department: "Design"
   },
   {
-    name: "Kaustubh",
-    role: "DevOps Engineer",
-    superpowers: ["Infrastructure", "CI/CD", "Cloud", "Security", "Monitoring"],
+    name: "Srishti",
+    role: "Operations & Communications Head",
+    superpowers: ["Operations Management", "Team Communications", "Project Coordination", "Process Optimization"],
     talkToMeWhen: [
-      "Deploying a new service",
-      "Want logging/monitoring added or improved",
-      "Questions about infra costs, security, or scaling",
+      "You need help with internal operations or processes",
+      "You want to optimize communication within your team",
+      "You need assistance coordinating cross-department initiatives"
     ],
-    department: "Engineering",
-  },
-  {
-    name: "Fatima",
-    role: "Content Creator",
-    superpowers: ["Technical writing", "Tutorials", "Educational content", "Social posts"],
-    talkToMeWhen: [
-      "Shipping a feature that needs docs or a blog",
-      "Running a workshop and want clear content",
-      "Want to share a project story with the community",
-    ],
-    department: "Content",
-  },
+    department: "Operations"
+  }
 ]
 
 export function findExperts(query: string): TeamMember[] {
   const lowerQuery = query.toLowerCase()
+  if (!lowerQuery) return TEAM_MEMBERS
+
   return TEAM_MEMBERS.filter(
     (member) =>
       member.name.toLowerCase().includes(lowerQuery) ||
@@ -112,36 +92,22 @@ export function recommendRoles(skills: string[], interests: string[]): string {
   const userKeywords = [...skills, ...interests].map((k) => k.toLowerCase())
   const recommendations: string[] = []
 
-  if (userKeywords.some((k) => k.includes("design") || k.includes("ui") || k.includes("art") || k.includes("drawing"))) {
-    recommendations.push("Design Team (Talk to Saksham)")
+  if (userKeywords.some((k) => k.includes("design") || k.includes("ui") || k.includes("art") || k.includes("drawing") || k.includes("brand"))) {
+    recommendations.push("Design & Content Team (Talk to Aadrika or Maryam)")
   }
   if (
     userKeywords.some(
-      (k) => k.includes("code") || k.includes("dev") || k.includes("web") || k.includes("python") || k.includes("js")
+      (k) => k.includes("code") || k.includes("dev") || k.includes("web") || k.includes("python") || k.includes("js") || k.includes("ai") || k.includes("cloud")
     )
   ) {
-    recommendations.push("Engineering Team (Talk to Yash or Devansh)")
+    recommendations.push("Engineering Team (Talk to Akshat Kushwaha or Devansh)")
   }
   if (
     userKeywords.some(
-      (k) => k.includes("people") || k.includes("event") || k.includes("manage") || k.includes("lead")
+      (k) => k.includes("people") || k.includes("event") || k.includes("manage") || k.includes("lead") || k.includes("operations")
     )
   ) {
-    recommendations.push("Community & Leadership (Talk to Aadrika or Akshat Kushwaha)")
-  }
-  if (
-    userKeywords.some(
-      (k) => k.includes("mobile") || k.includes("app") || k.includes("android") || k.includes("ios")
-    )
-  ) {
-    recommendations.push("Mobile Development (Talk to Maryam)")
-  }
-  if (
-    userKeywords.some(
-      (k) => k.includes("write") || k.includes("blog") || k.includes("teach") || k.includes("content")
-    )
-  ) {
-    recommendations.push("Content Team (Talk to Fatima)")
+    recommendations.push("Community, Operations & Leadership (Talk to Yash or Srishti)")
   }
 
   if (recommendations.length === 0) {

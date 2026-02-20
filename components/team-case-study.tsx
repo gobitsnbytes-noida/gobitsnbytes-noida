@@ -108,8 +108,8 @@ function TeamCard({
       <div
         className={cn(
           "relative flex cursor-pointer flex-col rounded-xl sm:rounded-2xl p-3 sm:p-4 transition-all duration-700",
-          // Fixed card height for consistency across all cards
-          "h-[460px] sm:h-[500px] md:h-[540px]",
+          // Use h-full so CSS grid can ensure equal, content-fitting heights across all cards
+          "h-full",
           "md:backdrop-blur-lg",
           // All core team members get the pretty pink border
           "border-2 border-[var(--brand-pink)]/40 shadow-[0_0_20px_rgba(228,90,146,0.2)]",
@@ -159,7 +159,7 @@ function TeamCard({
             {/* Header with role, name, and LinkedIn */}
             <div className="flex items-start justify-between gap-2 mb-2">
               <div className="flex-1 min-w-0">
-                <span className="text-[0.6rem] sm:text-[0.7rem] font-black uppercase tracking-[0.1em] text-[var(--brand-pink)] mb-0.5 block">
+                <span className="text-[0.6rem] sm:text-[0.7rem] font-black uppercase tracking-[0.1em] text-[var(--brand-pink)] mb-1 block leading-normal">
                   {member.role}
                 </span>
                 <h3 className="font-display text-lg sm:text-xl md:text-2xl font-bold tracking-tight leading-tight">

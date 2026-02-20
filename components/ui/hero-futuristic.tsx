@@ -60,19 +60,19 @@ export const HeroFuturistic = () => {
               <div className="flex flex-col gap-4 sm:flex-row w-full mt-2">
                 <Button
                   asChild
-                  className="h-14 px-8 rounded-full bg-(--brand-pink) text-base font-bold text-white shadow-[0_0_30px_rgba(228,90,146,0.5)] hover:shadow-[0_0_50px_rgba(228,90,146,0.7)] transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  className="w-full sm:flex-1 h-14 px-8 rounded-full bg-(--brand-pink) text-base font-bold text-white shadow-[0_0_30px_rgba(228,90,146,0.5)] hover:shadow-[0_0_50px_rgba(228,90,146,0.7)] transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <Link href="/join">
+                  <Link href="/join" className="flex items-center justify-center gap-2">
                     Join the crew
-                    <ArrowRight className="ml-2 h-5 w-5" />
+                    <ArrowRight className="h-5 w-5 shrink-0" />
                   </Link>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
-                  className="h-14 px-8 rounded-full border-white/20 bg-white/5 text-base font-semibold text-white backdrop-blur-md hover:bg-white/10 transition-all hover:scale-[1.02]"
+                  className="w-full sm:flex-1 h-14 px-8 rounded-full border-white/20 bg-white/5 text-base font-semibold text-white backdrop-blur-md hover:bg-white/10 transition-all hover:scale-[1.02]"
                 >
-                  <Link href="/impact">See what we&apos;ve built</Link>
+                  <Link href="/impact" className="flex items-center justify-center">See what we&apos;ve built</Link>
                 </Button>
               </div>
 

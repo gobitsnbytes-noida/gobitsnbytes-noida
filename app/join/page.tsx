@@ -122,7 +122,7 @@ export default function Join() {
         <PageSection align="center">
           <div className="mx-auto w-full max-w-3xl space-y-6 sm:space-y-8">
             <GlassContainer className="p-8 md:p-12 text-center" glowColor="both">
-              <div className="space-y-6">
+              <div className="flex flex-col items-center gap-6">
                 <div className="inline-flex items-center gap-2 text-xs sm:text-sm text-white/60 font-bold uppercase tracking-widest">
                   <Clock className="h-4 w-4 text-(--brand-pink)" />
                   <span>Takes less than 2 minutes</span>
@@ -135,14 +135,14 @@ export default function Join() {
                   data-tally-align-left="1"
                   data-tally-hide-title="1"
                   data-tally-overlay="1"
-                  className="group rounded-full bg-(--brand-pink) px-12 py-8 text-lg md:text-xl font-black text-white shadow-[0_0_30px_rgba(228,90,146,0.5)] transition-all hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(228,90,146,0.7)] w-full sm:w-auto"
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-(--brand-pink) px-10 py-4 text-lg md:text-xl font-black text-white shadow-[0_0_30px_rgba(228,90,146,0.5)] transition-all hover:scale-[1.03] hover:shadow-[0_0_60px_rgba(228,90,146,0.7)] w-full sm:w-auto max-w-xs"
                 >
                   Apply to Join
-                  <ArrowRight className="ml-2 h-6 w-6 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="h-6 w-6 shrink-0 transition-transform group-hover:translate-x-1" />
                 </Button>
 
                 <p className="text-sm text-white/50 font-medium">
-                  We review applications weekly · You'll hear back within 7 days
+                  We review applications weekly · You&apos;ll hear back within 7 days
                 </p>
               </div>
             </GlassContainer>

@@ -33,6 +33,7 @@ You are the official AI assistant for Bits&Bytes, a teen-led code club based in 
 - **Mission:** Innovation, collaboration, and real-world impact through technology.
 - **Activities:** Hackathons (e.g., Scrapyard Lucknow), workshops, and student mentorship.
 - **Contact:** hello@gobitsnbytes.org
+- **GitHub:** https://github.com/gobitsnbytes
 
 **How to get answers:**
 1. **For Team/Roles:** DO NOT guess. Always use the 'find_team_expert' or 'recommend_role' tools. The team structure is dynamic.
@@ -51,6 +52,8 @@ You are the official AI assistant for Bits&Bytes, a teen-led code club based in 
 
 Rules:
 - Always stay truthful to Bits&Bytes.
+- Be extremely concise, conversational, and direct. Avoid long, multi-paragraph summaries or filler text. Get straight to the point.
+- Do not use 'suggest_navigation' and 'highlight_text' in the exact same response. If you navigate the user to a new page, wait for them to see it; do not highlight right away since the page will be loading.
 - If you can't find the answer in the tools or page content, admit it:
   "I’m not sure about that based on the information publicly available on this site."
 `
@@ -309,104 +312,95 @@ export async function POST(req: NextRequest) {
         messages,
         tools,
         tool_choice: "auto",
-        max_completion_tokens: 400,
+        max_tokens: 400,
       })
     }
 
     let modelUsed = PRIMARY_MODEL
-    let completion
+    let currentMessages = [...baseMessages]
+    let actionToClient: AssistantAction | undefined
 
-    try {
-      completion = await runCompletion(PRIMARY_MODEL, baseMessages)
-    } catch (err) {
-      const apiError = err as APIError
-      const code = (apiError as any)?.code ?? (apiError as any)?.error?.code
-      const status = (apiError as any)?.status
-      const shouldFallback =
-        code === "model_not_found" ||
-        code === "unsupported_parameter" ||
-        code === "unsupported_value" ||
-        status === 403
-
-      if (shouldFallback) {
-        modelUsed = FALLBACK_MODEL
-        completion = await runCompletion(FALLBACK_MODEL, baseMessages)
-      } else {
-        throw err
-      }
-    }
-
-    const choice = completion.choices[0]
-    const message = choice?.message
-
-    // If no tool calls, stream the final answer directly.
-    if (!message?.tool_calls || message.tool_calls.length === 0) {
+    for (let i = 0; i < 5; i++) {
+      let completion
       try {
-        return await streamAssistantResponse(modelUsed, baseMessages)
-      } catch (streamErr) {
-        console.error("Assistant stream error:", streamErr)
-        const answer = message?.content?.trim()
-        return NextResponse.json({
-          answer: answer ?? "I’m not sure about that based on the information publicly available on this site.",
-        })
+        completion = await runCompletion(PRIMARY_MODEL, currentMessages)
+      } catch (err) {
+        const apiError = err as APIError
+        const code = (apiError as any)?.code ?? (apiError as any)?.error?.code
+        const status = (apiError as any)?.status
+        const shouldFallback =
+          code === "model_not_found" ||
+          code === "unsupported_parameter" ||
+          code === "unsupported_value" ||
+          status === 403
+
+        if (shouldFallback) {
+          modelUsed = FALLBACK_MODEL
+          completion = await runCompletion(FALLBACK_MODEL, currentMessages)
+        } else {
+          throw err
+        }
+      }
+
+      const choice = completion.choices[0]
+      const message = choice?.message
+
+      if (!message?.tool_calls || message.tool_calls.length === 0) {
+        break // No more tool calls required
+      }
+
+      currentMessages.push(message)
+
+      for (const toolCall of message.tool_calls) {
+        const toolName = toolCall.function.name
+        let toolArgs: any = {}
+        try {
+          toolArgs = toolCall.function.arguments ? JSON.parse(toolCall.function.arguments) : {}
+        } catch {
+          toolArgs = {}
+        }
+
+        let toolResult: any = null
+
+        if (toolName === "submit_contact_form") {
+          toolResult = await handleSubmitContactTool(toolArgs)
+        } else if (toolName === "suggest_navigation") {
+          const path = normalizePath(toolArgs?.path)
+          toolResult = { success: true, path }
+          actionToClient = { type: "navigate" as const, path }
+        } else if (toolName === "get_site_section") {
+          toolResult = await handleGetSiteSectionTool(toolArgs?.section ?? "home", req)
+        } else if (toolName === "find_team_expert") {
+          const query = (toolArgs?.query ?? "").toString()
+          const experts = findExperts(query)
+          toolResult = { query, experts }
+        } else if (toolName === "recommend_role") {
+          const skills = Array.isArray(toolArgs?.skills) ? toolArgs.skills : []
+          const interests = Array.isArray(toolArgs?.interests) ? toolArgs.interests : []
+          const recommendation = recommendRoles(skills, interests)
+          toolResult = { skills, interests, recommendation }
+        } else if (toolName === "highlight_text") {
+          const textSnippet = (toolArgs?.textSnippet ?? "").toString()
+          toolResult = { success: true, textSnippet }
+          actionToClient = { type: "highlight" as const, textSnippet }
+        } else {
+          toolResult = { success: false, message: `Unknown tool: ${toolName}` }
+        }
+
+        currentMessages.push({
+          role: "tool",
+          tool_call_id: toolCall.id,
+          content: JSON.stringify(toolResult),
+        } as OpenAI.Chat.ChatCompletionToolMessageParam)
       }
     }
 
-    // Handle first tool call for now (this already gives agentic behaviour).
-    const toolCall = message.tool_calls[0]
-    const toolName = toolCall.function.name
-    let toolArgs: any = {}
-
     try {
-      toolArgs = toolCall.function.arguments ? JSON.parse(toolCall.function.arguments) : {}
-    } catch {
-      toolArgs = {}
-    }
-
-    let toolResult: any = null
-    let action: AssistantAction | undefined
-
-    if (toolName === "submit_contact_form") {
-      toolResult = await handleSubmitContactTool(toolArgs)
-    } else if (toolName === "suggest_navigation") {
-      const path = normalizePath(toolArgs?.path)
-      toolResult = { success: true, path }
-      action = { type: "navigate" as const, path }
-    } else if (toolName === "get_site_section") {
-      toolResult = await handleGetSiteSectionTool(toolArgs?.section ?? "home", req)
-    } else if (toolName === "find_team_expert") {
-      const query = (toolArgs?.query ?? "").toString()
-      const experts = findExperts(query)
-      toolResult = { query, experts }
-    } else if (toolName === "recommend_role") {
-      const skills = Array.isArray(toolArgs?.skills) ? toolArgs.skills : []
-      const interests = Array.isArray(toolArgs?.interests) ? toolArgs.interests : []
-      const recommendation = recommendRoles(skills, interests)
-      toolResult = { skills, interests, recommendation }
-    } else if (toolName === "highlight_text") {
-      const textSnippet = (toolArgs?.textSnippet ?? "").toString()
-      toolResult = { success: true, textSnippet }
-      action = { type: "highlight" as const, textSnippet }
-    } else {
-      toolResult = { success: false, message: `Unknown tool: ${toolName}` }
-    }
-
-    const messagesWithTool: OpenAI.Chat.ChatCompletionMessageParam[] = [
-      ...baseMessages,
-      message,
-      {
-        role: "tool",
-        tool_call_id: toolCall.id,
-        content: JSON.stringify(toolResult),
-      } as OpenAI.Chat.ChatCompletionToolMessageParam,
-    ]
-
-    try {
-      return await streamAssistantResponse(modelUsed, messagesWithTool, action)
+      return await streamAssistantResponse(modelUsed, currentMessages, actionToClient)
     } catch (streamErr) {
       console.error("Assistant stream error after tool call:", streamErr)
       return NextResponse.json(
-        { error: "Failed to stream the assistant response after tool call." },
+        { error: "Failed to stream the assistant response." },
         { status: 500 }
       )
     }
@@ -427,7 +421,7 @@ async function streamAssistantResponse(
   const completion = await openai.chat.completions.create({
     model,
     messages,
-    max_completion_tokens: 400,
+    max_tokens: 400,
     stream: true,
   })
 
@@ -444,6 +438,7 @@ async function streamAssistantResponse(
       try {
         for await (const part of completion) {
           const delta = part.choices[0]?.delta
+
           if (delta?.content) {
             send({ type: "token", content: delta.content })
           }
