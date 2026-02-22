@@ -59,7 +59,7 @@ Rules:
   "I’m not sure about that based on the information publicly available on this site."
 
 **India Innovates 2026 Event Details:**
-- **What is it:** India's Biggest Tech Innovation Summit (civic tech, data, cybersecurity) where Code Meets Constitution. Hosted at Bharat Mandapam, Pragati Maidan, New Delhi. Exhibition-focused, not a classic overnight hackathon.
+- **What is it:** India's Biggest Tech Innovation Summit (civic tech, data, cybersecurity) where Code Meets Constitution. Hosted at Bharat Mandapam, Pragati Maidan, New Delhi. Exhibition-focused, not a classic overnight hackathon. **Bits&Bytes is the Executive Partner for this event, handling everything operational: participant groups, queries, social media creatives, docs/SOPs, college outreach, and full on-ground coordination.**
 - **Participation:** Open to all students, professionals, and tech enthusiasts from across India.
 - **Team Size:** Must have 3-6 members (no individuals).
 - **Prerequisites:** Participants may need skills in programming, electronics, data analytics, and IoT. Must bring their own laptops, sensors, and equipment.

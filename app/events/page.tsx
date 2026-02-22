@@ -127,7 +127,11 @@ const programSteps = [
 const faqs = [
   {
     q: "What is India Innovates 2026?",
-    a: "India's Biggest Tech Innovation Summit where Code Meets Constitution. Organized by MCD, DDU, IIT Kharagpur, DTC, NSUT, GGSIPU, THE FISTA, and CBPACS at Bharat Mandapam, New Delhi. It invites India's brightest student innovators to bring working products and breakthrough ideas."
+    a: "India's Biggest Tech Innovation Summit where Code Meets Constitution. Organized by MCD, DDU, IIT Kharagpur, DTC, NSUT, GGSIPU, THE FISTA, and CBPACS at Bharat Mandapam, New Delhi, with Bits&Bytes as the Executive Partner. It invites India's brightest student innovators to bring working products and breakthrough ideas."
+  },
+  {
+    q: "What is Bits&Bytes' role in the event?",
+    a: "As the Executive Partner, Bits&Bytes handles everything operational: managing participant groups, answering queries, designing social media creatives, creating docs/SOPs, conducting college outreach, and leading full on-ground coordination."
   },
   {
     q: "Who can participate?",
