@@ -8,10 +8,9 @@ export function WebGLShader() {
   const lastFrameTimeRef = useRef<number>(0);
   const [isVisible, setIsVisible] = useState(true);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
-
-  // Frame rate limiting - lower for Safari/Firefox
-  const targetFPS = 60;
-  const frameInterval = 1000 / targetFPS;
+  const [forceStaticFallback, setForceStaticFallback] = useState(false);
+  const fpsRef = useRef<number>(60);
+  const frameDropsRef = useRef<number>(0);
 
   useEffect(() => {
     // Check for reduced motion preference
@@ -43,7 +42,26 @@ export function WebGLShader() {
   }, []);
 
   useEffect(() => {
+    if (forceStaticFallback) return;
     if (!canvasRef.current) return;
+
+    // --- Hardware Feature Detection ---
+    let dprMultiplier = 1.5;
+    if (typeof navigator !== "undefined") {
+      const concurrency = navigator.hardwareConcurrency || 4;
+      // @ts-expect-error deviceMemory is non-standard but widely supported in Chromium
+      const memory = navigator.deviceMemory || 4;
+
+      if (concurrency <= 2 || memory <= 2) {
+        // Extremely low end device, skip WebGL entirely to save battery and avoid panics
+        setForceStaticFallback(true);
+        return;
+      } else if (concurrency <= 4 || memory <= 4) {
+        // Lower end device, start with conservative defaults
+        fpsRef.current = 30;
+        dprMultiplier = 1.0;
+      }
+    }
 
     const canvas = canvasRef.current;
     const gl = canvas.getContext("webgl", {
@@ -61,7 +79,7 @@ export function WebGLShader() {
       return;
     }
 
-    const pixelRatio = Math.min(window.devicePixelRatio, 1.5);
+    const pixelRatio = Math.min(window.devicePixelRatio, dprMultiplier);
 
     const vertexShaderSource = `
       attribute vec2 position;
@@ -185,9 +203,26 @@ export function WebGLShader() {
 
       // Frame rate limiting
       const elapsed = currentTime - lastFrameTimeRef.current;
-      if (elapsed < frameInterval) return;
+      const currentFrameInterval = 1000 / fpsRef.current;
 
-      lastFrameTimeRef.current = currentTime - (elapsed % frameInterval);
+      if (elapsed < currentFrameInterval) return;
+
+      // Dynamic Framerate Scaling (monitor requested framerate vs actual)
+      // Ignore huge jumps (like switching tabs) which might spike the elapsed time
+      if (elapsed > currentFrameInterval * 1.5 && elapsed < 1000) {
+        frameDropsRef.current++;
+        // If we consistently drop frames (e.g. 30 frames dropped), lower the target FPS
+        if (frameDropsRef.current > 30 && fpsRef.current > 30) {
+          fpsRef.current = 30;
+          frameDropsRef.current = 0;
+          console.warn("WebGL Shader: Performance degraded, dynamically scaling target FPS down to 30.");
+        }
+      } else {
+        // Recover frame drop count if it's hitting targets consistently
+        frameDropsRef.current = Math.max(0, frameDropsRef.current - 1);
+      }
+
+      lastFrameTimeRef.current = currentTime - (elapsed % currentFrameInterval);
 
       // Slower time progression
       time += 0.01;
@@ -211,10 +246,10 @@ export function WebGLShader() {
       gl.deleteProgram(program);
       gl.deleteBuffer(buffer);
     };
-  }, [isVisible, prefersReducedMotion, frameInterval]);
+  }, [isVisible, prefersReducedMotion, forceStaticFallback]);
 
-  // If reduced motion is preferred, show a static gradient instead
-  if (prefersReducedMotion) {
+  // If reduced motion is preferred or hardware is too weak, show a static gradient instead
+  if (prefersReducedMotion || forceStaticFallback) {
     return (
       <div
         className="fixed inset-0 z-0 pointer-events-none"
