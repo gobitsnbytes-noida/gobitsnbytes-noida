@@ -482,7 +482,7 @@ export function WebGLShader() {
       />
 
       {/* Stats for nerds toggle & panel */}
-      <div className="fixed bottom-20 sm:bottom-4 left-4 right-4 sm:right-auto z-50 flex flex-col items-start gap-2 pointer-events-none">
+      <div className="fixed bottom-4 left-4 right-4 sm:right-auto z-50 flex flex-col items-start gap-2 pointer-events-none">
         {showStats && (
           <div
             className="pointer-events-auto w-full sm:w-80 max-h-[70vh] overflow-y-auto rounded-2xl border border-white/10 dark:border-white/[0.06] shadow-2xl"
@@ -637,15 +637,16 @@ export function WebGLShader() {
 
         <button
           onClick={() => setShowStats(!showStats)}
-          className="pointer-events-auto p-2.5 rounded-full border border-white/10 hover:border-[#E45A92]/40 transition-all text-white/25 hover:text-[#FFACAC] z-50"
+          className="pointer-events-auto p-2 sm:p-2.5 rounded-full border border-white/[0.08] hover:border-[#E45A92]/30 transition-all text-white/20 hover:text-[#FFACAC] z-50"
           style={{
-            background: "linear-gradient(135deg, rgba(15, 5, 28, 0.6) 0%, rgba(62, 30, 104, 0.4) 100%)",
+            background: "linear-gradient(135deg, rgba(15, 5, 28, 0.5) 0%, rgba(62, 30, 104, 0.3) 100%)",
             backdropFilter: "blur(12px)",
             WebkitBackdropFilter: "blur(12px)",
           }}
           title="Stats for nerds"
+          aria-label="Toggle performance stats"
         >
-          <Terminal className="w-5 h-5 sm:w-4 sm:h-4" />
+          <Terminal className="w-4 h-4 sm:w-[18px] sm:h-[18px]" />
         </button>
       </div>
     </>

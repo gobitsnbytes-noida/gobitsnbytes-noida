@@ -474,11 +474,11 @@ const FloatingAiAssistant: React.FC = () => {
   }
 
   return (
-    <div className="fixed inset-x-4 bottom-4 z-50 flex justify-end sm:inset-x-auto sm:right-6 sm:bottom-6">
-      <div className="relative w-full max-w-[420px]">
+    <div className="fixed right-4 bottom-4 sm:right-6 sm:bottom-6 z-50">
+      <div className="relative">
         {/* Floating AI button */}
         <button
-          className={`floating-ai-button relative ml-auto flex h-14 w-14 items-center justify-center rounded-full border border-white/40 bg-[var(--brand-pink)] shadow-lg shadow-[#e45a92]/40 transition-all duration-300 hover:scale-110 hover:shadow-xl ${isChatOpen ? "rotate-90" : "rotate-0"
+          className={`floating-ai-button relative ml-auto flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/40 bg-[var(--brand-pink)] shadow-lg shadow-[#e45a92]/40 transition-all duration-300 hover:scale-110 hover:shadow-xl ${isChatOpen ? "rotate-90" : "rotate-0"
             }`}
           onClick={handleToggle}
           aria-label={isChatOpen ? "Close Bits&Bytes assistant" : "Open Bits&Bytes assistant"}
@@ -488,7 +488,7 @@ const FloatingAiAssistant: React.FC = () => {
 
           {/* Icon */}
           <div className="relative z-10 flex items-center justify-center">
-            {isChatOpen ? <X className="h-6 w-6 text-white" /> : <Bot className="h-6 w-6 text-white" />}
+            {isChatOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6 text-white" /> : <Bot className="h-5 w-5 sm:h-6 sm:w-6 text-white" />}
           </div>
 
           {/* Subtle glow */}
@@ -500,9 +500,9 @@ const FloatingAiAssistant: React.FC = () => {
         {isChatOpen && (
           <div
             ref={chatRef}
-            className="absolute bottom-16 right-0 w-full max-w-full origin-bottom-right animate-slide-in-up sm:w-[380px] sm:max-w-[420px]"
+            className="fixed inset-x-3 bottom-[4.5rem] sm:absolute sm:inset-x-auto sm:bottom-16 sm:right-0 w-auto sm:w-[380px] origin-bottom-right animate-slide-in-up"
           >
-            <div className="relative flex max-h-[70vh] flex-col overflow-hidden rounded-3xl border border-zinc-700/60 bg-zinc-950/95 shadow-2xl backdrop-blur-2xl sm:max-h-[520px]">
+            <div className="relative flex max-h-[70vh] sm:max-h-[520px] flex-col overflow-hidden rounded-2xl sm:rounded-3xl border border-zinc-700/60 bg-zinc-950/95 shadow-2xl backdrop-blur-2xl">
               {/* Header */}
               <div className="flex flex-wrap items-center justify-between gap-3 px-4 pt-3 pb-2">
                 <div className="flex items-center gap-2">
@@ -667,8 +667,8 @@ const FloatingAiAssistant: React.FC = () => {
                               return (
                                 <code
                                   className={`${isInline
-                                      ? "rounded bg-zinc-800 px-1 py-0.5 text-[0.7rem]"
-                                      : "block rounded-xl bg-zinc-950 p-3 text-[0.75rem] overflow-x-auto border border-zinc-800/80 text-zinc-300 mt-2 mb-2"
+                                    ? "rounded bg-zinc-800 px-1 py-0.5 text-[0.7rem]"
+                                    : "block rounded-xl bg-zinc-950 p-3 text-[0.75rem] overflow-x-auto border border-zinc-800/80 text-zinc-300 mt-2 mb-2"
                                     } ${className || ""}`}
                                   {...props}
                                 >
