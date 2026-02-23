@@ -1,15 +1,36 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Terminal, X } from "lucide-react";
 
 export function WebGLShader() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | null>(null);
   const lastFrameTimeRef = useRef<number>(0);
+  const framesRenderedRef = useRef<number>(0);
+  const lastFpsCalculateTimeRef = useRef<number>(0);
+
   const [isVisible, setIsVisible] = useState(true);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [forceStaticFallback, setForceStaticFallback] = useState(false);
-  const fpsRef = useRef<number>(60);
+  const [showStats, setShowStats] = useState(false);
+
+  // Stats state
+  const [stats, setStats] = useState({
+    fps: 0,
+    targetFps: "Uncapped (Native)",
+    dprMultiplier: 1.5,
+    actualDpr: 1,
+    canvasWidth: 0,
+    canvasHeight: 0,
+    concurrency: 4,
+    memory: 4,
+    renderer: "Unknown",
+    vendor: "Unknown",
+    degraded: false,
+  });
+
+  const fpsRef = useRef<number>(0); // 0 means uncapped
   const frameDropsRef = useRef<number>(0);
 
   useEffect(() => {
@@ -47,10 +68,13 @@ export function WebGLShader() {
 
     // --- Hardware Feature Detection ---
     let dprMultiplier = 1.5;
+    let concurrency = 4;
+    let memory = 4;
+
     if (typeof navigator !== "undefined") {
-      const concurrency = navigator.hardwareConcurrency || 4;
+      concurrency = navigator.hardwareConcurrency || 4;
       // @ts-expect-error deviceMemory is non-standard but widely supported in Chromium
-      const memory = navigator.deviceMemory || 4;
+      memory = navigator.deviceMemory || 4;
 
       if (concurrency <= 2 || memory <= 2) {
         // Extremely low end device, skip WebGL entirely to save battery and avoid panics
@@ -58,7 +82,6 @@ export function WebGLShader() {
         return;
       } else if (concurrency <= 4 || memory <= 4) {
         // Lower end device, start with conservative defaults
-        fpsRef.current = 30;
         dprMultiplier = 1.0;
       }
     }
@@ -79,7 +102,11 @@ export function WebGLShader() {
       return;
     }
 
-    const pixelRatio = Math.min(window.devicePixelRatio, dprMultiplier);
+    const rendererDebugInfo = gl.getExtension("WEBGL_debug_renderer_info");
+    const renderer = rendererDebugInfo ? gl.getParameter(rendererDebugInfo.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER);
+    const vendor = rendererDebugInfo ? gl.getParameter(rendererDebugInfo.UNMASKED_VENDOR_WEBGL) : gl.getParameter(gl.VENDOR);
+
+    let currentPixelRatio = Math.min(window.devicePixelRatio, dprMultiplier);
 
     const vertexShaderSource = `
       attribute vec2 position;
@@ -173,18 +200,38 @@ export function WebGLShader() {
 
     let time = 0;
 
+    // Stats update helper
+    const updateStats = (w: number, h: number, isDegraded = false) => {
+      setStats(s => ({
+        ...s,
+        canvasWidth: w,
+        canvasHeight: h,
+        concurrency,
+        memory,
+        renderer,
+        vendor,
+        dprMultiplier,
+        actualDpr: currentPixelRatio,
+        degraded: s.degraded || isDegraded,
+        targetFps: fpsRef.current === 0 ? "Uncapped (Native)" : fpsRef.current.toString()
+      }));
+    }
+
     const resize = () => {
       const width = window.innerWidth;
       const height = window.innerHeight;
-      canvas.width = width * pixelRatio;
-      canvas.height = height * pixelRatio;
+      canvas.width = width * currentPixelRatio;
+      canvas.height = height * currentPixelRatio;
       canvas.style.width = `${width}px`;
       canvas.style.height = `${height}px`;
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
+
+      updateStats(canvas.width, canvas.height);
     };
 
     resize();
+    lastFpsCalculateTimeRef.current = performance.now();
 
     // Debounced resize handler
     let resizeTimeout: NodeJS.Timeout;
@@ -198,31 +245,42 @@ export function WebGLShader() {
     const animate = (currentTime: number) => {
       animationRef.current = requestAnimationFrame(animate);
 
-      // Skip if not visible or reduced motion is preferred
       if (!isVisible || prefersReducedMotion) return;
 
-      // Frame rate limiting
       const elapsed = currentTime - lastFrameTimeRef.current;
-      const currentFrameInterval = 1000 / fpsRef.current;
 
-      if (elapsed < currentFrameInterval) return;
-
-      // Dynamic Framerate Scaling (monitor requested framerate vs actual)
-      // Ignore huge jumps (like switching tabs) which might spike the elapsed time
-      if (elapsed > currentFrameInterval * 1.5 && elapsed < 1000) {
-        frameDropsRef.current++;
-        // If we consistently drop frames (e.g. 30 frames dropped), lower the target FPS
-        if (frameDropsRef.current > 30 && fpsRef.current > 30) {
-          fpsRef.current = 30;
-          frameDropsRef.current = 0;
-          console.warn("WebGL Shader: Performance degraded, dynamically scaling target FPS down to 30.");
-        }
+      // If we have a target FPS (e.g. from downscaling), throttle it
+      if (fpsRef.current > 0) {
+        const currentFrameInterval = 1000 / fpsRef.current;
+        if (elapsed < currentFrameInterval) return;
+        lastFrameTimeRef.current = currentTime - (elapsed % currentFrameInterval);
       } else {
-        // Recover frame drop count if it's hitting targets consistently
-        frameDropsRef.current = Math.max(0, frameDropsRef.current - 1);
+        lastFrameTimeRef.current = currentTime;
       }
 
-      lastFrameTimeRef.current = currentTime - (elapsed % currentFrameInterval);
+      // Track actual FPS
+      framesRenderedRef.current++;
+      if (currentTime - lastFpsCalculateTimeRef.current >= 1000) {
+        const actualFps = framesRenderedRef.current;
+        setStats(s => ({ ...s, fps: actualFps }));
+        framesRenderedRef.current = 0;
+        lastFpsCalculateTimeRef.current = currentTime;
+
+        // Frame degradation logic
+        // If native framerate drops terribly, seamlessly reduce resolution scaling
+        if (fpsRef.current === 0 && actualFps < 45 && actualFps > 0) {
+          frameDropsRef.current++;
+          if (frameDropsRef.current > 3 && currentPixelRatio > 0.5) {
+            currentPixelRatio = Math.max(0.5, currentPixelRatio - 0.5);
+            resize();
+            updateStats(canvas.width, canvas.height, true);
+            frameDropsRef.current = 0;
+            console.warn("WebGL Shader: Performance degraded, dropping pixel multiplier to", currentPixelRatio);
+          }
+        } else if (actualFps >= 50) {
+          frameDropsRef.current = Math.max(0, frameDropsRef.current - 1);
+        }
+      }
 
       // Slower time progression
       time += 0.01;
@@ -263,14 +321,52 @@ export function WebGLShader() {
   }
 
   return (
-    <canvas
-      ref={canvasRef}
-      className="fixed top-0 left-0 z-0 pointer-events-none"
-      style={{
-        width: "100vw",
-        height: "100vh",
-        willChange: "auto",
-      }}
-    />
+    <>
+      <canvas
+        ref={canvasRef}
+        className="fixed top-0 left-0 z-0 pointer-events-none"
+        style={{
+          width: "100vw",
+          height: "100vh",
+          willChange: "auto",
+        }}
+      />
+
+      {/* Stats for nerds toggle & panel */}
+      <div className="fixed bottom-4 left-4 z-50 flex flex-col items-start gap-2">
+        {showStats && (
+          <div className="bg-black/80 backdrop-blur-md rounded-xl p-4 text-xs font-mono text-green-400 border border-green-500/30 w-72 shadow-2xl animate-fade-in shadow-black/50">
+            <div className="flex justify-between items-center mb-2 pb-2 border-b border-green-500/20">
+              <span className="font-bold text-green-300 tracking-wider">STATS FOR NERDS</span>
+              <button onClick={() => setShowStats(false)} className="text-green-500 hover:text-green-300 transition-colors">
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+            <div className="space-y-1">
+              <div className="flex justify-between"><span>Current FPS:</span><span className="text-white">{stats.fps}</span></div>
+              <div className="flex justify-between"><span>Target FPS:</span><span className="text-white">{stats.targetFps}</span></div>
+              <div className="flex justify-between"><span>Degraded Mode:</span><span className={stats.degraded ? "text-red-400 font-bold" : "text-white"}>{stats.degraded ? "YES" : "NO"}</span></div>
+              <div className="flex justify-between mt-2 pt-2 border-t border-green-500/20"><span>DPR Multiplier:</span><span className="text-white">{stats.dprMultiplier}x</span></div>
+              <div className="flex justify-between"><span>Actual DPR:</span><span className="text-white">{stats.actualDpr.toFixed(2)}x</span></div>
+              <div className="flex justify-between mt-2 pt-2 border-t border-green-500/20"><span>Resolution:</span><span className="text-white">{stats.canvasWidth} x {stats.canvasHeight}</span></div>
+              <div className="flex justify-between mt-2 pt-2 border-t border-green-500/20"><span>Concurrency:</span><span className="text-white">{stats.concurrency} Cores</span></div>
+              <div className="flex justify-between"><span>Device RAM:</span><span className="text-white">~{stats.memory} GB</span></div>
+              <div className="flex flex-col mt-2 pt-2 border-t border-green-500/20">
+                <span>GPU Renderer:</span>
+                <span className="text-white truncate opacity-80 mt-0.5" title={stats.renderer}>{stats.renderer}</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <button
+          onClick={() => setShowStats(!showStats)}
+          className="group p-2.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 hover:bg-black/60 transition-all text-white/50 hover:text-white"
+          title="Stats for nerds"
+        >
+          <Terminal className="w-4 h-4" />
+        </button>
+      </div>
+    </>
   );
 }

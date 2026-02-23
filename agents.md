@@ -34,8 +34,8 @@ Quick reference for “who to ping for what”.
 |-----------|---------------------------|---------------------------------------------------------|
 | **Yash** | Founder & Local Lead | Leadership, Event Management, Team Coordination, Strategic Planning |
 | **Aadrika** | Co-Founder & Chief Creative Strategist | Creative Strategy, Brand Development, Campaign Planning, Design Direction |
-| **Akshat Kushwaha** | Co-Founder & Technical Lead | AI & LLMOps, Cloud Infrastructure, Full-Stack Development |
-| **Devansh** | Founding Member & Backend Lead | Backend Development, Database Architecture, Community Outreach, Partnership Building |
+| **Akshat Kushwaha** | Co-Founder & Technical Lead | Full-Stack (Frontend & Backend), Auth, Databases, AI/LLMOps, Agents |
+| **Devansh** | Founding Member & Backend Co-Lead | Backend Development, Database Architecture, Community Outreach, Partnership Building |
 | **Maryam** | Social Media & Promotions Head | Social Media, Brand Identity, Visual Communication, Design Systems |
 | **Srishti** | Operations & Communications Head | Operations Management, Team Communications, Project Coordination, Process Optimization |
 
@@ -68,24 +68,24 @@ Quick reference for “who to ping for what”.
   - You want to align a project with the overall brand strategy
 
 #### Akshat Kushwaha – Co-Founder & Technical Lead
-- **Expertise:** AI & LLMOps, Cloud Infrastructure, Full-Stack Development
+- **Expertise:** AI & LLMOps, Cloud Infrastructure, Full-Stack Development (Frontend & Backend), Authentication, Databases, Agents
 - **Owns:**
-  - Building and maintaining the website
-  - Leading programming projects and evaluating tech stacks
-  - Technical stability of all projects
+  - Building and maintaining the website's frontend and backend architectures
+  - Leading programming projects, evaluating tech stacks, and managing databases/auth
+  - Technical stability of all projects and developing AI agents
 - **Talk to Akshat when…**
-  - You need to propose or evaluate a technical stack
-  - You need help with agent development or cloud infrastructure
-  - You want to implement AI integrations or backend systems
+  - You need to propose or evaluate a technical stack, database design, or auth flow
+  - You need help with agent development, full-stack systems, or cloud infrastructure
+  - You want to implement AI integrations or backend/frontend systems
 
 ---
 
 ### 3.2 Engineering & Development
 
-#### Devansh – Founding Member & Backend Lead
+#### Devansh – Founding Member & Backend Co-Lead
 - **Expertise:** Backend Development, Database Architecture, Community Outreach, Partnership Building
 - **Owns:**
-  - Backend development and technical features
+  - Co-leading backend development and technical features
   - Building relationships with schools and students
   - Engaging with external communities for participation
 - **Talk to Devansh when…**
