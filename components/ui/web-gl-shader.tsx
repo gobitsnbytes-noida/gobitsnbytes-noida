@@ -47,6 +47,7 @@ export function WebGLShader() {
     touchPoints: 0,
     colorDepth: 24,
     hdrSupported: false,
+    colorGamut: "sRGB",
     // -- WebGL --
     webglVersion: "WebGL 1.0",
     maxTextureSize: 0,
@@ -167,10 +168,14 @@ export function WebGLShader() {
     const colorDepth = typeof screen !== "undefined" ? screen.colorDepth : 24;
     const nativeDpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
 
-    // HDR support detection
+    // HDR & color gamut detection
     let hdrSupported = false;
+    let colorGamut = "sRGB";
     if (typeof window !== "undefined") {
       hdrSupported = window.matchMedia("(dynamic-range: high)").matches;
+      if (window.matchMedia("(color-gamut: rec2020)").matches) colorGamut = "Rec. 2020";
+      else if (window.matchMedia("(color-gamut: p3)").matches) colorGamut = "Display P3";
+      else colorGamut = "sRGB";
     }
 
     // Connection info
@@ -309,6 +314,7 @@ export function WebGLShader() {
         touchPoints,
         colorDepth,
         hdrSupported,
+        colorGamut,
         nativeDpr,
         dprMultiplier,
         actualDpr: currentPixelRatio,
@@ -522,7 +528,8 @@ export function WebGLShader() {
                   <div className="flex justify-between gap-4"><span>Render Res</span><span className="text-white font-medium tabular-nums">{Math.round(stats.canvasWidth)}&times;{Math.round(stats.canvasHeight)}</span></div>
                   <div className="flex justify-between gap-4 text-[10px] text-white/40"><span>Pixels/Frame</span><span className="tabular-nums">~{(stats.canvasWidth * stats.canvasHeight).toLocaleString()}</span></div>
                   <div className="flex justify-between gap-4"><span>Color Depth</span><span className="text-white font-medium">{stats.colorDepth}-bit</span></div>
-                  <div className="flex justify-between gap-4"><span>HDR Display</span><span className={`font-medium ${stats.hdrSupported ? "text-emerald-400" : "text-white/50"}`}>{stats.hdrSupported ? "Supported" : "Not detected"}</span></div>
+                  <div className="flex justify-between gap-4"><span>Color Gamut</span><span className={`font-medium ${stats.colorGamut !== "sRGB" ? "text-emerald-400" : "text-white"}`}>{stats.colorGamut}</span></div>
+                  <div className="flex justify-between gap-4"><span>HDR Display</span><span className={`font-medium ${stats.hdrSupported ? "text-emerald-400" : "text-white/50"}`}>{stats.hdrSupported ? "Supported" : "Standard (SDR)"}</span></div>
                 </div>
               </section>
 
