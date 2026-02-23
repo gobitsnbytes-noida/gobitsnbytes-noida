@@ -21,8 +21,11 @@ export function WebGLShader() {
     targetFps: "Uncapped (Native)",
     dprMultiplier: 1.5,
     actualDpr: 1,
+    logicalWidth: 0,
+    logicalHeight: 0,
     canvasWidth: 0,
     canvasHeight: 0,
+    frameTimeMs: 0,
     concurrency: 4,
     memory: 4,
     renderer: "Unknown",
@@ -201,11 +204,13 @@ export function WebGLShader() {
     let time = 0;
 
     // Stats update helper
-    const updateStats = (w: number, h: number, isDegraded = false) => {
+    const updateStats = (w: number, h: number, lw: number, lh: number, isDegraded = false) => {
       setStats(s => ({
         ...s,
         canvasWidth: w,
         canvasHeight: h,
+        logicalWidth: lw,
+        logicalHeight: lh,
         concurrency,
         memory,
         renderer,
@@ -227,7 +232,7 @@ export function WebGLShader() {
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.uniform2f(resolutionLocation, canvas.width, canvas.height);
 
-      updateStats(canvas.width, canvas.height);
+      updateStats(canvas.width, canvas.height, width, height);
     };
 
     resize();
@@ -262,7 +267,7 @@ export function WebGLShader() {
       framesRenderedRef.current++;
       if (currentTime - lastFpsCalculateTimeRef.current >= 1000) {
         const actualFps = framesRenderedRef.current;
-        setStats(s => ({ ...s, fps: actualFps }));
+        setStats(s => ({ ...s, fps: actualFps, frameTimeMs: Number((1000 / Math.max(actualFps, 1)).toFixed(2)) }));
         framesRenderedRef.current = 0;
         lastFpsCalculateTimeRef.current = currentTime;
 
@@ -273,7 +278,7 @@ export function WebGLShader() {
           if (frameDropsRef.current > 3 && currentPixelRatio > 0.5) {
             currentPixelRatio = Math.max(0.5, currentPixelRatio - 0.5);
             resize();
-            updateStats(canvas.width, canvas.height, true);
+            updateStats(canvas.width, canvas.height, window.innerWidth, window.innerHeight, true);
             frameDropsRef.current = 0;
             console.warn("WebGL Shader: Performance degraded, dropping pixel multiplier to", currentPixelRatio);
           }
@@ -333,27 +338,32 @@ export function WebGLShader() {
       />
 
       {/* Stats for nerds toggle & panel */}
-      <div className="fixed bottom-4 left-4 z-50 flex flex-col items-start gap-2">
+      <div className="fixed bottom-4 left-4 z-50 flex flex-col items-start gap-2 max-w-[calc(100vw-2rem)] pointer-events-none">
         {showStats && (
-          <div className="bg-black/80 backdrop-blur-md rounded-xl p-4 text-xs font-mono text-green-400 border border-green-500/30 w-72 shadow-2xl animate-fade-in shadow-black/50">
+          <div className="bg-black/80 backdrop-blur-md rounded-xl p-3 sm:p-4 text-[10px] sm:text-xs font-mono text-green-400 border border-green-500/30 w-[85vw] sm:w-80 shadow-2xl animate-fade-in shadow-black/50 overflow-hidden pointer-events-auto">
             <div className="flex justify-between items-center mb-2 pb-2 border-b border-green-500/20">
               <span className="font-bold text-green-300 tracking-wider">STATS FOR NERDS</span>
-              <button onClick={() => setShowStats(false)} className="text-green-500 hover:text-green-300 transition-colors">
+              <button onClick={() => setShowStats(false)} className="text-green-500 hover:text-green-300 transition-colors p-1 -mr-1">
                 <X className="w-4 h-4" />
               </button>
             </div>
             <div className="space-y-1">
-              <div className="flex justify-between"><span>Current FPS:</span><span className="text-white">{stats.fps}</span></div>
+              <div className="flex justify-between"><span>Current FPS:</span><span className="text-white">{stats.fps} <span className="text-green-500/50">({stats.frameTimeMs}ms)</span></span></div>
               <div className="flex justify-between"><span>Target FPS:</span><span className="text-white">{stats.targetFps}</span></div>
-              <div className="flex justify-between"><span>Degraded Mode:</span><span className={stats.degraded ? "text-red-400 font-bold" : "text-white"}>{stats.degraded ? "YES" : "NO"}</span></div>
+              <div className="flex justify-between"><span>Degraded Mode:</span><span className={stats.degraded ? "text-red-400 font-bold" : "text-white"}>{stats.degraded ? "CRITICAL" : "OK"}</span></div>
+
               <div className="flex justify-between mt-2 pt-2 border-t border-green-500/20"><span>DPR Multiplier:</span><span className="text-white">{stats.dprMultiplier}x</span></div>
               <div className="flex justify-between"><span>Actual DPR:</span><span className="text-white">{stats.actualDpr.toFixed(2)}x</span></div>
-              <div className="flex justify-between mt-2 pt-2 border-t border-green-500/20"><span>Resolution:</span><span className="text-white">{stats.canvasWidth} x {stats.canvasHeight}</span></div>
-              <div className="flex justify-between mt-2 pt-2 border-t border-green-500/20"><span>Concurrency:</span><span className="text-white">{stats.concurrency} Cores</span></div>
+
+              <div className="flex justify-between mt-2 pt-2 border-t border-green-500/20"><span>Logical Res:</span><span className="text-white">{stats.logicalWidth}x{stats.logicalHeight}</span></div>
+              <div className="flex justify-between"><span>Render Res:</span><span className="text-white">{Math.round(stats.canvasWidth)}x{Math.round(stats.canvasHeight)}</span></div>
+              <div className="flex justify-between text-[9px] text-green-500/60 "><span className="mr-4 sm:mr-8 whitespace-nowrap">Pixels Processed:</span><span className="text-right">~{(stats.canvasWidth * stats.canvasHeight).toLocaleString()} px</span></div>
+
+              <div className="flex justify-between mt-2 pt-2 border-t border-green-500/20"><span>CPU Threads:</span><span className="text-white">{stats.concurrency}</span></div>
               <div className="flex justify-between"><span>Device RAM:</span><span className="text-white">~{stats.memory} GB</span></div>
               <div className="flex flex-col mt-2 pt-2 border-t border-green-500/20">
-                <span>GPU Renderer:</span>
-                <span className="text-white truncate opacity-80 mt-0.5" title={stats.renderer}>{stats.renderer}</span>
+                <span className="mb-0.5">GPU Subsystem:</span>
+                <span className="text-white opacity-80 leading-tight break-words text-[9px] sm:text-[10px]" title={stats.renderer}>{stats.renderer}</span>
               </div>
             </div>
           </div>
@@ -361,10 +371,10 @@ export function WebGLShader() {
 
         <button
           onClick={() => setShowStats(!showStats)}
-          className="group p-2.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 hover:bg-black/60 transition-all text-white/50 hover:text-white"
-          title="Stats for nerds"
+          className="group p-2.5 rounded-full bg-black/40 backdrop-blur-md border border-white/10 hover:bg-black/60 hover:border-green-500/30 transition-all text-white/30 hover:text-green-400 z-50 pointer-events-auto"
+          title="Toggle performance stats"
         >
-          <Terminal className="w-4 h-4" />
+          <Terminal className="w-5 h-5 sm:w-4 sm:h-4" />
         </button>
       </div>
     </>
