@@ -48,6 +48,7 @@ export function WebGLShader() {
     colorDepth: 24,
     hdrSupported: false,
     colorGamut: "sRGB",
+    renderingGamut: "sRGB",
     // -- WebGL --
     webglVersion: "WebGL 1.0",
     maxTextureSize: 0,
@@ -142,6 +143,23 @@ export function WebGLShader() {
     if (!gl) {
       console.warn("WebGL not supported, falling back to static background");
       return;
+    }
+
+    // --- Auto-upgrade color gamut ---
+    // Attempt to render in the widest gamut the display supports
+    let renderingGamut = "sRGB";
+    if (webglVersion === "WebGL 2.0") {
+      const gl2 = gl as WebGL2RenderingContext;
+      try {
+        // Try P3 first (widest commonly supported)
+        if (typeof window !== "undefined" && window.matchMedia("(color-gamut: p3)").matches) {
+          gl2.drawingBufferColorSpace = "display-p3";
+          renderingGamut = "Display P3";
+        }
+      } catch {
+        // drawingBufferColorSpace not supported in this browser, stay sRGB
+        renderingGamut = "sRGB";
+      }
     }
 
     // --- Collect GPU & WebGL stats ---
@@ -315,6 +333,7 @@ export function WebGLShader() {
         colorDepth,
         hdrSupported,
         colorGamut,
+        renderingGamut,
         nativeDpr,
         dprMultiplier,
         actualDpr: currentPixelRatio,
@@ -530,6 +549,7 @@ export function WebGLShader() {
                   <div className="flex justify-between gap-4"><span>Color Depth</span><span className="text-white font-medium">{stats.colorDepth}-bit</span></div>
                   <div className="flex justify-between gap-4"><span>Color Gamut</span><span className={`font-medium ${stats.colorGamut !== "sRGB" ? "text-emerald-400" : "text-white"}`}>{stats.colorGamut}</span></div>
                   <div className="flex justify-between gap-4"><span>HDR Display</span><span className={`font-medium ${stats.hdrSupported ? "text-emerald-400" : "text-white/50"}`}>{stats.hdrSupported ? "Supported" : "Standard (SDR)"}</span></div>
+                  <div className="flex justify-between gap-4"><span>Rendering In</span><span className={`font-medium ${stats.renderingGamut !== "sRGB" ? "text-emerald-400" : "text-white"}`}>{stats.renderingGamut}</span></div>
                 </div>
               </section>
 
