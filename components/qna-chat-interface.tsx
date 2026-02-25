@@ -267,7 +267,7 @@ export function QnAChatInterface() {
 
 
     return (
-        <div className="flex flex-col h-[calc(100vh-100px)] w-full max-w-4xl mx-auto rounded-3xl overflow-hidden border border-zinc-700/60 bg-zinc-950/70 shadow-2xl backdrop-blur-3xl relative">
+        <div className="flex flex-col h-full w-full max-w-4xl mx-auto rounded-none sm:rounded-3xl overflow-hidden border-0 sm:border border-zinc-700/60 bg-zinc-950/70 shadow-2xl backdrop-blur-3xl relative">
             <div className="flex flex-wrap items-center justify-between gap-3 px-6 pt-5 pb-4 border-b border-zinc-800/80 bg-zinc-900/50 shrink-0">
                 <div className="flex items-center gap-3">
                     <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-[var(--brand-pink)] shadow-lg shadow-[#e45a92]/40">

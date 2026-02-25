@@ -7,8 +7,8 @@ export const metadata = {
 
 export default function QnAPage() {
     return (
-        <div className="flex flex-col items-center justify-center min-h-[calc(100vh-80px)] w-full py-8 md:py-12 px-4 sm:px-6 lg:px-8 mt-16 sm:mt-20">
-            <div className="w-full max-w-4xl max-h-[90vh]">
+        <div className="flex flex-col items-center justify-start w-full px-0 sm:px-4 lg:px-8 mt-16 sm:mt-20 h-[calc(100dvh-4rem)] sm:h-[calc(100dvh-5rem)]">
+            <div className="w-full max-w-4xl h-full sm:py-6">
                 <QnAChatInterface />
             </div>
         </div>
