@@ -68,20 +68,23 @@ Rules:
 \`\`\`
 
 **India Innovates 2026 Event Details:**
-- **What is it:** India's Biggest Tech Innovation Summit (civic tech, data, cybersecurity) where Code Meets Constitution. Hosted at Bharat Mandapam, Pragati Maidan, New Delhi. Exhibition-focused, not a classic overnight hackathon. **Bits&Bytes is the Executive Partner for this event, handling everything operational: participant groups, queries, social media creatives, docs/SOPs, college outreach, and full on-ground coordination.**
-- **Participation:** Open to all students, professionals, and tech enthusiasts from across India.
-- **Team Size:** Must have 3-6 members (no individuals).
-- **Prerequisites:** Participants may need skills in programming, electronics, data analytics, and IoT. Must bring their own laptops, sensors, and equipment.
-- **Domains:** Politics & Civic Tech | Cyber Security | Data Mining & Processing. Teams must pick one problem statement from one domain ONLY. Every domain includes an open innovation category.
-- **Product State:** Fully polished not required, but need a working prototype/MVP/demonstrable concept. Slide-only ideas perform poorly. All development MUST be completed before the finale; NO coding/development time provided on the final presentation day.
-- **Logistics:** Fully offline at Bharat Mandapam, New Delhi. 28 March 2026, Expo Timings: 9:00 AM – 7:00 PM. Travel/accommodation NOT provided.
+- **What is it:** World's Largest Civic Tech Hackathon hosted by Municipal Corporation of Delhi where policy meets innovation. Hosted at Bharat Mandapam, New Delhi. Exhibition-focused, not a classic overnight hackathon. Bits&Bytes is the Executive Partner for this event.
+- **Participation:** Open to India’s brightest student innovators to bring working products, prototypes.
+- **Team Size:** Must have 3-6 Members.
+- **Domains:** 
+  1. Urban Solutions (Flooding engine, AQI dashboard, AI waste tracking, AI Traffic Flow).
+  2. Digital Democracy (Global Ontology Engine, AI Booth Management, Secure E-Voting, AI Avatars, AI Calling Agents, Smart CRM, AI Co-Pilot).
+  3. Cyber Security (Threat detection, secure access, encryption, phishing prevention).
+  4. Open Innovation (Healthcare, Robotics, Agriculture, Fintech, etc.).
+- **Product State:** Fully polished not required, but need a working product/prototype/breakthrough idea. Teams must submit PPT describing their idea, approach, and expected impact. All development must be completed before the Finale which is on 28 March 2026. No development/coding time on Final Presentation Day.
+- **Logistics:** Offline at Bharat Mandapam, New Delhi. 28 March 2026, 9:00 AM – 7:00 PM. Travel & accommodation not provided.
 - **Key Dates:** Registration Deadline: 05 Mar 2026, 10:59 PM IST. PPT Submission Phase: 24 Jan - 10 Mar 2026, 11:59 PM IST. Evaluation Phase: 11 Mar - 15 Mar 2026. Grand Finale: 28 Mar 2026, 9:00 AM.
-- **Format:** ~300 shortlisted teams get a booth to demonstrate solutions, pitch, and interact with investors, govt leaders, and founders.
-- **Judging & Prizes:** Moderately strict judging. Total prize pool ₹10,00,000. Prizes per domain: 1st ₹1,50,000 | 2nd ₹1,00,000 | 3rd ₹50,000 | Runner-Up ₹35,000. Certificates provided for teams clearing Round 1.
-- **Outcomes:** Top innovations pitch directly to govt/political parties. Best ideas get a Paid Government Apprenticeship + Full-Time Opportunity.
-- **Rules:** Projects must be original for this event (no previously deployed projects as-is). Open-source tools/datasets allowed. Plagiarism = disqualification.
-- **Advice:** Simple functional solutions with clear problem statements win. Avoid overhyping or unclear demos.
-- **Registration & Communication:** Direct users to Unstop: https://unstop.com/conferences/india-innovates-2026-municipal-corporation-of-delhi-1625920. DO NOT send them to the general /join page to apply for this. Tell them to join the Official WhatsApp Community: https://chat.whatsapp.com/DOs79yuKXAB4jm76wNJsNc
+- **Format:** Initial shortlist from PPTs. Best solutions provided exhibition space to display product to investors, founders, policymakers. Live on-the-spot judging.
+- **Judging & Prizes:** Prize pool of INR 10 Lakh+. Prizes per domain: 1st ₹1,50,000 | 2nd ₹1,00,000 | 3rd ₹50,000 | Runner-Up ₹35,000. Participation certificates provided.
+- **Outcomes:** Top innovations pitch directly to govt/political parties for real-world implementation. Best ideas get a Paid Govt Apprenticeship + Full-Time Opportunity.
+- **Rules:** Projects must be original, no previously deployed projects. Open-source tools allowed. Plagiarism = disqualification. Volunteers cannot participate, and participants cannot volunteer at the event.
+- **Registration & Communication:** Applications must be submitted via Unstop. Join the Official WhatsApp Community: https://chat.whatsapp.com/DOs79yuKXAB4jm76wNJsNc
+- **Volunteering:** To volunteer at Bits&Bytes club or its general events, take users to \`/join\`. To volunteer specifically for India Innovates 2026 Hackathon, give them: https://tally.so/r/b57gp6
 `
 
 const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
