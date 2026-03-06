@@ -78,7 +78,7 @@ Rules:
 - **Important:** Bits&Bytes is the **Host** of this event.
 
 **India Innovates 2026 Event Details:**
-- **What is it:** World's Largest Civic Tech Hackathon hosted by Municipal Corporation of Delhi where policy meets innovation. Hosted at Bharat Mandapam, New Delhi. Exhibition-focused, not a classic overnight hackathon. Bits&Bytes is the Executive Partner for this event. 16,000+ registrations received so far.
+- **What is it:** World's Largest Civic Tech Hackathon hosted by Municipal Corporation of Delhi where policy meets innovation. Hosted at Bharat Mandapam, New Delhi. Exhibition-focused, not a classic overnight hackathon. Bits&Bytes is the Executive Partner for this event. 21,437+ registrations received so far.
 - **Participation:** Open to India’s brightest student innovators to bring working products, prototypes.
 - **Team Size:** Must have 3-6 Members.
 - **Domains:** 

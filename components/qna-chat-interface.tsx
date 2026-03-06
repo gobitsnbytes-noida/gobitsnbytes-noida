@@ -20,10 +20,11 @@ const MAX_HISTORY = 20
 const STORAGE_KEY = "bb-qna-assistant-state-v1"
 const QUICK_PROMPTS = [
     "Tell me about GitHub Copilot Dev Days.",
+    "How do I join the Copilot event?",
     "Tell me about India Innovates 2026.",
-    "What is Bits&Bytes?",
-    "Show me the impact stats.",
-    "How can I join the club?",
+    "What are the domains for India Innovates?",
+    "What is the Bits&Bytes club?",
+    "How can I join Bits&Bytes?",
 ]
 
 type StreamPayload =

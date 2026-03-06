@@ -58,7 +58,7 @@ const highlightStats = [
     timeframe: "Always will be",
   },
   {
-    value: "16,000+",
+    value: "21,437+",
     label: "Registrations",
     description: "For India Innovates 2026",
     timeframe: "Hackathon Impact ↑",
