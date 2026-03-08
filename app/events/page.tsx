@@ -21,9 +21,9 @@ import {
   Calendar,
   MapPin,
   Clock,
-  Shield,
   Database,
   Landmark,
+  Lightbulb,
   Building2,
   Check,
   ChevronRight,
@@ -85,27 +85,19 @@ const problemStatements: { domain: string; items: string[] }[] = [
       "AI-driven Sentiment Analysis Engine",
     ],
   },
-  {
-    domain: "Cyber Security",
-    items: [
-      "Threat detection & secure access systems",
-      "Encryption / phishing prevention / incident response",
-      "Open innovation strengthening digital trust",
-    ],
-  },
 ];
 
 const domainIcon: Record<string, React.ReactNode> = {
   "Politics & Civic Tech": <Landmark className="h-3.5 w-3.5" />,
   "Data Mining and Processing": <Database className="h-3.5 w-3.5" />,
-  "Cyber Security": <Shield className="h-3.5 w-3.5" />,
+  "Open Innovation": <Lightbulb className="h-3.5 w-3.5" />,
 };
 
 const prizeRows = [
-  { pos: "1st Prize", politics: "₹1,50,000", data: "₹1,50,000", cyber: "₹1,50,000" },
-  { pos: "2nd Prize", politics: "₹1,00,000", data: "₹1,00,000", cyber: "₹1,00,000" },
-  { pos: "3rd Prize", politics: "₹50,000", data: "₹50,000", cyber: "₹50,000" },
-  { pos: "Runner-up", politics: "₹35,000", data: "₹35,000", cyber: "₹35,000" },
+  { pos: "1st Prize", politics: "₹1,50,000", data: "₹1,50,000" },
+  { pos: "2nd Prize", politics: "₹1,00,000", data: "₹1,00,000" },
+  { pos: "3rd Prize", politics: "₹50,000", data: "₹50,000" },
+  { pos: "Runner-up", politics: "₹35,000", data: "₹35,000" },
 ];
 
 const additionalOutcomes = [
@@ -429,7 +421,7 @@ export default function Events() {
                       <div>
                         <p className="text-[10px] uppercase tracking-widest font-semibold text-white/40 mb-2.5">Challenge Domains</p>
                         <div className="flex flex-wrap gap-2">
-                          {["Politics & Civic Tech", "Data Mining and Processing", "Cyber Security"].map((d) => (
+                          {["Politics & Civic Tech", "Data Mining and Processing", "Open Innovation"].map((d) => (
                             <span key={d} className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80">
                               {domainIcon[d]}{d}
                             </span>
@@ -620,7 +612,7 @@ export default function Events() {
             >
               <ul className="grid grid-cols-1 grid-rows-none gap-4 md:grid-cols-12 lg:gap-4">
                 {problemStatements.map(({ domain, items }, idx) => (
-                  <li key={domain} className={["md:[grid-area:1/1/2/5]", "md:[grid-area:1/5/2/9]", "md:[grid-area:1/9/2/13]"][idx]}>
+                  <li key={domain} className={["md:[grid-area:1/1/2/7]", "md:[grid-area:1/7/2/13]"][idx]}>
                     <GlowingCard animationDelay={idx * 0.1}>
                       <div className="space-y-4">
                         <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5">
@@ -661,9 +653,7 @@ export default function Events() {
                         <th className="px-5 py-4 text-left text-xs font-semibold uppercase tracking-wider text-white/50">
                           <span className="inline-flex items-center gap-1.5"><Database className="h-3.5 w-3.5 text-(--brand-pink)" />Data Mining</span>
                         </th>
-                        <th className="px-5 py-4 text-left text-xs font-semibold uppercase tracking-wider text-white/50">
-                          <span className="inline-flex items-center gap-1.5"><Shield className="h-3.5 w-3.5 text-(--brand-pink)" />Cyber Security</span>
-                        </th>
+
                       </tr>
                     </thead>
                     <tbody>
@@ -675,11 +665,10 @@ export default function Events() {
                           </td>
                           <td className="px-5 py-4 text-white/85">{row.politics} <span className="text-[10px] text-white/40">+ Cert</span></td>
                           <td className="px-5 py-4 text-white/85">{row.data}    <span className="text-[10px] text-white/40">+ Cert</span></td>
-                          <td className="px-5 py-4 text-white/85">{row.cyber}   <span className="text-[10px] text-white/40">+ Cert</span></td>
                         </tr>
                       ))}
                       <tr>
-                        <td colSpan={4} className="px-5 py-3 text-xs text-white/40 italic">
+                        <td colSpan={3} className="px-5 py-3 text-xs text-white/40 italic">
                           All registered participants receive a Participation Certificate.
                         </td>
                       </tr>

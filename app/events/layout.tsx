@@ -40,7 +40,7 @@ const eventsJsonLd = {
         "@type": "Event",
         name: "India Innovates 2026",
         description:
-          "India's Biggest Tech Innovation Summit — Where Code Meets Constitution. Bits&Bytes is the Executive Partner. ₹10,05,000 prize pool across Politics & Civic Tech, Data Mining, and Cyber Security domains.",
+          "India's Biggest Tech Innovation Summit — Where Code Meets Constitution. Bits&Bytes is the Executive Partner. ₹10,05,000 prize pool across Urban Solutions, Digital Democracy, and Open Innovation domains.",
         startDate: "2026-03-28",
         endDate: "2026-03-29",
         eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",

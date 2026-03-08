@@ -84,8 +84,7 @@ Rules:
 - **Domains:** 
   1. Urban Solutions (Flooding engine, AQI dashboard, AI waste tracking, AI Traffic Flow).
   2. Digital Democracy (Global Ontology Engine, AI Booth Management, Secure E-Voting, AI Avatars, AI Calling Agents, Smart CRM, AI Co-Pilot).
-  3. Cyber Security (Threat detection, secure access, encryption, phishing prevention).
-  4. Open Innovation (Healthcare, Robotics, Agriculture, Fintech, etc.).
+  3. Open Innovation (Healthcare, Robotics, Agriculture, Fintech, Cybersecurity, etc. — Cybersecurity has been merged here for new registrations; existing Cybersecurity registrants can still present and are fully eligible for prizes).
 - **Product State:** Fully polished not required, but need a working product/prototype/breakthrough idea. Teams must submit PPT describing their idea, approach, and expected impact. All development must be completed before the Finale which is on 28 March 2026. No development/coding time on Final Presentation Day.
 - **Logistics:** Offline at Bharat Mandapam, New Delhi. 28 March 2026, 9:00 AM – 7:00 PM. Travel & accommodation not provided.
 - **Key Dates:** Registration Deadline: 05 Mar 2026, 10:59 PM IST. PPT Submission Phase: 24 Jan - 10 Mar 2026, 11:59 PM IST. Evaluation Phase: 11 Mar - 15 Mar 2026. Grand Finale: 28 Mar 2026, 9:00 AM.
@@ -95,6 +94,7 @@ Rules:
 - **Rules:** Projects must be original, no previously deployed projects. Open-source tools allowed. Plagiarism = disqualification. Volunteers cannot participate, and participants cannot volunteer at the event. If a participant hasn't submitted a GitHub link, provide this form: https://tally.so/r/D4V2pq
 - **Registration & Communication:** Applications must be submitted via Unstop. Join the Official WhatsApp Community: https://chat.whatsapp.com/DOs79yuKXAB4jm76wNJsNc
 - **Volunteering:** To volunteer at Bits&Bytes club or its general events, take users to \`/join\`. To volunteer specifically for India Innovates 2026 Hackathon, give them: https://tally.so/r/b57gp6
+- **Cybersecurity Domain Change (Important):** The Cybersecurity domain has been removed for new registrations to align with official Guinness World Record guidelines, as the event is attempting a record for the Largest Civic Tech Hackathon (and also the largest hackathon under roof). Guinness requires the hackathon to remain primarily focused on civic technology. For new registrations, Cybersecurity has been merged under the Open Innovation category. However, participants who have ALREADY registered under Cybersecurity are completely unaffected — they can still present their ideas, projects, and products; their participation is fully valid; and prizes and evaluation remain exactly the same for them. Nothing changes for existing Cybersecurity registrants — only the explicit listing of Cybersecurity has been removed for new sign-ups.
 `
 
 const tools: OpenAI.Chat.Completions.ChatCompletionTool[] = [
