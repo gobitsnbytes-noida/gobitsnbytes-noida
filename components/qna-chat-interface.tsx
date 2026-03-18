@@ -47,7 +47,7 @@ export function QnAChatInterface() {
     const [messages, setMessages] = useState<ChatMessage[]>([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
-    const [modelName, setModelName] = useState("gpt-5-mini-2025-08-07")
+    const [modelName, setModelName] = useState("qwen3.5-397b-a17b")
     const [hasHydrated, setHasHydrated] = useState(false)
 
     // Using `any` ref to bridge custom PromptBoxRef since it exposes .focus()

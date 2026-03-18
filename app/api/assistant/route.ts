@@ -3,11 +3,12 @@ import OpenAI, { APIError } from "openai"
 import { findExperts, recommendRoles } from "@/lib/team-data"
 
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+  apiKey: process.env.OSM_API_KEY,
+  baseURL: "https://api.osmapi.com/v1",
 })
 
-const PRIMARY_MODEL = "gpt-5-mini-2025-08-07"
-const FALLBACK_MODEL = "gpt-4.1"
+const PRIMARY_MODEL = "qwen3.5-397b-a17b"
+const FALLBACK_MODEL = "qwen3.5-397b-a17b"
 
 const SSE_HEADERS = {
   "Content-Type": "text/event-stream",
@@ -300,9 +301,9 @@ async function handleGetSiteSectionTool(section: string, req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  if (!process.env.OPENAI_API_KEY) {
+  if (!process.env.OSM_API_KEY) {
     return NextResponse.json(
-      { error: "OPENAI_API_KEY is not configured on the server." },
+      { error: "OSM_API_KEY is not configured on the server." },
       { status: 500 }
     )
   }

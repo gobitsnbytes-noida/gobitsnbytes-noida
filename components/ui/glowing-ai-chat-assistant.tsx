@@ -48,7 +48,7 @@ const FloatingAiAssistant: React.FC = () => {
   const [error, setError] = useState<string | null>(null)
   const [voiceError, setVoiceError] = useState<string | null>(null)
   const [isRecording, setIsRecording] = useState(false)
-  const [modelName, setModelName] = useState("gpt-5-mini-2025-08-07")
+  const [modelName, setModelName] = useState("qwen3.5-397b-a17b")
   const [hasHydrated, setHasHydrated] = useState(false)
 
   const chatRef = useRef<HTMLDivElement | null>(null)
@@ -772,7 +772,7 @@ const FloatingAiAssistant: React.FC = () => {
                   </div>
                   <div className="flex items-center justify-end gap-1 min-w-0 pr-1 truncate">
                     <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
-                    <span className="truncate">Powered by openai/{modelName}</span>
+                    <span className="truncate">Powered by OSM/{modelName}</span>
                   </div>
                 </div>
               </div>
