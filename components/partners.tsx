@@ -1,42 +1,45 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { PageSection } from "@/components/page-section";
-import { ExternalLink, Sparkles, Shield, Cpu, Zap } from "lucide-react";
+import { ExternalLink, Sparkles, Cpu, Zap, Globe } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
+import { Button } from "@/components/ui/button";
 
 const strategicPartners = [
   {
     name: "osmAPI",
     logo: "/partners/OSM-API-Light-BBO_4Eff.png",
     url: "https://www.osmapi.com/",
-    role: "AI Gateway Partner",
-    description: "One Awesome API for everything AI. Route to multiple AI providers, track usage, optimize costs, and scale with confidence through a unified OpenAI-compatible gateway.",
-    features: ["Unified AI Gateway", "15+ Providers", "Smart Cost Routing"],
+    role: "Strategic Partner",
+    description: "The unified AI gateway for seamless multi-provider routing, cost tracking, and optimization.",
+    features: ["Unified API", "Auto-Routing", "Cost Savings"],
     color: "pink",
-    icon: <Cpu className="w-5 h-5" />,
+    icon: <Cpu className="w-5 h-5 text-(--brand-pink)" />,
   },
   {
-    name: "YRI Science",
+    name: "YRI Fellowship",
     logo: "/partners/yri.png",
     url: "https://www.yriscience.com/",
     role: "Knowledge Partner",
-    description: "Advancing scientific research and education. Empowering the next generation of researchers with cutting-edge knowledge systems.",
-    features: ["Scientific Research", "Education Tech", "Knowledge Systems"],
+    description: "Advancing scientific research and building the next generation of innovators through the fellowship.",
+    features: ["Research Hub", "Fellowships", "Open Science"],
     color: "purple",
-    icon: <Sparkles className="w-5 h-5" />,
+    icon: <Sparkles className="w-5 h-5 text-(--brand-purple)" />,
   },
   {
     name: "z.ai",
     logo: "/partners/zai.svg",
     url: "https://chat.z.ai/",
-    role: "AI Interaction Partner",
-    description: "Building the future of intelligent chat and language models. Powering human-like interactions across our digital ecosystem.",
-    features: ["Intelligent Chat", "Custom Models", "Neural Interaction"],
+    role: "AI Partner",
+    description: "Intelligent chat experiences and frontier language model integrations for the modern developer.",
+    features: ["Neural Chat", "LLM Native", "Agentic IC"],
     color: "pink",
-    icon: <Zap className="w-5 h-5" />,
+    icon: <Zap className="w-5 h-5 text-(--brand-pink)" />,
   },
 ];
 
@@ -44,100 +47,102 @@ export function Partners() {
   return (
     <PageSection
       eyebrow="Ecosystem"
-      title="Partnered with Industry Leaders"
-      description="We collaborate with cutting-edge technology partners to deliver exceptional AI development tools and hardware."
+      title="Our Strategic Partners"
+      description="We collaborate with industry leaders to unlock new opportunities for teen builders."
       align="center"
-      className="pb-24"
+      className="pb-24 relative overflow-hidden"
     >
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-16 max-w-7xl mx-auto px-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4 max-w-7xl mx-auto px-4 relative z-10">
         {strategicPartners.map((partner, index) => (
-          <motion.div
-            key={partner.name}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative"
-          >
-            {/* Animated Glow Backdrop */}
-            <div 
-              className={`absolute -inset-1 rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-all duration-700 blur-2xl pointer-events-none bg-gradient-to-br ${
-                partner.color === "pink" 
-                  ? "from-(--brand-pink)/30 to-(--brand-purple)/0" 
-                  : "from-(--brand-purple)/30 to-(--brand-pink)/0"
-              }`} 
-            />
-
-            <div className="relative h-full flex flex-col glass-card border-white/5 bg-white/[0.02] p-8 md:p-10 rounded-[2rem] overflow-hidden group-hover:bg-white/[0.04] transition-colors duration-500">
-              {/* Top Accent Icon */}
-              <div className={`absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity duration-500 text-white`}>
-                {partner.icon}
-              </div>
-
-              {/* Logo Section */}
-              <div className="h-16 mb-8 relative">
-                <div className="relative w-full h-full filter brightness-110 contrast-125 opacity-80 group-hover:opacity-100 transition-all duration-500 grayscale group-hover:grayscale-0">
+          <CardContainer key={partner.name} className="inter-var w-full">
+            <CardBody className="bg-black/40 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] border-white/[0.1] w-full h-[520px] rounded-3xl p-8 border glass-card transition-all duration-300">
+              <CardItem
+                translateZ="50"
+                className="mb-8"
+              >
+                <div className={`h-10 relative w-32 filter brightness-200 contrast-150 ${partner.name === "z.ai" ? "invert" : ""}`}>
                   <Image
                     src={partner.logo}
                     alt={partner.name}
                     fill
-                    className="object-contain object-left"
+                    className="object-contain object-left grayscale group-hover/card:grayscale-0 transition-all duration-500"
                   />
                 </div>
-              </div>
-
-              {/* Title & Role */}
-              <div className="space-y-1 mb-6">
-                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-(--brand-pink)">
-                  {partner.role}
-                </span>
-                <h3 className="text-2xl font-black text-white tracking-tighter">
-                  {partner.name}
-                </h3>
-              </div>
-
-              {/* Description */}
-              <p className="text-sm text-white/50 leading-relaxed font-medium mb-8">
+              </CardItem>
+              
+              <CardItem
+                as="p"
+                translateZ="60"
+                className="text-[10px] font-black uppercase tracking-[0.2em] text-(--brand-pink) mb-2"
+              >
+                {partner.role}
+              </CardItem>
+              
+              <CardItem
+                translateZ="70"
+                className="text-3xl font-black text-white tracking-tighter mb-4"
+              >
+                {partner.name}
+              </CardItem>
+              
+              <CardItem
+                as="p"
+                translateZ="80"
+                className="text-sm text-white/50 leading-relaxed font-medium mb-12"
+              >
                 {partner.description}
-              </p>
-
-              {/* Features Chips */}
-              <div className="flex flex-wrap gap-2 mb-10">
+              </CardItem>
+              
+              <CardItem translateZ="90" className="flex flex-wrap gap-2 mb-12">
                 {partner.features.map(feat => (
-                  <span key={feat} className="text-[10px] px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/5 text-white/40 font-bold uppercase tracking-wider group-hover:border-white/10 group-hover:text-white/60 transition-all duration-300">
+                  <span 
+                    key={feat} 
+                    className="text-[10px] px-3 py-1.5 rounded-full bg-white/[0.05] border border-white/10 text-white/40 font-bold uppercase tracking-wider group-hover/card:text-white/60 transition-colors"
+                  >
                     {feat}
                   </span>
                 ))}
-              </div>
-
-              {/* CTA Button */}
-              <div className="mt-auto">
-                <Link
-                  href={partner.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xs font-black text-white px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-(--brand-pink) hover:border-(--brand-pink) transition-all duration-300 shadow-xl group/btn"
+              </CardItem>
+              
+              <div className="flex justify-between items-center mt-auto pt-6 border-t border-white/5">
+                <CardItem
+                  translateZ={100}
                 >
-                  Visit Platform
-                  <ExternalLink className="w-3.5 h-3.5 opacity-50 group-hover/btn:opacity-100 translate-y-[1px] group-hover/btn:translate-x-0.5 transition-all" />
-                </Link>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="rounded-xl border-white/10 bg-white/5 text-white font-black hover:bg-(--brand-pink) hover:border-(--brand-pink) hover:text-white transition-all group-hover/card:translate-x-1"
+                    asChild
+                  >
+                    <Link href={partner.url} target="__blank">
+                      Visit Platform
+                      <Globe className="w-3.5 h-3.5 ml-2 opacity-50" />
+                    </Link>
+                  </Button>
+                </CardItem>
+                <CardItem
+                  translateZ={100}
+                  className="p-3 rounded-full bg-white/[0.03] border border-white/5 text-white/20 group-hover/card:bg-white/[0.08] group-hover/card:border-white/10 group-hover/card:text-white transition-all shadow-inner"
+                >
+                  {partner.icon}
+                </CardItem>
               </div>
 
               {/* Decorative Corner Glow */}
               <div 
-                className={`absolute -bottom-10 -right-10 w-32 h-32 rounded-full opacity-20 filter blur-3xl pointer-events-none group-hover:opacity-40 transition-opacity duration-700 ${
+                className={`absolute -bottom-10 -right-10 w-48 h-48 rounded-full opacity-0 filter blur-3xl pointer-events-none group-hover/card:opacity-20 transition-opacity duration-1000 ${
                   partner.color === "pink" ? "bg-(--brand-pink)" : "bg-(--brand-purple)"
                 }`} 
               />
-            </div>
-          </motion.div>
+            </CardBody>
+          </CardContainer>
         ))}
       </div>
       
       {/* Background Section Ambient Elements */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-10 w-full h-[120%] opacity-20 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-(--brand-pink) rounded-full filter blur-[180px] opacity-20 animate-pulse" />
-        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-(--brand-purple) rounded-full filter blur-[180px] opacity-20 animate-pulse" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 -z-0 w-full h-[120%] opacity-20 pointer-events-none select-none">
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-(--brand-pink) rounded-full filter blur-[200px] opacity-10 animate-pulse" />
+        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-(--brand-purple) rounded-full filter blur-[200px] opacity-10 animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
     </PageSection>
   );

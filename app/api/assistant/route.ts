@@ -332,7 +332,7 @@ export async function POST(req: NextRequest) {
         messages,
         tools,
         tool_choice: "auto",
-        max_tokens: 400,
+        max_tokens: 1024,
       })
     }
 
@@ -364,20 +364,55 @@ export async function POST(req: NextRequest) {
 
       const choice = completion.choices[0]
       const message = choice?.message
+      const finishReason = choice?.finish_reason
+
+      // If the model's output was truncated (hit token limit), skip tool parsing
+      // and ask the model to answer directly without tools
+      if (finishReason === "length" && message?.tool_calls && message.tool_calls.length > 0) {
+        console.warn("[Assistant] Tool call truncated (finish_reason=length). Retrying without tools.")
+        // Push a system hint to avoid tools and answer directly
+        currentMessages.push({
+          role: "system" as const,
+          content: "Your previous response was truncated. Please answer the user's question directly and concisely WITHOUT using any tools.",
+        })
+        continue
+      }
 
       if (!message?.tool_calls || message.tool_calls.length === 0) {
         break // No more tool calls required
       }
 
-      currentMessages.push(message)
+      // osmAPI requires content to be a string (not null).
+      // When the model makes tool calls, the SDK sets content to null.
+      currentMessages.push({
+        ...message,
+        content: message.content ?? "",
+      })
 
       for (const toolCall of message.tool_calls) {
         const toolName = toolCall.function.name
         let toolArgs: any = {}
         try {
           toolArgs = toolCall.function.arguments ? JSON.parse(toolCall.function.arguments) : {}
-        } catch {
-          toolArgs = {}
+        } catch (parseErr) {
+          console.error(`[Assistant] Failed to parse tool args for "${toolName}":`, toolCall.function.arguments)
+          // Attempt basic recovery: try to extract JSON from partial output
+          const rawArgs = toolCall.function.arguments ?? ""
+          try {
+            // Try to close any unclosed braces and parse
+            const repaired = rawArgs.replace(/,\s*$/, "") + (rawArgs.includes("{") && !rawArgs.endsWith("}") ? "}" : "")
+            toolArgs = JSON.parse(repaired)
+            console.log(`[Assistant] Recovered partial tool args for "${toolName}"`)
+          } catch {
+            toolArgs = {}
+            // Tell the model the tool call failed so it can recover
+            currentMessages.push({
+              role: "tool",
+              tool_call_id: toolCall.id,
+              content: JSON.stringify({ success: false, error: `Tool arguments were malformed and could not be parsed. Please try answering the user directly without this tool, or retry with simpler arguments.` }),
+            } as OpenAI.Chat.ChatCompletionToolMessageParam)
+            continue
+          }
         }
 
         let toolResult: any = null
@@ -444,7 +479,7 @@ async function streamAssistantResponse(
   const completion = await openai.chat.completions.create({
     model,
     messages,
-    max_tokens: 400,
+    max_tokens: 600,
     stream: true,
   })
 
