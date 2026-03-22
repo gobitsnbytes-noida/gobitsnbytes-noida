@@ -61,29 +61,25 @@ export default function Contact() {
     }
 
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
-          name,
-          email,
-          subject,
-          message,
-          "h-captcha-response": captchaToken
-        }),
+      const { createClient } = await import("@supabase/supabase-js")
+      const supabase = createClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+      )
+
+      const { error } = await supabase.from("contacts").insert({
+        name,
+        email,
+        subject: subject || null,
+        message,
+        source: "website",
       })
 
-      const data = await res.json()
-
-      if (!res.ok || !data?.success) {
-        throw new Error(data?.message || "Failed to send message.")
+      if (error) {
+        throw new Error(error.message || "Failed to send message.")
       }
 
-      setStatus({ type: "success", message: "Message sent successfully. We’ll get back to you soon." })
+      setStatus({ type: "success", message: "Message sent successfully. We'll get back to you soon." })
       form.reset()
       setCaptchaToken(null)
       captchaRef.current?.resetCaptcha()

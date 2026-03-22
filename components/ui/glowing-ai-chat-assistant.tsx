@@ -1,13 +1,13 @@
 "use client"
 
-import React, { useState, useRef, useEffect, useCallback } from "react"
+import React, { useState, useRef, useEffect, useCallback, useMemo } from "react"
 import type { KeyboardEvent, ChangeEvent, MouseEvent as ReactMouseEvent } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, usePathname } from "next/navigation"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import { BarChart, Bar, XAxis, Tooltip, ResponsiveContainer } from "recharts"
 
-import { Mic, Send, Info, Bot, X, Trash } from "lucide-react"
+import { Mic, Send, Info, Bot, X, Trash, ThumbsUp, ThumbsDown } from "lucide-react"
 
 interface ChatMessage {
   id: number
@@ -15,9 +15,12 @@ interface ChatMessage {
   content: string
 }
 
+type FeedbackValue = "up" | "down" | null
+
 const MAX_CHARS = 2000
 const MAX_HISTORY = 8
 const STORAGE_KEY = "bb-floating-assistant-state-v1"
+const FEEDBACK_STORAGE_KEY = "bb-assistant-feedback-v1"
 const QUICK_PROMPTS = [
   "Tell me about GitHub Copilot Dev Days.",
   "How do I join the Copilot event?",
@@ -26,6 +29,65 @@ const QUICK_PROMPTS = [
   "What is the Bits&Bytes club?",
   "How can I join Bits&Bytes?",
 ]
+
+// ─── Smart FAQ: instant answers without API calls ────────────────────────────
+type FaqEntry = { patterns: string[]; answer: string }
+
+const SMART_FAQ: FaqEntry[] = [
+  {
+    patterns: ["what is bits", "what is bitsnbytes", "bits and bytes", "bits&bytes", "about bits", "tell me about bits"],
+    answer: "**Bits&Bytes** is a teen-led code club based in Lucknow, India 🇮🇳. We build hackathons, workshops, and real projects — all run by students for students.\n\n[Learn more about us](/about \"cta\")\n\n[Who founded it?](# \"follow-up\")  \n[How can I join?](# \"follow-up\")",
+  },
+  {
+    patterns: ["how to join", "how can i join", "join bits", "become a member", "sign up", "get involved"],
+    answer: "Joining is easy! 🚀\n\n1. **Join our Discord** — introduce yourself\n2. **Attend a workshop** or study session\n3. **Contribute** to an open-source project\n\n[Join Bits&Bytes](/join \"cta\")\n\n[What events are coming up?](# \"follow-up\")",
+  },
+  {
+    patterns: ["contact", "email", "reach out", "get in touch", "how to contact"],
+    answer: "You can reach us at:\n\n- 📧 **Email:** hello@gobitsnbytes.org\n- 💬 **Discord:** linked from our website\n- 🔗 **LinkedIn:** [Bits&Bytes](https://www.linkedin.com/company/gobitsbytes)\n\n[Contact Page](/contact \"cta\")",
+  },
+  {
+    patterns: ["copilot dev days", "copilot event", "github copilot", "april 19", "cubispace"],
+    answer: "**GitHub Copilot Dev Days | Lucknow** 🎉\n\n- 📅 **Date:** Sunday, April 19, 2026, 10 AM – 2 PM IST\n- 📍 **Venue:** Cubispace, Jankipuram, Lucknow\n- 🎟️ Registration requires approval\n\nHosted by Bits&Bytes!\n\n[Register on Luma](https://luma.com/xtxua1jl \"cta\")\n\n[What will I learn?](# \"follow-up\")",
+  },
+  {
+    patterns: ["india innovates", "hackathon 2026", "ii 2026", "india innovates 2026"],
+    answer: "**India Innovates Hackathon 2026** 🏆\n\nBits&Bytes is the **Executive Partner** of this national hackathon.\n\n- 📅 **Finale:** March 28, 2026 at Bharat Mandapam, New Delhi\n- 🏅 **Prize pool:** ₹10 Lakh+\n- 🌐 **Domains:** Urban Solutions, Digital Democracy, Open Innovation\n\nEvaluations are now complete. Check results on the site!\n\n[What are the domains?](# \"follow-up\")  \n[Join the Discord](# \"follow-up\")",
+  },
+  {
+    patterns: ["who founded", "founders", "who started", "who created", "team", "leadership"],
+    answer: "Bits&Bytes was co-founded by:\n\n- **Yash** — Founder & Local Lead\n- **Aadrika** — Co-Founder & Chief Creative Strategist\n- **Akshat Kushwaha** — Co-Founder & Technical Lead\n\nPlus an amazing core team: Devansh (Backend), Maryam (Social Media), and Srishti (Operations)!\n\n[Meet the team](/about \"cta\")",
+  },
+  {
+    patterns: ["discord", "community link", "whatsapp group", "discord server"],
+    answer: "Here's the India Innovates community Discord:\n\n```discord-widget\n1480617556292272260\n```\n\nFor Bits&Bytes general community, check the link on our website header!",
+  },
+  {
+    patterns: ["where are you", "location", "based in", "city", "lucknow"],
+    answer: "We're based in **Lucknow, India** 🇮🇳 — but our community spans across the country! Our events are primarily held in Lucknow, with some partner events in other cities.\n\n[See upcoming events](/events \"cta\")",
+  },
+  {
+    patterns: ["what do you do", "activities", "what does bits", "programs", "workshops"],
+    answer: "At Bits&Bytes we run:\n\n- 🏗️ **Hackathons** — like Scrapyard Lucknow\n- 🎓 **Workshops** — weekly tech sessions\n- 💻 **Build nights** — ship real projects\n- 🤝 **Mentorship** — pair beginners with experienced devs\n\n[See our focus areas](/ \"cta\")\n\n[What events are coming up?](# \"follow-up\")",
+  },
+  {
+    patterns: ["events", "upcoming event", "next event", "what events"],
+    answer: "**Upcoming Events:**\n\n1. 🎉 **GitHub Copilot Dev Days | Lucknow** — April 19, 2026 at Cubispace\n2. 🏆 **India Innovates 2026 Finale** — March 28, 2026 at Bharat Mandapam, Delhi (Executive Partner)\n\n[View all events](/events \"cta\")\n\n[Tell me about Copilot Dev Days](# \"follow-up\")",
+  },
+]
+
+function matchFaq(input: string): string | null {
+  const lower = input.toLowerCase().trim()
+  if (lower.length < 3) return null
+  for (const entry of SMART_FAQ) {
+    for (const pattern of entry.patterns) {
+      if (lower.includes(pattern) || pattern.includes(lower)) {
+        return entry.answer
+      }
+    }
+  }
+  return null
+}
 
 type StreamPayload =
   | { type: "meta"; model: string }
@@ -50,6 +112,7 @@ const FloatingAiAssistant: React.FC = () => {
   const [isRecording, setIsRecording] = useState(false)
   const [modelName, setModelName] = useState("qwen3.5-397b-a17b")
   const [hasHydrated, setHasHydrated] = useState(false)
+  const [feedbackMap, setFeedbackMap] = useState<Record<number, FeedbackValue>>({})
 
   const chatRef = useRef<HTMLDivElement | null>(null)
   const textareaRef = useRef<HTMLTextAreaElement | null>(null)
@@ -58,6 +121,7 @@ const FloatingAiAssistant: React.FC = () => {
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
   const streamControllerRef = useRef<AbortController | null>(null)
   const router = useRouter()
+  const pathname = usePathname()
 
   const appendMessage = useCallback((newMessage: ChatMessage) => {
     setMessages((prev) => {
@@ -251,9 +315,40 @@ const FloatingAiAssistant: React.FC = () => {
     }
   }
 
+  // ─── Feedback helpers ──────────────────────────────────────────────────────
+  const handleFeedback = useCallback((messageId: number, value: FeedbackValue) => {
+    setFeedbackMap((prev) => {
+      const next = { ...prev, [messageId]: prev[messageId] === value ? null : value }
+      // Persist
+      try {
+        const stored = JSON.parse(localStorage.getItem(FEEDBACK_STORAGE_KEY) ?? "[]")
+        stored.push({
+          messageId,
+          feedback: next[messageId],
+          timestamp: new Date().toISOString(),
+          model: modelName,
+        })
+        localStorage.setItem(FEEDBACK_STORAGE_KEY, JSON.stringify(stored.slice(-200)))
+      } catch {}
+      return next
+    })
+  }, [modelName])
+
   const handleSend = async () => {
     const trimmed = message.trim()
     if (!trimmed || isLoading) return
+
+    // ─── Smart FAQ: try instant answer first ──────────────────────────────
+    const faqAnswer = matchFaq(trimmed)
+    if (faqAnswer) {
+      const userMsg: ChatMessage = { id: nextIdRef.current++, role: "user", content: trimmed }
+      const botMsg: ChatMessage = { id: nextIdRef.current++, role: "assistant", content: faqAnswer }
+      appendMessage(userMsg)
+      appendMessage(botMsg)
+      setMessage("")
+      setCharCount(0)
+      return
+    }
 
     const payloadMessages = [
       ...messages.map((m) => ({
@@ -295,7 +390,7 @@ const FloatingAiAssistant: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ messages: payloadMessages }),
+        body: JSON.stringify({ messages: payloadMessages, pathname }),
         signal: controller.signal,
       })
 
@@ -349,21 +444,6 @@ const FloatingAiAssistant: React.FC = () => {
               setTimeout(() => {
                 performHighlight(actionData.textSnippet as string)
               }, 120)
-            } else if (actionData?.type === "submit_form" && actionData.formData) {
-              // Execute Web3Forms directly from the client side securely
-              try {
-                await fetch("https://api.web3forms.com/submit", {
-                  method: "POST",
-                  headers: { "Content-Type": "application/json", Accept: "application/json" },
-                  body: JSON.stringify({
-                    access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
-                    from_name: "Bits&Bytes Assistant",
-                    ...actionData.formData
-                  }),
-                })
-              } catch (e) {
-                console.error("Assistant failed to proxy form submission", e)
-              }
             }
           }
         }
@@ -584,7 +664,7 @@ const FloatingAiAssistant: React.FC = () => {
                   </>
                 )}
                 {messages.map((m) => (
-                  <div key={m.id} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
+                  <div key={m.id} className={`flex flex-col ${m.role === "user" ? "items-end" : "items-start"}`}>
                     <div
                       className={`max-w-[85%] rounded-2xl px-3 py-2 text-[0.75rem] leading-relaxed sm:max-w-[80%] ${m.role === "user"
                         ? "bg-[#e45a92] text-white"
@@ -698,6 +778,41 @@ const FloatingAiAssistant: React.FC = () => {
                         </ReactMarkdown>
                       )}
                     </div>
+
+                    {/* ─── Feedback buttons (assistant only, with content) ─── */}
+                    {m.role === "assistant" && m.content && m.content.length > 0 && !isLoading && (
+                      <div className="flex items-center gap-1 mt-1 ml-1">
+                        <button
+                          onClick={() => handleFeedback(m.id, "up")}
+                          className={`group/fb inline-flex items-center justify-center h-6 w-6 rounded-md transition-all ${
+                            feedbackMap[m.id] === "up"
+                              ? "bg-emerald-500/20 text-emerald-400"
+                              : "text-zinc-600 hover:text-emerald-400 hover:bg-zinc-800/80"
+                          }`}
+                          aria-label="Good response"
+                          title="Good response"
+                        >
+                          <ThumbsUp className="h-3 w-3" />
+                        </button>
+                        <button
+                          onClick={() => handleFeedback(m.id, "down")}
+                          className={`group/fb inline-flex items-center justify-center h-6 w-6 rounded-md transition-all ${
+                            feedbackMap[m.id] === "down"
+                              ? "bg-red-500/20 text-red-400"
+                              : "text-zinc-600 hover:text-red-400 hover:bg-zinc-800/80"
+                          }`}
+                          aria-label="Bad response"
+                          title="Bad response"
+                        >
+                          <ThumbsDown className="h-3 w-3" />
+                        </button>
+                        {feedbackMap[m.id] && (
+                          <span className="text-[0.6rem] text-zinc-500 ml-1 animate-in fade-in">
+                            {feedbackMap[m.id] === "up" ? "Thanks!" : "Noted, we'll improve"}
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </div>
                 ))}
                 <div ref={messagesEndRef} />

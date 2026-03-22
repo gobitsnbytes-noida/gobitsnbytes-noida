@@ -267,15 +267,38 @@ async function handleSubmitContactTool(args: any) {
     }
   }
 
-  // Passing back only the necessary data to the client so it can run the fetch client-side securely
-  return {
-    success: true,
-    message: "Valid details received! I am preparing the form submission from your browser right now.",
-    formData: {
+  try {
+    const { createClient } = await import("@supabase/supabase-js")
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    )
+
+    const { error } = await supabase.from("contacts").insert({
       name,
       email,
-      subject: subject || "New contact from Bits&Bytes assistant",
+      subject: subject || "Contact via Bits&Bytes assistant",
       message,
+      source: "assistant",
+    })
+
+    if (error) {
+      console.error("Supabase contact insert error (assistant):", error)
+      return {
+        success: false,
+        message: "Failed to submit the contact form. Please try again.",
+      }
+    }
+
+    return {
+      success: true,
+      message: `Contact form submitted successfully for ${name} (${email}). The team will get back soon!`,
+    }
+  } catch (err) {
+    console.error("Supabase contact insert exception (assistant):", err)
+    return {
+      success: false,
+      message: "Something went wrong while submitting the contact form.",
     }
   }
 }
@@ -313,15 +336,29 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
     const clientMessages = (body?.messages ?? []) as ClientMessage[]
+    const clientPathname = (body?.pathname ?? "/").toString()
 
     if (!Array.isArray(clientMessages) || clientMessages.length === 0) {
       return NextResponse.json({ error: "Messages array is required." }, { status: 400 })
     }
 
+    // Build page-aware system context
+    const PAGE_LABELS: Record<string, string> = {
+      "/": "Home",
+      "/about": "About",
+      "/impact": "Impact",
+      "/join": "Join",
+      "/contact": "Contact",
+      "/coc": "Code of Conduct",
+      "/events": "Events",
+    }
+    const currentPageLabel = PAGE_LABELS[clientPathname] ?? clientPathname
+    const pageContext = `\n\n**Current Page:** The user is currently viewing the "${currentPageLabel}" page (${clientPathname}). Tailor your answers to be relevant to the content on this page when appropriate. If they ask "what's on this page" or similar, describe what this page contains.`
+
     const baseMessages: OpenAI.Chat.ChatCompletionMessageParam[] = [
       {
         role: "system",
-        content: SITE_CONTEXT,
+        content: SITE_CONTEXT + pageContext,
       },
       ...mapClientMessagesToOpenAI(clientMessages),
     ]
@@ -419,9 +456,6 @@ export async function POST(req: NextRequest) {
 
         if (toolName === "submit_contact_form") {
           toolResult = await handleSubmitContactTool(toolArgs)
-          if (toolResult.success && toolResult.formData) {
-            actionToClient = { type: "submit_form" as const, formData: toolResult.formData }
-          }
         } else if (toolName === "suggest_navigation") {
           const path = normalizePath(toolArgs?.path)
           toolResult = { success: true, path }
