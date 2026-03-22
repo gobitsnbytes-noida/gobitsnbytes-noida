@@ -16,6 +16,7 @@ interface CoreTeamMember {
   linkedin?: string;
   accentColor?: string;
   isFounder?: boolean;
+  isFeatured?: boolean;
 }
 
 interface Volunteer {
@@ -115,6 +116,8 @@ function TeamCard({
           "border-2 border-[var(--brand-pink)]/40 shadow-[0_0_20px_rgba(228,90,146,0.2)]",
           // Founders get extra glow
           member.isFounder && "border-[var(--brand-pink)]/60 shadow-[0_0_30px_rgba(228,90,146,0.35)]",
+          // Featured members (Aadrika) pop out even more
+          member.isFeatured && "scale-[1.02] sm:scale-105 border-[var(--brand-pink)] shadow-[0_0_50px_rgba(228,90,146,0.5)] z-20 ring-2 ring-[var(--brand-pink)]/30",
           !member.accentColor && bgColor,
         )}
         style={{
@@ -180,7 +183,7 @@ function TeamCard({
             </div>
 
             {/* Bio - cleaner and more readable */}
-            <p className="text-xs sm:text-sm leading-relaxed text-white/90 font-medium line-clamp-3">
+            <p className="text-xs sm:text-sm leading-relaxed text-white/90 font-medium">
               {member.bio}
             </p>
           </div>

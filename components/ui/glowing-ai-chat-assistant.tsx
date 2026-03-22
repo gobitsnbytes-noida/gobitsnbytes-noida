@@ -74,6 +74,10 @@ const SMART_FAQ: FaqEntry[] = [
     patterns: ["events", "upcoming event", "next event", "what events"],
     answer: "**Upcoming Events:**\n\n1. 🎉 **GitHub Copilot Dev Days | Lucknow** — April 19, 2026 at Cubispace\n2. 🏆 **India Innovates 2026 Finale** — March 28, 2026 at Bharat Mandapam, Delhi (Executive Partner)\n\n[View all events](/events \"cta\")\n\n[Tell me about Copilot Dev Days](# \"follow-up\")",
   },
+  {
+    patterns: ["akshat achievement", "akshat's achievement", "what has akshat done", "akshat projects", "akshats' achievements"],
+    answer: "**Akshat Kushwaha** is our Technical Lead. His key achievements include:\n\n- 🏗️ **Core Infrastructure:** Built the foundational Bits&Bytes website using Next.js 14 and WebGL.\n- 🎟️ **Event Platforms:** Developed the Scrapyard event registration and management platform.\n- 🤖 **AI Projects:** Created **StudyBuddy AI** and the **CodeReview Discord Bot**.\n- ☁️ **Technical Strategy:** Leading AI/LLMOps and cloud infrastructure for all club projects.\n\n[See our projects](/projects \"cta\")",
+  },
 ]
 
 function matchFaq(input: string): string | null {
