@@ -7,7 +7,7 @@
     "dev": "next dev",
     "lint": "eslint .",
     "start": "next start",
-    "prepare": "husky"
+    "prepare": "husky || echo \"husky not installed, skipping\""
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
