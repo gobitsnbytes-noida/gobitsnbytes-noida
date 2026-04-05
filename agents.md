@@ -52,6 +52,8 @@ Quick reference for “who to ping for what”.
   - RSI India Alumni.
   - Regional Manager for CodeDay Kanpur.
   - Building 'The Nerdy Network'.
+- **Profiles:**
+  - GitHub: https://github.com/Aadrika08
 - **Owns:** Visual identity, campaign planning, and cross-city scaling.
 
 #### Akshat Kushwaha – Co-Founder & Technical Lead
@@ -60,6 +62,11 @@ Quick reference for “who to ping for what”.
   - **AI-native systems engineer** who asks what happens when software fails—building production workflows and retrieval architectures that survive real constraints.
   - **Lead at STEMist Prayagraj**: Defining high-performance engineering culture for young builders across the city.
   - **Lead Architect**: Built the entire Bits&Bytes production-grade tech infrastructure from scratch.
+- **Profiles:**
+  - Website: https://www.a3ro.dev
+  - GitHub: https://github.com/a3ro-dev
+  - Website: https://yashvibe.codes/
+  - GitHub: https://github.com/yashclouded
 - **Owns:** System architecture, technical stability, and shifting the club towards production-ready software.
 
 ---
@@ -88,4 +95,4 @@ Quick reference for “who to ping for what”.
 
 ---
 
-*Last updated: March 18, 2026*
+*Last updated: April 6, 2026*
