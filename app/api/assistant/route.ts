@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from "next/server"
 import OpenAI, { APIError } from "openai"
 import { findExperts, recommendRoles } from "@/lib/team-data"
-import { searchSiteContent } from "@/lib/rag"
+import { generateEmbedding, searchSiteContent } from "@/lib/rag"
 import { detectFrustration } from "@/lib/sentiment"
-
-type FeatureExtractionPipeline = (input: string, options?: Record<string, unknown>) => Promise<{ data: Float32Array | number[] }>
 const openai = new OpenAI({
   apiKey: process.env.HACKCLUB_PROXY_API_KEY,
   baseURL: "https://ai.hackclub.com/proxy/v1",
@@ -111,7 +109,6 @@ const intentPrototypes: Record<IntentBypassResult["intent"], string> = {
   contact_form: "Help me open the contact form to message the team",
 }
 
-let embeddingExtractorPromise: Promise<FeatureExtractionPipeline> | null = null
 const intentPrototypeEmbeddings = new Map<string, number[]>()
 
 const SITE_CONTEXT = `
@@ -402,24 +399,9 @@ function containsSessionSpecificWord(input: string): boolean {
   return SESSION_SPECIFIC_REGEX.test(input)
 }
 
-async function getEmbeddingExtractor(): Promise<FeatureExtractionPipeline> {
-  if (!embeddingExtractorPromise) {
-    embeddingExtractorPromise = (async () => {
-      const { pipeline, env } = await import("@xenova/transformers")
-      env.allowLocalModels = false
-      const extractor = await pipeline("feature-extraction", "Xenova/all-MiniLM-L6-v2", {
-        quantized: true,
-      })
-      return extractor as FeatureExtractionPipeline
-    })()
-  }
-  return embeddingExtractorPromise
-}
-
 async function embedMiniLM(text: string): Promise<number[]> {
-  const extractor = await getEmbeddingExtractor()
-  const output = await extractor(text, { pooling: "mean", normalize: true })
-  return Array.from(output.data)
+  // Use the existing embedding backend to avoid native ONNX runtime dependency in production.
+  return generateEmbedding(text)
 }
 
 function extractNavigationPath(input: string): string | null {
