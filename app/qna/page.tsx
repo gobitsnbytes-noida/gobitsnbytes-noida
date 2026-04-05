@@ -1,10 +1,5 @@
 import { QnAChatInterface } from "@/components/qna-chat-interface"
 
-export const metadata = {
-    title: "QnA Assistant | Bits&Bytes",
-    description: "Ask the official Bits&Bytes AI assistant any questions you have.",
-}
-
 export default function QnAPage() {
     return (
         <main
