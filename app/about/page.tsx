@@ -162,7 +162,7 @@ const volunteers = [
   {
     id: 14,
     name: "Adithya",
-    image: "/team/adithya.jpg", // Add the image to public/team/adithya.jpg if available
+    image: "/team/adhitya.png", // Corrected image path and extension
     linkedin: "https://www.linkedin.com/in/adithya---k/",
   },
   {
