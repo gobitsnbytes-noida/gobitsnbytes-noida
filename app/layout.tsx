@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     template: "%s | Bits&Bytes",
   },
   description:
-    "Join India's boldest teen-led code club. Build real projects, attend hackathons, workshops, and grow as a developer. 200+ active members, 15+ shipped projects. Free to join!",
+    "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members and 2700+ participant submissions evaluated in 3 days.",
   keywords: [
     "Bits and Bytes",
     "bits&bytes",
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     siteName: "Bits&Bytes",
     title: "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
     description:
-      "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 200+ active members building the future.",
+      "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members with proven high-velocity execution.",
     images: [
       {
         url: "/og-image.png",
@@ -117,7 +117,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Bits&Bytes - India's Teen-Led Code Club",
     description:
-      "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer.",
+      "Join India's boldest teen-led code club. 1500+ active members building real products with high-velocity execution.",
     images: ["/og-image.png"],
     creator: "@bitsnbytes_lko",
     site: "@bitsnbytes_lko",
@@ -165,7 +165,7 @@ export default function RootLayout({
     },
     image: "https://gobitsnbytes.org/og-image.png",
     description:
-      "India's boldest teen-led code club. We run hackathons, workshops, and build real projects. Join 200+ student developers building the future.",
+      "India's boldest teen-led code club. We run hackathons, workshops, and build real projects with 1500+ student developers across India.",
     foundingDate: "2024",
     address: {
       "@type": "PostalAddress",

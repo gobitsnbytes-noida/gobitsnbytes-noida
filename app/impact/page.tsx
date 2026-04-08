@@ -34,22 +34,22 @@ const WebGLShader = dynamic(
 
 const highlightStats = [
   {
-    value: "28,000+",
-    label: "Event Participants",
-    description: "Through India Innovates",
-    timeframe: "Mar 2026 ↑",
+    value: "1,500+",
+    label: "Active Community Members",
+    description: "Teen builders across India",
+    timeframe: "Growing fast ↑",
   },
   {
-    value: "5,000+",
-    label: "Developers",
-    description: "At our finale",
-    timeframe: "Mar 2026 ↑",
+    value: "2,700",
+    label: "Submissions Evaluated",
+    description: "Reviewed by the Bits&Bytes team in a 3-day sprint",
+    timeframe: "3 days ↑",
   },
   {
-    value: "₹10L+",
-    label: "Prize Pools",
-    description: "Products, apps, AI",
-    timeframe: "Building the future ↑",
+    value: "900/day",
+    label: "Evaluation Throughput",
+    description: "High-efficiency review operations with a small team",
+    timeframe: "Execution benchmark ↑",
   },
   {
     value: "100%",
