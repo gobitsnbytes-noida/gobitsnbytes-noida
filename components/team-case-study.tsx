@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState, useRef, type CSSProperties } from "react";
 import { CometCard } from "@/components/ui/comet-card";
 import { cn } from "@/lib/utils";
 import { Linkedin, User } from "lucide-react";
 
-interface CoreTeamMember {
+export interface CoreTeamMember {
   id: number;
   name: string;
   role: string;
@@ -15,11 +15,13 @@ interface CoreTeamMember {
   expertise?: string[];
   linkedin?: string;
   accentColor?: string;
+  imagePosition?: string;
+  mobileImagePosition?: string;
   isFounder?: boolean;
   isFeatured?: boolean;
 }
 
-interface Volunteer {
+export interface Volunteer {
   id: number;
   name: string;
   image: string;
@@ -94,6 +96,12 @@ function TeamCard({
         ? "var(--brand-pink)"
         : "var(--brand-plum)");
 
+  const imageStyle = {
+    "--team-image-position": member.imagePosition ?? "center top",
+    "--team-image-position-mobile":
+      member.mobileImagePosition ?? "center center",
+  } as CSSProperties;
+
   const getBackgroundStyle = () => {
     if (dominantColor) {
       return `radial-gradient(circle at 50% 30%, ${dominantColor}33, ${dominantColor}11 50%, transparent 80%), ${cardBg}`;
@@ -126,7 +134,7 @@ function TeamCard({
         }}
       >
         {/* Image section - larger for better portraits */}
-        <div className="mx-1 sm:mx-2 h-[220px] sm:h-[280px] md:h-[320px] lg:h-[340px] flex-shrink-0">
+        <div className="mx-1 sm:mx-2 h-[240px] sm:h-[280px] md:h-[320px] lg:h-[340px] flex-shrink-0">
           <div className="relative h-full w-full rounded-xl sm:rounded-2xl overflow-hidden">
             {/* Ambient glow background */}
             <div className="absolute inset-0 -z-10 scale-110 opacity-40 blur-2xl sm:blur-3xl">
@@ -136,11 +144,12 @@ function TeamCard({
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 quality={60}
-                className="object-cover"
+                className="object-cover [object-position:var(--team-image-position-mobile)] sm:[object-position:var(--team-image-position)]"
+                style={imageStyle}
               />
             </div>
-            {/* Main image - centered */}
-            <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl border border-white/10">
+            {/* Main image - mobile keeps the full portrait centered, desktop keeps the original crop */}
+            <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black/30">
               <Image
                 ref={imgRef}
                 src={member.image}
@@ -148,7 +157,8 @@ function TeamCard({
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 quality={90}
-                className="object-cover object-top"
+                className="object-contain [object-position:var(--team-image-position-mobile)] sm:object-cover sm:[object-position:var(--team-image-position)]"
+                style={imageStyle}
                 onLoad={(e) => extractDominantColor(e.currentTarget)}
               />
             </div>
@@ -311,4 +321,3 @@ export default function TeamCaseStudy({ coreTeam, volunteers }: TeamCaseStudyPro
     </div>
   );
 }
-

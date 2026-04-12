@@ -9,6 +9,10 @@ import {
   GlowingCardTitle,
   GlowingCardDescription,
 } from "@/components/ui/glowing-card";
+import type {
+  CoreTeamMember,
+  Volunteer,
+} from "@/components/team-case-study";
 
 // Lazy load heavy components
 const TeamCaseStudy = dynamic(() => import("@/components/team-case-study"), {
@@ -56,7 +60,7 @@ const aboutContent = {
 };
 
 // Core Team - Top tier
-const coreTeam = [
+const coreTeam: CoreTeamMember[] = [
   {
     id: 1,
     name: "Yash Singh",
@@ -153,7 +157,7 @@ const coreTeam = [
 ];
 
 // Volunteers - smaller cards section
-const volunteers = [
+const volunteers: Volunteer[] = [
   {
     id: 11,
     name: "Jaagruti",
