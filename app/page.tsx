@@ -52,9 +52,9 @@ const Testimonial = dynamic(
 // GlassIcons removed in favor of Features bento grid
 
 const stats = [
-  { value: "200+", label: "Active members", detail: "across India" },
-  { value: "15+", label: "Projects shipped", detail: "from apps to AI" },
-  { value: "10+", label: "Partner schools", detail: "and growing" },
+  { value: "1500+", label: "Active members", detail: "across India" },
+  { value: "130+", label: "Projects shipped", detail: "from apps to AI" },
+  { value: "100+", label: "Partner schools", detail: "and growing" },
 ];
 
 

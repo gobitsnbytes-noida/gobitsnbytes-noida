@@ -273,7 +273,7 @@ export default function RootLayout({
       {
         "@type": "WebPage",
         name: "Impact",
-        description: "See our community impact - 200+ students, 15+ projects",
+        description: "See our community impact - 1500+ students, 130+ projects",
         url: "https://gobitsnbytes.org/impact",
       },
       {

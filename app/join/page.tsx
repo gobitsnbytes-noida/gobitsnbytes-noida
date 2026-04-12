@@ -33,7 +33,7 @@ const benefits = [
     icon: Users,
     title: "Join a tight-knit crew",
     description:
-      "Connect with 200+ ambitious teen builders across India who share your passion for tech.",
+      "Connect with 1500+ ambitious teen builders across India who share your passion for tech.",
   },
   {
     icon: Rocket,
@@ -242,7 +242,7 @@ export default function Join() {
               Ready to start building?
             </h2>
             <p className="text-sm sm:text-base text-white/70 px-4 sm:px-0">
-              Join 200+ teen builders who are shipping real projects and growing
+              Join 1500+ teen builders who are shipping real projects and growing
               together.
             </p>
             <Button
