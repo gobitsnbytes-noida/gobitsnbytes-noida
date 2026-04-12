@@ -66,6 +66,7 @@ const coreTeam: CoreTeamMember[] = [
     name: "Yash Singh",
     role: "Co-Founder & Organisation Lead",
     image: "/team/yash.jpeg",
+    mobileImagePosition: "center 18%",
     bio: "High school student who builds things that matter—from VS Code extensions with thousands of users to hackathons with 400+ participants. IOQM National Qualifier and Educator at STEMist Lucknow, teaching underrepresented talent.",
     expertise: [
       "Mathematics (IOQM)",
@@ -83,6 +84,7 @@ const coreTeam: CoreTeamMember[] = [
     name: "Aadrika Maurya",
     role: "Co-Founder & Chief Creative Strategist",
     image: "/team/aadrika.png",
+    mobileImagePosition: "center 20%",
     isFeatured: true,
     bio: "RSI India Alumni who conducted neuroscience research on EEG signals and attention pattern modeling. Regional Manager for CodeDay Kanpur and building 'The Nerdy Network'.",
     expertise: [
@@ -104,6 +106,8 @@ const coreTeam: CoreTeamMember[] = [
     name: "Akshat Kushwaha",
     role: "Co-Founder & Technical Lead",
     image: "/team/akshat.jpg",
+    mobileImagePosition: "center 16%",
+    mobileImageScale: 1.03,
     bio: "AI-native systems engineer who asks what happens when software fails—building production workflows and retrieval architectures that survive real constraints. Lead at STEMist Prayagraj, defining high-performance engineering culture.",
     expertise: [
       "LLMOps / RAG",
@@ -125,6 +129,7 @@ const coreTeam: CoreTeamMember[] = [
     name: "Devaansh Pathak",
     role: "Founding Member & Backend Lead",
     image: "/team/devansh.jpeg",
+    mobileImagePosition: "center 18%",
     bio: "Manages high-performance backend development and partnership economics.",
     expertise: [
       "Backend Architecture",
@@ -139,6 +144,7 @@ const coreTeam: CoreTeamMember[] = [
     name: "Maryam Fatima",
     role: "Social Media & Promotions Head",
     image: "/team/maryam.jpeg",
+    mobileImagePosition: "center 22%",
     bio: "Leading social strategy and impact storytelling. Generated 10k+ impressions for club events. Spearheads visual campaigns for major independent hackathons.",
     expertise: [
       "Impact Storytelling",
@@ -153,6 +159,7 @@ const coreTeam: CoreTeamMember[] = [
     name: "Sristhi Singh",
     role: "Operations & Communications Head",
     image: "/team/srishti.jpeg",
+    mobileImagePosition: "center 16%",
     bio: "Optimizing internal communication for 100+ members. Ensures smooth collaboration across design/dev squads and city-wide event transitions.",
     expertise: [
       "Process Optimization",

@@ -22,6 +22,8 @@ export interface CoreTeamMember {
   accentColor?: string;
   imagePosition?: string;
   mobileImagePosition?: string;
+  imageScale?: number;
+  mobileImageScale?: number;
   isFounder?: boolean;
   isFeatured?: boolean;
 }
@@ -104,7 +106,9 @@ function TeamCard({
   const imageStyle = {
     "--team-image-position": member.imagePosition ?? "center top",
     "--team-image-position-mobile":
-      member.mobileImagePosition ?? "center center",
+      member.mobileImagePosition ?? "center 24%",
+    "--team-image-scale": String(member.imageScale ?? 1),
+    "--team-image-scale-mobile": String(member.mobileImageScale ?? 1),
   } as CSSProperties;
 
   const getBackgroundStyle = () => {
@@ -163,7 +167,7 @@ function TeamCard({
         }}
       >
         {/* Image section - larger for better portraits */}
-        <div className="mx-1 sm:mx-2 h-[240px] sm:h-[280px] md:h-[320px] lg:h-[340px] flex-shrink-0">
+        <div className="mx-1 sm:mx-2 h-[280px] sm:h-[280px] md:h-[320px] lg:h-[340px] flex-shrink-0">
           <div className="relative h-full w-full rounded-xl sm:rounded-2xl overflow-hidden">
             {/* Ambient glow background */}
             <div className="absolute inset-0 -z-10 scale-110 opacity-40 blur-2xl sm:blur-3xl">
@@ -173,12 +177,12 @@ function TeamCard({
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 quality={60}
-                className="object-cover [object-position:var(--team-image-position-mobile)] sm:[object-position:var(--team-image-position)]"
+                className="object-cover [object-position:var(--team-image-position-mobile)] [transform:scale(var(--team-image-scale-mobile))] sm:[object-position:var(--team-image-position)] sm:[transform:scale(var(--team-image-scale))]"
                 style={imageStyle}
               />
             </div>
-            {/* Main image - mobile keeps the full portrait centered, desktop keeps the original crop */}
-            <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black/30">
+            {/* Main image - keep it full-bleed on mobile with tuned focal points per portrait */}
+            <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black/10">
               <Image
                 ref={imgRef}
                 src={member.image}
@@ -186,7 +190,7 @@ function TeamCard({
                 fill
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 quality={90}
-                className="object-contain [object-position:var(--team-image-position-mobile)] sm:object-cover sm:[object-position:var(--team-image-position)]"
+                className="object-cover [object-position:var(--team-image-position-mobile)] [transform:scale(var(--team-image-scale-mobile))] sm:[object-position:var(--team-image-position)] sm:[transform:scale(var(--team-image-scale))]"
                 style={imageStyle}
                 onLoad={(e) => extractDominantColor(e.currentTarget)}
               />
