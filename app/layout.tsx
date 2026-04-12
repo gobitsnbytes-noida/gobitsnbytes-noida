@@ -44,6 +44,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://gobitsnbytes.org"),
+  manifest: "/manifest.webmanifest",
   title: {
     default: "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
     template: "%s | Bits&Bytes",

@@ -75,7 +75,11 @@ const coreTeam: CoreTeamMember[] = [
       "AI / ML Scaling",
       "GoDOT Game Dev",
     ],
-    linkedin: "https://www.linkedin.com/in/yash-vardhan-singh-a41540270/",
+    socials: {
+      linkedin: "https://www.linkedin.com/in/yash-vardhan-singh-a41540270/",
+      github: "https://github.com/yashclouded",
+      website: "https://yashvibe.codes/",
+    },
     accentColor: "#3E1E68", // Deep Purple
     isFounder: true,
   },
