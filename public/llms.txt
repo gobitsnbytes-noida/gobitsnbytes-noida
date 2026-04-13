@@ -32,7 +32,7 @@ Bits&Bytes is India's boldest teen-led code club and nonprofit, based in Lucknow
 - **India Innovates 2026** [ARCHIVED] — Held on March 28, 2026 at Bharat Mandapam, New Delhi (9 AM to 7 PM). Organized by HN Group and MCD with DDU, IIT Kharagpur, DTC, NSUT, and GGSIPU. Verified scale: 1.26 crore+ applicants, narrowed to 28,000+, then 5,000+, and finally 15 teams. Domains: Urban Solutions, Digital Democracy, and Open Innovation. Prize pool: ₹10 Lakh+ with ₹1L/₹75K/₹50K/₹25K per domain. Bits&Bytes served as the Official Executive Partner. Post-event flow included a ministry-level presentation stage.
 
 ## Leadership Team (Core Team)
-- **Yash**: Founder & Local Lead – Leads entire organization, coords teams, tech architect.
+- **Yash**: Founder & Local Lead – Leads entire organization, coords teams, tech architect. Website: https://yashvibe.codes/, GitHub: https://github.com/yashclouded
 - **Aadrika**: Co-Founder & Chief Creative Strategist – Branding, design, promotional campaigns. GitHub: https://github.com/Aadrika08, Website: https://aadrikasportfolio.framer.website/
 - **Akshat Kushwaha**: Co-Founder & Technical Lead – Website, programming projects, AI & LLMOps, cloud. Website: https://a3ro.dev, GitHub: https://github.com/a3ro-dev
 - **Devansh**: Founding Member & Backend Lead – Backend dev, database arch, community outreach.

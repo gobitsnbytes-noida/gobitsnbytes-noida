@@ -44,8 +44,8 @@ Quick reference for “who to ping for what”.
   - National Qualifier for the **Indian Mathematics Olympiad (IOQM)**.
   - Lead Organizer for Scrapyard Lucknow and Mentor at NASA Space Apps Challenge (helping 400+ participants).
   - Educator at **STEMist Lucknow**, teaching CS to underprivileged students.
-  - **Profiles:**
-  - Website: https://www.yashvibe.codes
+- **Profiles:**
+  - Website: https://yashvibe.codes/
   - GitHub: https://github.com/yashclouded
 
 - **Owns:** Organizational strategy, event timelines, and high-impact outreach.

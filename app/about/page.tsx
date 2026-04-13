@@ -184,6 +184,12 @@ const volunteers: Volunteer[] = [
     section: "Creatives",
   },
   {
+    id: 18,
+    name: "Kavan",
+    image: "/team/kavan.jpg",
+    section: "Creatives",
+  },
+  {
     id: 16,
     name: "Vareesha",
     image: "/team/vareesha.jpg",
