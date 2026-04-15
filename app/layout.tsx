@@ -1,6 +1,6 @@
 import type React from "react";
 import type { Metadata, Viewport } from "next";
-import { Poppins, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Anton, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Suspense } from "react";
@@ -12,16 +12,10 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { FloatingAiAssistant } from "@/components/client-only-components";
 
-const poppins = Poppins({
+const anton = Anton({
   subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-accent-sans",
+  weight: ["400"],
   display: "swap",
 });
 
@@ -134,14 +128,8 @@ export const metadata: Metadata = {
     "apple-mobile-web-app-status-bar-style": "black-translucent",
   },
   icons: {
-    icon: [
-      { url: "/logo.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
-    ],
-    shortcut: "/logo.svg",
-    apple: [
-      { url: "/logo.svg", sizes: "180x180", type: "image/svg+xml" },
-    ],
+    icon: [{ url: "/logo.svg", type: "image/svg+xml" }],
+    shortcut: [{ url: "/logo.svg", type: "image/svg+xml" }],
   },
 };
 
@@ -295,12 +283,10 @@ export default function RootLayout({
   return (
     <html
       lang="en-IN"
-      className={`${poppins.variable} ${spaceGrotesk.variable} ${jetBrainsMono.variable}`}
+      className={`${anton.variable} ${jetBrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://vercel.live" />
       </head>
       <body className="font-sans antialiased bg-background text-foreground selection:bg-accent/30 selection:text-primary overflow-x-hidden">

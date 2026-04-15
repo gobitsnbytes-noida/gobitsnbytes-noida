@@ -27,17 +27,6 @@ import { LoadingInline } from "@/components/loading-wrapper";
 import { Partners } from "@/components/partners";
 
 // Lazy load heavy components
-const WebGLShader = dynamic(
-  () =>
-    import("@/components/ui/web-gl-shader").then((mod) => ({
-      default: mod.WebGLShader,
-    })),
-  {
-    loading: () => null,
-    ssr: false,
-  },
-);
-
 const Testimonial = dynamic(
   () =>
     import("@/components/ui/design-testimonial").then((mod) => ({
@@ -65,7 +54,6 @@ import { GlassContainer } from "@/components/ui/glass-container";
 export default function Home() {
   return (
     <>
-      <WebGLShader />
       <div className="flex flex-col w-full max-w-full overflow-x-hidden">
         <HeroFuturistic />
 

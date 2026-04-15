@@ -12,7 +12,7 @@ const WebGLShader = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand-purple)]/20 to-[var(--brand-pink)]/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0a0908] via-[#2f0a13] to-[#8f2d0c]" />
     ),
   },
 );
@@ -66,7 +66,6 @@ export const HeroFuturistic = () => {
       aria-labelledby="home-hero-title"
     >
       <WebGLShader />
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]" />
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-12 px-4 pb-8 pt-20 sm:px-6 sm:pb-10 sm:pt-20 md:px-6 md:pb-16 md:pt-24 lg:pb-20 lg:pt-28 lg:flex-row lg:items-stretch lg:gap-16 box-border">
         {/* Left content card */}
@@ -154,6 +153,7 @@ export const HeroFuturistic = () => {
                     src={event.image}
                     alt={event.alt}
                     fill
+                    sizes="(max-width: 639px) 0px, (max-width: 1023px) 100vw, 42vw"
                     className={`hidden sm:block object-cover transition-all duration-700 ${idx === 0 ? "object-center scale-[1.05]" : "object-center"}`}
                     priority={idx === 0}
                   />
@@ -161,6 +161,7 @@ export const HeroFuturistic = () => {
                     src={event.imageMobile ?? event.image}
                     alt={event.alt}
                     fill
+                    sizes="100vw"
                     className={`block sm:hidden object-cover transition-all duration-700 ${idx === 0 ? "object-center scale-[1.02]" : "object-center"}`}
                     priority={idx === 0}
                   />
