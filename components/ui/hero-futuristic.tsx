@@ -69,7 +69,7 @@ export const HeroFuturistic = () => {
 
       <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-12 px-4 pb-8 pt-20 sm:px-6 sm:pb-10 sm:pt-20 md:px-6 md:pb-16 md:pt-24 lg:pb-20 lg:pt-28 lg:flex-row lg:items-stretch lg:gap-16 box-border">
         {/* Left content card */}
-        <div className="flex-[1.2] min-w-0">
+        <div className="flex-1 min-w-0">
           <GlassContainer
             className="p-5 sm:p-6 md:p-8 lg:p-12"
             containerClassName="h-full"
