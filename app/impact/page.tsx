@@ -83,7 +83,7 @@ export default function Impact() {
       >
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-6xl px-4 sm:px-6">
-          <GlassContainer className="mx-auto w-full max-w-[860px] min-h-[460px] md:min-h-[500px] px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center flex items-center justify-center">
+          <div className="mx-auto w-full max-w-[860px] min-h-[460px] md:min-h-[500px] px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center flex items-center justify-center">
             <div className="flex flex-col items-center gap-6">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
                 <span className="relative flex h-2 w-2">
@@ -101,13 +101,7 @@ export default function Impact() {
                 building—and ship the outcomes publicly.
               </p>
             </div>
-          </GlassContainer>
-        </div>
-      </section>
-
-      <main className="bg-transparent">
-        <PageSection
-          title="Building the future with teen-led squads"
+            </div>
           description="Workshops, hackathons, and labs unlock hands-on practice, industry mentorship, and opportunities to deploy solutions in schools and communities."
         >
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">

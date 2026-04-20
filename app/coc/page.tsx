@@ -101,7 +101,7 @@ export default function CodeOfConduct() {
       <section className="relative min-h-[58vh] sm:min-h-[64vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 md:py-16">
-          <GlassContainer className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
+            <div className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
             <div className="flex flex-col items-center gap-6">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
                 <Shield className="h-3.5 w-3.5" />
@@ -114,10 +114,7 @@ export default function CodeOfConduct() {
                 TL;DR: Be nice. Be cool. Don't cause chaos.
               </div>
             </div>
-          </GlassContainer>
-        </div>
-      </section>
-
+            </div>
       <main className="relative z-10 bg-transparent">
         {/* What We Stand For */}
         <PageSection

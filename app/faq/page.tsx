@@ -115,7 +115,7 @@ export default function FAQ() {
       <section className="relative min-h-[58vh] sm:min-h-[64vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32">
         <WebGLShader />
         <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 md:py-20">
-          <GlassContainer className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
+            <div className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
             <div className="flex flex-col items-center gap-6">
               <p className="text-[10px] md:text-xs uppercase tracking-[0.35em] text-white/70 font-bold">
                 FAQ
@@ -128,10 +128,7 @@ export default function FAQ() {
                 participate.
               </p>
             </div>
-          </GlassContainer>
-        </div>
-      </section>
-
+            </div>
       <main className="relative z-10 bg-transparent">
         {/* FAQ Accordion */}
         <PageSection>
