@@ -90,7 +90,7 @@ export default function Events() {
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
           >
-            GitHub Copilot Dev Days
+            Archived: Copilot Dev Days
           </button>
           <button
             type="button"
@@ -102,7 +102,7 @@ export default function Events() {
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
           >
-            Execron 1.0
+            Archived: Execron 1.0
           </button>
           <button
             type="button"
@@ -121,7 +121,7 @@ export default function Events() {
         {/* ── GitHub Copilot Dev Days — Featured Spotlight ──────────────── */}
         {(activeEvent === "all" || activeEvent === "copilot") && (
           <PageSection
-            eyebrow="Upcoming · Apr 19"
+            eyebrow="Archived · Apr 19"
             title="GitHub Copilot Dev Days | Lucknow"
             description="AI-Assisted Coding with GitHub Copilot — A Community Developer Event."
           >
@@ -144,11 +144,7 @@ export default function Events() {
                 {/* Badges row */}
                 <div className="flex flex-wrap items-center gap-2 mb-6">
                   <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-pink)">
-                    Workshop / Developer Event
-                  </span>
-                  <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium uppercase tracking-wider text-emerald-400">
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    Registration Open
+                    Archived Event
                   </span>
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
                     Hosted by Bits&amp;Bytes
@@ -156,82 +152,111 @@ export default function Events() {
                 </div>
 
                 {/* Stats + details two-column */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-
-                  {/* Left — key stats */}
-                  <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
-                    {[
-                      { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Date", value: "Sunday, April 19, 2026" },
-                      { icon: <Clock className="h-4 w-4 text-(--brand-pink)" />, label: "Time", value: "10:00 AM – 2:00 PM IST" },
-                      { icon: <MapPin className="h-4 w-4 text-(--brand-pink)" />, label: "Venue", value: <Link href="https://www.google.com/maps/search/?api=1&query=26.9109169%2C80.9464606&query_place_id=ChIJSydGKnNXmTkRj475BfUXmeA" target="_blank" className="hover:text-(--brand-pink) hover:underline underline-offset-2">Cubispace, Lucknow</Link> },
-                      { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Format", value: "In-Person · Approval Required" },
-                      { icon: <Building2 className="h-4 w-4 text-(--brand-pink)" />, label: "Host", value: "Bits&Bytes" },
-                    ].map((s) => (
-                      <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
-                        <div className="flex items-center gap-2.5">
-                          {s.icon}
-                          <span className="text-sm text-white/60 font-medium">{s.label}</span>
-                        </div>
-                        <span className="text-sm font-black text-white text-right">{s.value}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* Right — description, what you'll learn, CTA */}
-                  <div className="flex flex-col gap-5">
-
-                    {/* Community Partners */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  <div className="prose prose-invert max-w-none text-white/80 space-y-6 lg:col-span-2">
                     <div>
-                      <p className="text-[10px] uppercase tracking-widest font-semibold text-white/40 mb-2.5">Community Partners</p>
-                      <div className="flex flex-wrap gap-2">
-                        {["Coding Connoisseurs", "Aryan Singh", "Notion Lucknow"].map((d) => (
-                          <span key={d} className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80">
-                            {d}
-                          </span>
-                        ))}
-                      </div>
+                      <h2 className="text-xl font-bold text-white mb-2">Event Summary</h2>
+                      <p>
+                        <strong>GitHub Copilot Dev Days</strong> was a community developer event in Lucknow that brought together students, developers, and technology enthusiasts to explore how AI-assisted development works in real projects.
+                      </p>
                     </div>
 
-                    {/* What You Will Learn */}
                     <div>
-                      <p className="text-[10px] uppercase tracking-widest font-semibold text-white/40 mb-2.5">What You Will Learn</p>
-                      <ul className="space-y-1.5">
-                        {[
-                          "How GitHub Copilot works inside modern dev environments",
-                          "Integrating AI-assisted coding into real workflows",
-                          "Prompt techniques for better code suggestions",
-                          "Responsible and efficient use of AI in development",
-                        ].map((item) => (
-                          <li key={item} className="flex items-start gap-2 text-xs text-white/65">
-                            <Check className="h-3.5 w-3.5 shrink-0 mt-0.5 text-(--brand-pink)" />
-                            {item}
-                          </li>
-                        ))}
+                      <h2 className="text-xl font-bold text-white mb-2">What the event covered</h2>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li>How GitHub Copilot works inside modern dev environments.</li>
+                        <li>Integrating AI-assisted coding into real workflows.</li>
+                        <li>Prompt techniques for better code suggestions.</li>
+                        <li>Responsible and efficient use of AI in development.</li>
                       </ul>
                     </div>
 
-                    {/* About */}
-                    <div className="rounded-2xl border border-white/10 bg-white/5 p-4 text-xs text-white/50 leading-relaxed space-y-1">
-                      <p className="font-semibold text-white/70 text-[11px] uppercase tracking-wider mb-1">About</p>
-                      <p>Artificial intelligence is rapidly changing the way developers write and think about code. This community developer event in Lucknow brings together students, developers, and technology enthusiasts to explore how AI-assisted development works in real projects.</p>
-                      <p className="mt-2">All participants are expected to follow the <Link href="https://www.microsoft.com/en-us/events/code-of-conduct" target="_blank" rel="noopener noreferrer" className="text-(--brand-pink) hover:underline underline-offset-2">GitHub Event Code of Conduct</Link>.</p>
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Partners & Details</h2>
+                      <p>
+                        The event was hosted by <strong>Bits&Bytes</strong>, with community partners including <strong>Coding Connoisseurs</strong>, <strong>Aryan Singh</strong>, and <strong>Notion Lucknow</strong>. All participants observed the official <Link href="https://www.microsoft.com/en-us/events/code-of-conduct" target="_blank" rel="noopener noreferrer" className="text-(--brand-pink) hover:underline underline-offset-2">GitHub Event Code of Conduct</Link>.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+                      {[
+                        { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Date", value: "Apr 19, 2026" },
+                        { icon: <MapPin className="h-4 w-4 text-(--brand-pink)" />, label: "Venue", value: "Cubispace, Lucknow" },
+                        { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Format", value: "In-Person Workshop" },
+                        { icon: <Check className="h-4 w-4 text-(--brand-pink)" />, label: "Status", value: "Concluded" },
+                      ].map((s) => (
+                        <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
+                          <div className="flex items-center gap-2.5">
+                            {s.icon}
+                            <span className="text-sm text-white/60 font-medium">{s.label}</span>
+                          </div>
+                          <span className="text-sm font-black text-white text-right">{s.value}</span>
+                        </div>
+                      ))}
                     </div>
 
                     {/* CTA */}
                     <Button
                       asChild
-                      className="w-full rounded-2xl bg-(--brand-pink) py-5 text-sm font-bold text-white shadow-[0_0_24px_rgba(228,90,146,0.35)] hover:opacity-90 mt-auto"
+                      className="w-full rounded-2xl bg-white/10 border border-white/20 py-5 text-sm font-bold text-white hover:bg-white/20 transition-colors"
                     >
                       <Link
                         href="https://luma.com/xtxua1jl"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Request to Join on Luma
+                        View Event Archive
                         <ExternalLink className="ml-2 h-4 w-4" />
                       </Link>
                     </Button>
                   </div>
+                </div>
+
+                {/* ── Gallery ── */}
+                <div className="mt-16 border-t border-white/10 pt-12">
+                  <Gallery4
+                    title="In Pictures"
+                    description=""
+                    items={[
+                      {
+                        id: "dev-1",
+                        title: "GitHub Copilot Dev Days",
+                        description: "Community Developer Event",
+                        href: "#",
+                        image: "/event_pictures/devday.jpeg",
+                      },
+                      {
+                        id: "dev-2",
+                        title: "GitHub Copilot Dev Days",
+                        description: "Community Developer Event",
+                        href: "#",
+                        image: "/event_pictures/devday2.jpeg",
+                      },
+                      {
+                        id: "dev-3",
+                        title: "GitHub Copilot Dev Days",
+                        description: "Community Developer Event",
+                        href: "#",
+                        image: "/event_pictures/devday3.jpeg",
+                      },
+                      {
+                        id: "dev-4",
+                        title: "GitHub Copilot Dev Days",
+                        description: "Community Developer Event",
+                        href: "#",
+                        image: "/event_pictures/devday4.jpeg",
+                      },
+                      {
+                        id: "dev-5",
+                        title: "GitHub Copilot Dev Days",
+                        description: "Community Developer Event",
+                        href: "#",
+                        image: "/event_pictures/founder-s.jpeg",
+                      }
+                    ]}
+                  />
                 </div>
               </div>
             </GlassContainer>
@@ -261,6 +286,9 @@ export default function Events() {
               {/* ── Details ── */}
               <div className="p-6 sm:p-8 md:p-10">
                 <div className="flex flex-wrap items-center gap-2 mb-8">
+                  <span className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold text-white bg-(--brand-pink)">
+                    Archived Event
+                  </span>
                   <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
                     <Trophy className="h-3 w-3 text-(--brand-pink)" />
                     In Collaboration with TechKriti '26, IIT Kanpur
