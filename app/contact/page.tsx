@@ -214,7 +214,7 @@ export default function Contact() {
                     <Button
                       type="submit"
                       disabled={isSubmitting}
-                      className="group w-full h-16 rounded-full bg-(--brand-pink) text-lg font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-all hover:scale-[1.02] disabled:opacity-50"
+                      className="group w-full h-16 rounded-full bg-(--brand-pink) text-lg font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity hover:scale-[1.02] disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <>

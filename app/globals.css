@@ -459,7 +459,7 @@
 }
 
 .animate-float {
-    animation: float 3s ease-in-out infinite;
+    animation: float 3s ease infinite;
 }
 
 .animate-slide-in-up {
@@ -475,7 +475,7 @@
 }
 
 .animate-pulse-glow {
-    animation: pulse-glow 2s ease-in-out infinite;
+    animation: pulse-glow 2s ease infinite;
 }
 
 .animate-rotate-slow {
@@ -557,7 +557,7 @@
     }
 
     .lighting-button {
-        animation: bounce-x 1.5s ease-in-out infinite;
+        animation: bounce-x 1.5s ease infinite;
     }
 
     .lighting-button:hover {
@@ -566,7 +566,7 @@
     }
 
     .light-glow {
-        animation: glow 2s ease-in-out infinite;
+        animation: glow 2s ease infinite;
     }
 
     .word-float {

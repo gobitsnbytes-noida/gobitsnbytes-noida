@@ -452,7 +452,7 @@ export function QnAChatInterface() {
                             setMessage("")
                             window.localStorage.removeItem(STORAGE_KEY)
                         }}
-                        className={`flex h-9 items-center justify-center gap-2 rounded-xl bg-zinc-800/60 px-3 text-xs font-medium border transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e45a92] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ${messages.length === 0 ? "opacity-0 invisible" : "text-zinc-400 hover:bg-zinc-800 hover:text-red-400 border-transparent hover:border-red-900/50"}`}
+                        className={`flex h-9 items-center justify-center gap-2 rounded-xl bg-zinc-800/60 px-3 text-xs font-medium border transition-transform transition-colors transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#e45a92] focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-950 ${messages.length === 0 ? "opacity-0 invisible" : "text-zinc-400 hover:bg-zinc-800 hover:text-red-400 border-transparent hover:border-red-900/50"}`}
                         aria-label="Clear chat session"
                         title="Clear chat session"
                         disabled={messages.length === 0}
@@ -543,7 +543,7 @@ export function QnAChatInterface() {
                                                     return (
                                                         <a
                                                             href={href}
-                                                            className="inline-flex my-2 w-full sm:w-auto items-center justify-center rounded-xl bg-[var(--brand-pink)] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-[#e45a92]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"
+                                                            className="inline-flex my-2 w-full sm:w-auto items-center justify-center rounded-xl bg-[var(--brand-pink)] px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-transform transition-colors transition-opacity hover:scale-105 hover:shadow-xl hover:shadow-[#e45a92]/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-zinc-900"
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                             {...props}
@@ -561,7 +561,7 @@ export function QnAChatInterface() {
                                                                 const promptText = Array.isArray(children) ? children.join("") : String(children)
                                                                 handleQuickPrompt(promptText)
                                                             }}
-                                                            className="block w-full mt-3 text-left rounded-xl border border-zinc-700/80 bg-zinc-800/60 px-4 py-3 text-sm text-zinc-200 transition-all hover:border-[#e45a92] hover:bg-zinc-800 hover:text-white"
+                                                            className="block w-full mt-3 text-left rounded-xl border border-zinc-700/80 bg-zinc-800/60 px-4 py-3 text-sm text-zinc-200 transition-transform transition-colors transition-opacity hover:border-[#e45a92] hover:bg-zinc-800 hover:text-white"
                                                         >
                                                             ↳ {children}
                                                         </button>
@@ -581,7 +581,7 @@ export function QnAChatInterface() {
                                                             target="_blank"
                                                             rel="noopener noreferrer"
                                                             aria-label="Open venue on Google Maps"
-                                                            className="mt-4 mb-2 flex flex-col gap-2 rounded-2xl border border-zinc-700/50 bg-zinc-900/50 p-4 transition-all hover:bg-zinc-800/80 hover:border-emerald-500/50 group no-underline"
+                                                            className="mt-4 mb-2 flex flex-col gap-2 rounded-2xl border border-zinc-700/50 bg-zinc-900/50 p-4 transition-transform transition-colors transition-opacity hover:bg-zinc-800/80 hover:border-emerald-500/50 group no-underline"
                                                         >
                                                             <div className="flex items-center gap-3">
                                                                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-500/10 group-hover:bg-emerald-500/20 transition-colors">

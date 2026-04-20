@@ -92,7 +92,6 @@ NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 HACKCLUB_PROXY_API_KEY=your-hackclub-key
 GOOGLE_SITE_VERIFICATION=your-verification-code
-OSM_API_KEY=your-osm-key  # Optional: OpenStreetMap
 ```
 
 ### Installation

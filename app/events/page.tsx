@@ -29,7 +29,7 @@ const WebGLShader = dynamic(
 // ── Component ─────────────────────────────────────────────────────────────
 
 export default function Events() {
-  const [activeEvent, setActiveEvent] = useState<"all" | "copilot" | "india-innovates">("all");
+  const [activeEvent, setActiveEvent] = useState<"all" | "copilot" | "execron" | "india-innovates">("all");
 
   return (
     <>
@@ -73,7 +73,7 @@ export default function Events() {
             onClick={() => setActiveEvent("all")}
             aria-selected={activeEvent === "all"}
             role="tab"
-            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all ${activeEvent === "all"
+            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "all"
               ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
@@ -85,7 +85,7 @@ export default function Events() {
             onClick={() => setActiveEvent("copilot")}
             aria-selected={activeEvent === "copilot"}
             role="tab"
-            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all ${activeEvent === "copilot"
+            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "copilot"
               ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
@@ -94,10 +94,22 @@ export default function Events() {
           </button>
           <button
             type="button"
+            onClick={() => setActiveEvent("execron")}
+            aria-selected={activeEvent === "execron"}
+            role="tab"
+            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "execron"
+              ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
+              : "text-white/70 hover:text-white hover:bg-white/5"
+              }`}
+          >
+            Execron 1.0
+          </button>
+          <button
+            type="button"
             onClick={() => setActiveEvent("india-innovates")}
             aria-selected={activeEvent === "india-innovates"}
             role="tab"
-            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-all ${activeEvent === "india-innovates"
+            className={`rounded-full px-5 py-2.5 text-sm font-bold transition-transform transition-colors transition-opacity ${activeEvent === "india-innovates"
               ? "bg-(--brand-pink) text-white shadow-[0_0_20px_rgba(228,90,146,0.3)]"
               : "text-white/70 hover:text-white hover:bg-white/5"
               }`}
@@ -226,6 +238,159 @@ export default function Events() {
           </PageSection>
         )}
 
+        {/* ── Execron 1.0 ─────────────────────────────────────────────────── */}
+        {(activeEvent === "all" || activeEvent === "execron") && (
+          <PageSection
+            eyebrow="Archived · Mar 19-22, 2026"
+            title="Execron 1.0"
+            description="AI Hackathon & Workshop for Teens at IIT Kanpur."
+          >
+            <GlassContainer glowColor="pink" animated={false} className="overflow-hidden">
+
+              {/* ── Banner image header ── */}
+              <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-white/5 flex items-center justify-center min-h-[320px] border-b border-white/10">
+                <div className="text-center p-8">
+                  <div className="inline-flex items-center justify-center p-4 rounded-full bg-white/5 border border-white/10 mb-4">
+                    <Activity className="h-12 w-12 text-(--brand-pink)" />
+                  </div>
+                  <h3 className="text-2xl font-black tracking-tight text-white mb-2">Execron 1.0</h3>
+                  <p className="text-white/60 font-medium">Build. Break. Repeat. Ship Something Real.</p>
+                </div>
+              </div>
+
+              {/* ── Details ── */}
+              <div className="p-6 sm:p-8 md:p-10">
+                <div className="flex flex-wrap items-center gap-2 mb-8">
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
+                    <Trophy className="h-3 w-3 text-(--brand-pink)" />
+                    In Collaboration with TechKriti '26, IIT Kanpur
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white/80 backdrop-blur-md">
+                    <Building2 className="h-3 w-3 text-(--brand-pink)" />
+                    IIT Kanpur
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  <div className="prose prose-invert max-w-none text-white/80 space-y-6 lg:col-span-2">
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Event Summary</h2>
+                      <p>
+                        <strong>Execron 1.0</strong> was an AI Hackathon & Workshop designed for students in <strong>Classes 9–12</strong>. Held in collaboration with <strong>TechKriti '26, IIT Kanpur</strong>, the event featured a 4-hour hands-on tech workshop followed by a 24-hour hackathon sprint.
+                      </p>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">What the event included</h2>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li>A 4-hour hands-on workshop on modern tech topics.</li>
+                        <li>A 24-hour hackathon sprint with mentor support.</li>
+                        <li>Mentorship from IIT Kanpur alumni and industry experts.</li>
+                        <li>Full access to the broader TechKriti '26 festival experiences (mega hackathons, pro shows, robotics expo).</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Topics Covered</h2>
+                      <ul className="list-disc pl-5 space-y-1">
+                        <li><strong>AI & ML</strong> — Models and real-world AI applications.</li>
+                        <li><strong>Web Development</strong> — Modern frameworks and responsive design.</li>
+                        <li><strong>App Development</strong> — Mobile creation and UI/UX.</li>
+                        <li><strong>Cybersecurity</strong> — Ethical hacking and fundamentals.</li>
+                        <li><strong>Cloud Computing</strong> — Platforms and deployment.</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h2 className="text-xl font-bold text-white mb-2">Schedule</h2>
+                      <p>
+                        Workshop batches were held from <strong>19–21 March 2026</strong>. The grand finale took place on <strong>22 March 2026</strong>. Team sizes ranged from 1 to 4 members. Registration closed on 18 March 2026.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-6">
+                    <div className="space-y-0 divide-y divide-white/10 rounded-2xl border border-white/10 bg-white/5 overflow-hidden">
+                      {[
+                        { icon: <Calendar className="h-4 w-4 text-(--brand-pink)" />, label: "Date", value: "Mar 19–22, 2026" },
+                        { icon: <MapPin className="h-4 w-4 text-(--brand-pink)" />, label: "Venue", value: "IIT Kanpur" },
+                        { icon: <Users className="h-4 w-4 text-(--brand-pink)" />, label: "Team Size", value: "1–4 members" },
+                        { icon: <Building2 className="h-4 w-4 text-(--brand-pink)" />, label: "Partners", value: "ByteForge, Bits&Bytes" },
+                      ].map((s) => (
+                        <div key={s.label} className="flex items-center justify-between px-5 py-3.5">
+                          <div className="flex items-center gap-2.5">
+                            {s.icon}
+                            <span className="text-sm text-white/60 font-medium">{s.label}</span>
+                          </div>
+                          <span className="text-sm font-black text-white text-right">{s.value}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <Button
+                      asChild
+                      className="w-full rounded-2xl bg-white/10 border border-white/20 py-5 text-sm font-bold text-white hover:bg-white/20 transition-colors"
+                    >
+                      <Link
+                        href="https://byteforge.paxus.in/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        View Official Site (Archived)
+                        <ExternalLink className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="mt-16 border-t border-white/10 pt-12">
+                  <Gallery4
+                    title="In Pictures"
+                    description=""
+                    items={[
+                      {
+                        id: "ex-1",
+                        title: "Execron 1.0",
+                        description: "AI Hackathon & Workshop for Teens",
+                        href: "#",
+                        image: "/event_pictures/byteforge1.webp",
+                      },
+                      {
+                        id: "ex-2",
+                        title: "Execron 1.0",
+                        description: "AI Hackathon & Workshop for Teens",
+                        href: "#",
+                        image: "/event_pictures/byteforge2.webp",
+                      },
+                      {
+                        id: "ex-3",
+                        title: "Execron 1.0",
+                        description: "AI Hackathon & Workshop for Teens",
+                        href: "#",
+                        image: "/event_pictures/byteforge3.webp",
+                      },
+                      {
+                        id: "ex-4",
+                        title: "Execron 1.0",
+                        description: "AI Hackathon & Workshop for Teens",
+                        href: "#",
+                        image: "/event_pictures/byteforge4.webp",
+                      },
+                      {
+                        id: "ex-5",
+                        title: "Execron 1.0",
+                        description: "AI Hackathon & Workshop for Teens",
+                        href: "#",
+                        image: "/event_pictures/byteforge5.webp",
+                      }
+                    ]}
+                  />
+                </div>
+              </div>
+            </GlassContainer>
+          </PageSection>
+        )}
+
         {/* ── India Innovates 2026 ──────────────────────────────────────── */}
         {(activeEvent === "all" || activeEvent === "india-innovates") && (
           <>
@@ -342,10 +507,10 @@ export default function Events() {
                     </div>
                   </div>
 
-                  <div className="relative overflow-hidden rounded-[1.4rem] border border-white/15 bg-gradient-to-b from-white/10 to-white/[0.03] p-2 shadow-[0_20px_70px_rgba(0,0,0,0.45)]">
-                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(228,90,146,0.18),transparent_45%)]" />
+                  <div className="relative flex items-center justify-center overflow-hidden rounded-[1.4rem] border border-white/15 bg-black/40 p-2 shadow-[0_20px_70px_rgba(0,0,0,0.45)] backdrop-blur-md">
+                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(228,90,146,0.15),transparent_50%)]" />
                     <video
-                      className="relative z-10 w-full rounded-[1rem] border border-white/10 bg-black/50"
+                      className="relative z-10 w-full max-h-[75vh] object-contain rounded-[1rem] border border-white/10 bg-black"
                       controls
                       playsInline
                       preload="metadata"

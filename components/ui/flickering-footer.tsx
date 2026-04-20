@@ -280,7 +280,7 @@ export function FlickeringFooter() {
                                 {column.links.map((link) => (
                                     <li key={link.id} className="group inline-flex cursor-pointer items-center justify-start gap-1 text-sm text-muted-foreground">
                                         <Link href={link.url} className="transition-colors hover:text-foreground">{link.title}</Link>
-                                        <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-all duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
+                                        <div className="flex size-4 items-center justify-center border border-border rounded translate-x-0 transform opacity-0 transition-transform transition-colors transition-opacity duration-300 ease-out group-hover:translate-x-1 group-hover:opacity-100">
                                             <ChevronRightIcon className="h-3 w-3" />
                                         </div>
                                     </li>

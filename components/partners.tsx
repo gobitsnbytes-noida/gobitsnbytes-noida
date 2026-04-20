@@ -55,7 +55,7 @@ export function Partners() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4 max-w-7xl mx-auto px-4 relative z-10">
         {strategicPartners.map((partner, index) => (
           <CardContainer key={partner.name} className="inter-var w-full">
-            <CardBody className="bg-black/40 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] border-white/[0.1] w-full h-[520px] rounded-3xl p-8 border glass-card transition-all duration-300">
+            <CardBody className="bg-black/40 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] border-white/[0.1] w-full h-[520px] rounded-3xl p-8 border glass-card transition-transform transition-colors transition-opacity duration-300">
               <CardItem
                 translateZ="50"
                 className="mb-8"
@@ -65,7 +65,7 @@ export function Partners() {
                     src={partner.logo}
                     alt={partner.name}
                     fill
-                    className="object-contain object-left grayscale group-hover/card:grayscale-0 transition-all duration-500"
+                    className="object-contain object-left grayscale group-hover/card:grayscale-0 transition-transform transition-colors transition-opacity duration-500"
                   />
                 </div>
               </CardItem>
@@ -111,7 +111,7 @@ export function Partners() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="rounded-xl border-white/10 bg-white/5 text-white font-black hover:bg-(--brand-pink) hover:border-(--brand-pink) hover:text-white transition-all group-hover/card:translate-x-1"
+                    className="rounded-xl border-white/10 bg-white/5 text-white font-black hover:bg-(--brand-pink) hover:border-(--brand-pink) hover:text-white transition-transform transition-colors transition-opacity group-hover/card:translate-x-1"
                     asChild
                   >
                     <Link href={partner.url} target="__blank">
@@ -122,7 +122,7 @@ export function Partners() {
                 </CardItem>
                 <CardItem
                   translateZ={100}
-                  className="p-3 rounded-full bg-white/[0.03] border border-white/5 text-white/20 group-hover/card:bg-white/[0.08] group-hover/card:border-white/10 group-hover/card:text-white transition-all shadow-inner"
+                  className="p-3 rounded-full bg-white/[0.03] border border-white/5 text-white/20 group-hover/card:bg-white/[0.08] group-hover/card:border-white/10 group-hover/card:text-white transition-transform transition-colors transition-opacity shadow-inner"
                 >
                   {partner.icon}
                 </CardItem>

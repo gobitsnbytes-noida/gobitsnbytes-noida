@@ -880,7 +880,7 @@ const FloatingAiAssistant: React.FC = () => {
 
         {/* Floating AI button */}
         <button
-          className={`floating-ai-button relative ml-auto flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/40 bg-[var(--brand-pink)] shadow-lg shadow-[#e45a92]/40 transition-all duration-300 hover:scale-110 hover:shadow-xl ${isChatOpen ? "rotate-90" : "rotate-0"
+          className={`floating-ai-button relative ml-auto flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/40 bg-[var(--brand-pink)] shadow-lg shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity duration-300 hover:scale-110 hover:shadow-xl ${isChatOpen ? "rotate-90" : "rotate-0"
             }`}
           onClick={handleToggle}
           aria-label={isChatOpen ? "Close Bits&Bytes assistant" : "Open Bits&Bytes assistant"}
@@ -1035,7 +1035,7 @@ const FloatingAiAssistant: React.FC = () => {
                                 return (
                                   <a
                                     href={href}
-                                    className="inline-flex mt-2 mb-1 w-full sm:w-auto items-center justify-center rounded-xl bg-[var(--brand-pink)] px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-[#e45a92]/40 text-center"
+                                    className="inline-flex mt-2 mb-1 w-full sm:w-auto items-center justify-center rounded-xl bg-[var(--brand-pink)] px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-transform transition-colors transition-opacity hover:scale-105 hover:shadow-xl hover:shadow-[#e45a92]/40 text-center"
                                     {...props}
                                   >
                                     {children}
@@ -1050,7 +1050,7 @@ const FloatingAiAssistant: React.FC = () => {
                                       const promptText = Array.isArray(children) ? children.join("") : String(children)
                                       handleQuickPrompt(promptText)
                                     }}
-                                    className="block w-full mt-2 text-left rounded-xl border border-zinc-700/80 bg-zinc-800/50 px-3 py-2.5 text-xs text-zinc-300 transition-all hover:border-[#e45a92] hover:bg-zinc-800 hover:text-white"
+                                    className="block w-full mt-2 text-left rounded-xl border border-zinc-700/80 bg-zinc-800/50 px-3 py-2.5 text-xs text-zinc-300 transition-transform transition-colors transition-opacity hover:border-[#e45a92] hover:bg-zinc-800 hover:text-white"
                                   >
                                     ↳ {children}
                                   </button>
@@ -1174,7 +1174,7 @@ const FloatingAiAssistant: React.FC = () => {
                       <div className="flex items-center gap-1 mt-1 ml-1">
                         <button
                           onClick={() => handleFeedback(m.id, "up", m.content)}
-                          className={`group/fb inline-flex items-center justify-center h-6 w-6 rounded-md transition-all ${
+                          className={`group/fb inline-flex items-center justify-center h-6 w-6 rounded-md transition-transform transition-colors transition-opacity ${
                             feedbackMap[m.id] === "up"
                               ? "bg-emerald-500/20 text-emerald-400"
                               : "text-zinc-600 hover:text-emerald-400 hover:bg-zinc-800/80"
@@ -1186,7 +1186,7 @@ const FloatingAiAssistant: React.FC = () => {
                         </button>
                         <button
                           onClick={() => handleFeedback(m.id, "down", m.content)}
-                          className={`group/fb inline-flex items-center justify-center h-6 w-6 rounded-md transition-all ${
+                          className={`group/fb inline-flex items-center justify-center h-6 w-6 rounded-md transition-transform transition-colors transition-opacity ${
                             feedbackMap[m.id] === "down"
                               ? "bg-red-500/20 text-red-400"
                               : "text-zinc-600 hover:text-red-400 hover:bg-zinc-800/80"
@@ -1254,7 +1254,7 @@ const FloatingAiAssistant: React.FC = () => {
                       type="button"
                       onClick={() => void handleSend()}
                       disabled={!message.trim() || isLoading}
-                      className="relative inline-flex h-8 sm:h-9 items-center justify-center rounded-xl bg-[var(--brand-pink)] px-3 sm:px-4 text-xs font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-all hover:shadow-xl hover:shadow-[#e45a92]/40 disabled:cursor-not-allowed disabled:opacity-60"
+                      className="relative inline-flex h-8 sm:h-9 items-center justify-center rounded-xl bg-[var(--brand-pink)] px-3 sm:px-4 text-xs font-semibold text-white shadow-lg shadow-[#e45a92]/30 transition-transform transition-colors transition-opacity hover:shadow-xl hover:shadow-[#e45a92]/40 disabled:cursor-not-allowed disabled:opacity-60"
                     >
                       <Send className="mr-1.5 h-3.5 w-3.5" />
                       Ask

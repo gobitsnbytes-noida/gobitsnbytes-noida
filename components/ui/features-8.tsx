@@ -106,7 +106,7 @@ export function Features() {
                                     <span className="block size-2.5 rounded-full border border-white/10 bg-yellow-500/50"></span>
                                     <span className="block size-2.5 rounded-full border border-white/10 bg-green-500/50"></span>
                                 </div>
-                                <svg className="w-full sm:w-[150%] mt-4 opacity-50 grayscale transition-all group-hover:grayscale-0 group-hover:opacity-100" viewBox="0 0 366 231" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg className="w-full sm:w-[150%] mt-4 opacity-50 grayscale transition-transform transition-colors transition-opacity group-hover:grayscale-0 group-hover:opacity-100" viewBox="0 0 366 231" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         fillRule="evenodd"
                                         clipRule="evenodd"
