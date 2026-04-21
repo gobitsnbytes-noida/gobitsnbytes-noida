@@ -43,8 +43,8 @@ const strategicPartners = [
   },
   {
     name: "GitLab",
-    logo: "/partners/gitlab-logo-500-rgb.svg",
-    mobileLogo: "/partners/gitlab-logo-100-rgb.svg",
+    logo: "/partners/gitlab-logo-100-rgb.svg",
+    mobileLogo: "/partners/gitlab-logo-500-rgb.svg",
     url: "https://about.gitlab.com/",
     learnMoreUrl: "https://about.gitlab.com/stages-devops-lifecycle/",
     learnMoreLabel: "Explore DevSecOps",
@@ -65,7 +65,7 @@ export function Partners() {
       align="center"
       className="pb-24 relative overflow-hidden"
     >
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4 max-w-7xl mx-auto px-4 relative z-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-4 max-w-7xl mx-auto px-4 relative z-10">
         {strategicPartners.map((partner) => (
           <CardContainer key={partner.name} className="inter-var w-full">
             <CardBody className="bg-black/40 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] border-white/[0.1] w-full h-[520px] rounded-3xl p-8 border glass-card transition-transform transition-colors transition-opacity duration-300">
