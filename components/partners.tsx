@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { PageSection } from "@/components/page-section";
-import { ExternalLink, Sparkles, Cpu, Zap, Globe } from "lucide-react";
+import { Sparkles, Cpu, Zap, Globe, GitBranch } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { CardContainer, CardBody, CardItem } from "@/components/ui/3d-card";
 import { Button } from "@/components/ui/button";
@@ -41,6 +41,19 @@ const strategicPartners = [
     color: "pink",
     icon: <Zap className="w-5 h-5 text-(--brand-pink)" />,
   },
+  {
+    name: "GitLab",
+    logo: "/partners/gitlab-logo-500-rgb.svg",
+    mobileLogo: "/partners/gitlab-logo-100-rgb.svg",
+    url: "https://about.gitlab.com/",
+    learnMoreUrl: "https://about.gitlab.com/stages-devops-lifecycle/",
+    learnMoreLabel: "Explore DevSecOps",
+    role: "DevOps Partner",
+    description: "An end-to-end DevSecOps platform helping teams plan, code, secure, and ship software faster.",
+    features: ["CI/CD Pipelines", "DevSecOps", "Open Source"],
+    color: "purple",
+    icon: <GitBranch className="w-5 h-5 text-orange-400" />,
+  },
 ];
 
 export function Partners() {
@@ -53,7 +66,7 @@ export function Partners() {
       className="pb-24 relative overflow-hidden"
     >
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-4 max-w-7xl mx-auto px-4 relative z-10">
-        {strategicPartners.map((partner, index) => (
+        {strategicPartners.map((partner) => (
           <CardContainer key={partner.name} className="inter-var w-full">
             <CardBody className="bg-black/40 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] border-white/[0.1] w-full h-[520px] rounded-3xl p-8 border glass-card transition-transform transition-colors transition-opacity duration-300">
               <CardItem
@@ -61,12 +74,29 @@ export function Partners() {
                 className="mb-8"
               >
                 <div className={`h-10 relative w-32 filter brightness-200 contrast-150 ${partner.name === "z.ai" ? "invert" : ""}`}>
-                  <Image
-                    src={partner.logo}
-                    alt={partner.name}
-                    fill
-                    className="object-contain object-left grayscale group-hover/card:grayscale-0 transition-transform transition-colors transition-opacity duration-500"
-                  />
+                  {partner.mobileLogo ? (
+                    <>
+                      <Image
+                        src={partner.logo}
+                        alt={partner.name}
+                        fill
+                        className="hidden sm:block object-contain object-left grayscale group-hover/card:grayscale-0 transition-transform transition-colors transition-opacity duration-500"
+                      />
+                      <Image
+                        src={partner.mobileLogo}
+                        alt={partner.name}
+                        fill
+                        className="sm:hidden object-contain object-left grayscale group-hover/card:grayscale-0 transition-transform transition-colors transition-opacity duration-500"
+                      />
+                    </>
+                  ) : (
+                    <Image
+                      src={partner.logo}
+                      alt={partner.name}
+                      fill
+                      className="object-contain object-left grayscale group-hover/card:grayscale-0 transition-transform transition-colors transition-opacity duration-500"
+                    />
+                  )}
                 </div>
               </CardItem>
               
@@ -103,6 +133,23 @@ export function Partners() {
                   </span>
                 ))}
               </CardItem>
+
+              {partner.learnMoreUrl ? (
+                <CardItem
+                  as="div"
+                  translateZ="95"
+                  className="mb-8"
+                >
+                  <Link
+                    href={partner.learnMoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-bold uppercase tracking-[0.18em] text-white/60 hover:text-white transition-colors"
+                  >
+                    {partner.learnMoreLabel}
+                  </Link>
+                </CardItem>
+              ) : null}
               
               <div className="flex justify-between items-center mt-auto pt-6 border-t border-white/5">
                 <CardItem
@@ -114,7 +161,7 @@ export function Partners() {
                     className="rounded-xl border-white/10 bg-white/5 text-white font-black hover:bg-(--brand-pink) hover:border-(--brand-pink) hover:text-white transition-transform transition-colors transition-opacity group-hover/card:translate-x-1"
                     asChild
                   >
-                    <Link href={partner.url} target="__blank">
+                    <Link href={partner.url} target="_blank" rel="noopener noreferrer">
                       Visit Platform
                       <Globe className="w-3.5 h-3.5 ml-2 opacity-50" />
                     </Link>
