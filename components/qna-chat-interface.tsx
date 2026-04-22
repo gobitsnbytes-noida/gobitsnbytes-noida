@@ -148,14 +148,14 @@ function ProjectCards({ ideas }: { ideas: ProjectIdea[] }) {
 
 const MAX_CHARS = 2000
 const MAX_HISTORY = 20
-const STORAGE_KEY = "bb-qna-assistant-state-v1"
+const STORAGE_KEY = "bb-floating-assistant-state-v1"
 const QUICK_PROMPTS = [
-        "When is GitHub Copilot Dev Days and how do I register?",
-        "Give me a verified summary of India Innovates 2026 archive.",
-        "What were the official India Innovates 2026 domains?",
-        "Who are the founders and core team at Bits&Bytes?",
-        "How can I join Bits&Bytes this month?",
-        "Show me upcoming events and archived events.",
+        "Who founded Bits&Bytes and what are they working on?",
+        "What makes Bits&Bytes different from other tech clubs?",
+        "Tell me about India Innovates 2026 — what was it?",
+        "How can I join Bits&Bytes as a student developer?",
+        "What kind of projects do members ship?",
+        "Show me all the past events and hackathons.",
 ]
 
 type StreamPayload =

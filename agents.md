@@ -16,6 +16,34 @@ We move away from "beginner-friendly" formats that treat participants like they 
 ### 1.2 The Origin Story
 Originally hosting Daydream Lucknow under Hack Club, we faced a last-minute venue withdrawal with everything already set. Instead of quitting, we went fully independent and realized that independence allows us to bypass the rigid formats of global orgs and deliver actual sponsor ROI and participant value.
 
+### 1.3 Brand Kit
+Bits&Bytes uses a compact, production-friendly visual identity designed for high-impact student-led communications. Key elements:
+
+- **Brand Mark:** A 3D cube monogram (the cube contains a stylized 'BB' and a small star accent). Use the full wordmark for large headings and the cube mark for constrained spaces (avatars, favicons). Prefer a white reversed mark on dark backgrounds; use single-color marks on light backgrounds. Always maintain clear space around the mark.
+
+- **Typography:**
+  - Primary: Helvetica Now — headings and display (use heavier weights for emphasis).
+  - Secondary: Georgia Pro — body copy and long-form reading.
+  - Accent (script): Palm Club — decorative hero treatments only.
+  - Accent (display): Anton — condensed display accents used sparingly.
+
+- **Color System:**
+  - **Burgundy (Core gradient):** Base: #97192C → #791423 → #5B0F1A → #3C0A12 → #1E0509
+  - **Neutrals:** #120F0A, #413F3B, #716F6C, #A09F9D, #D0CFCE
+  - **Accent / Orange (pop gradient):** #FC920D → #FDA83D → #FDBE6E → #FED39E → #FEE9CF
+  - **Warm Accent Range:** #C94218, #D46846, #DF8E74, #E9B3A3, #F4D9D1
+  - **Utility / Interaction:** Vibrant Pink #E45A92, Rich Plum #5D2F77, Deep Purple #3E1E68
+
+  Design guidance: treat burgundy/plum as the core voice (serious and composed); use the orange gradient for emphasis and pops; prefer layered gradients for depth; and use the neutral scale to keep layouts clean.
+
+- **Visual Elements:**
+  - Use gradients (Vibrant Pink → Rich Plum → Deep Purple) for hero backgrounds.
+  - Halftone/stipple textures, geometric checks, and a small star/sparkle motif are approved decorative elements. Apply as subtle overlays to add texture without reducing legibility.
+
+- **Logo usage & assets:** keep vector SVGs for web/print, provide monochrome variants, and do not distort, rotate, or apply unapproved color treatments.
+
+Refer to the project's brand board and `public/llms.txt` Brand Kit section for the canonical palette, typography guidance, and visual examples.
+
 ---
 
 ## 2. Agent Directory (Who Does What?)
@@ -70,6 +98,7 @@ Quick reference for “who to ping for what”.
   - **Lead at STEMist Prayagraj**: Defining high-performance engineering culture for young builders across the city.
   - **Lead Architect**: Built the entire Bits&Bytes production-grade tech infrastructure from scratch.
 - **Profiles:**
+  - LinkedIn: https://www.linkedin.com/in/akshat-singh-kushwaha 
   - Website: https://a3ro.dev
   - GitHub: https://github.com/a3ro-dev
 - **Owns:** System architecture, technical stability, and shifting the club towards production-ready software.

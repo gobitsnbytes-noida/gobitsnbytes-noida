@@ -153,13 +153,13 @@ const MAX_HISTORY = 8
 const STORAGE_KEY = "bb-floating-assistant-state-v1"
 const FEEDBACK_STORAGE_KEY = "bb-assistant-feedback-v1"
 const QUICK_PROMPTS = [
-  "When is GitHub Copilot Dev Days and how do I register?",
-  "Tell me about Lucknow Build Guild.",
-  "What were the official domains for India Innovates 2026?",
-  "Who are the founders and core team at Bits&Bytes?",
-  "How can I join Bits&Bytes this month?",
-  "Show upcoming and archived events.",
-  "Draw a vintage steampunk airship! 🎨",
+  "Who founded Bits&Bytes and what are they working on?",
+  "What makes Bits&Bytes different from other tech clubs?",
+  "Tell me about India Innovates 2026 — what was it?",
+  "How can I join Bits&Bytes as a student developer?",
+  "What kind of projects do members ship?",
+  "Show me all the past events and hackathons.",
+  "Generate a cool sci-fi robot concept for me! 🤖",
 ]
 
 // ─── Smart FAQ: instant answers without API calls ────────────────────────────
@@ -171,8 +171,8 @@ const SMART_FAQ: FaqEntry[] = [
     answer: "**Bits&Bytes** is a teen-led code club based in Lucknow, India. We run hackathons, workshops, and product-focused build programs led by students.\n\n[Learn more about us](/about \"cta\")\n\n[Who founded it?](# \"follow-up\")  \n[How can I join?](# \"follow-up\")",
   },
   {
-    patterns: ["how to join", "how can i join", "join bits", "become a member", "sign up", "get involved"],
-    answer: "To join Bits&Bytes:\n\n1. Join our community channels\n2. Attend an active workshop or event\n3. Start contributing to a live project track\n\n[Join Bits&Bytes](/join \"cta\")\n\n[What events are coming up?](# \"follow-up\")",
+    patterns: ["how to join", "how can i join", "join bits", "become a member", "sign up", "get involved", "membership"],
+    answer: "To join Bits&Bytes **completely free**:\n\n1. **Apply** — Fill the form on our join page\n2. **Join Discord/WhatsApp** — Connect with 1500+ student builders\n3. **Attend an event or workshop** — Start building with mentors\n4. **Ship projects** — Get paired with accountability partners\n\n**Requirements:** Be a student (ages 13–19), commit 2–4 hours/week, and stay active.\n\n[Apply now](/join \"cta\")\n[Join WhatsApp Community](https://chat.whatsapp.com/DvAIRLgEEBxISR8bsb9kVg \"cta\")",
   },
   {
     patterns: ["contact", "email", "reach out", "get in touch", "how to contact"],
@@ -188,11 +188,15 @@ const SMART_FAQ: FaqEntry[] = [
   },
   {
     patterns: ["india innovates", "hackathon 2026", "ii 2026", "india innovates 2026"],
-    answer: "**India Innovates 2026 (Archive)**\n\nBits&Bytes served as the **Official Executive Partner**.\n\n- **Date:** March 28, 2026\n- **Venue:** Bharat Mandapam, New Delhi\n- **Scale:** 1.26+ crore applicants, narrowed to 28,000+, then 5,000+, and finally 15 teams\n- **Domains:** Urban Solutions, Digital Democracy, and Open Innovation\n- **Status:** Event closed and archived\n\n[Tell me about Copilot Dev Days](# \"follow-up\")",
+    answer: "**India Innovates 2026 (Archive)**\n\nThe world's largest civic tech hackathon. Bits&Bytes served as the **Official Executive Partner**.\n\n- **Date:** March 28, 2026\n- **Venue:** Bharat Mandapam, New Delhi\n- **Scale:** 1.26+ crore applicants → 28,000+ → 5,000+ → **15 finalist teams**\n- **Prize Pool:** ₹10 Lakh+ (₹1L/₹75K/₹50K/₹25K per domain)\n- **Domains:** Urban Solutions, Digital Democracy, Open Innovation\n- **Dignitaries:** Delhi CM Rekha Gupta, Bihar Assembly Speaker, MP Manoj Tiwari\n- **Media:** #IndiaInnovates2026 trended on X on event day\n\n[View official site](https://indiainnovates.org \"cta\")",
   },
   {
-    patterns: ["who founded", "founders", "who started", "who created", "team", "leadership"],
-    answer: "Bits&Bytes was co-founded by:\n\n- **Yash** — Co-Founder & Organisation Lead\n- **Aadrika** — Co-Founder & Chief Creative Strategist\n- **Akshat Kushwaha** — Co-Founder & Technical Lead\n\nPlus an amazing core team: Devansh (Backend), Maryam (Social Media), and Srishti (Operations)!\n\n[Meet the team](/about \"cta\")",
+    patterns: ["execron", "execron 1.0", "iit kanpur hackathon", "techkriti"],
+    answer: "**Execron 1.0 (Archive)**\n\nAI Hackathon & Workshop for teen builders at IIT Kanpur.\n\n- **Date:** March 19–22, 2026\n- **Venue:** IIT Kanpur\n- **Format:** 4-hour workshop + 24-hour hackathon sprint\n- **Target:** Classes 9–12 (Ages ~14–18)\n- **Topics:** AI & ML, Web Dev, App Dev, Cybersecurity, Cloud Computing\n- **Partner:** In collaboration with TechKriti '26, ByteForge\n- **Team Size:** 1–4 members\n\n[View event details](https://byteforge.paxus.in/ \"cta\")",
+  },
+  {
+    patterns: ["who founded", "founders", "who started", "who created", "team", "leadership", "core team"],
+    answer: "**Bits&Bytes Core Team:**\n\n- **Yash Singh** — Co-Founder & Organisation Lead. Founder of Bits&Bytes, IOQM national qualifier, created the 5-star Codiva VS Code extension (1000+ users).\n\n- **Aadrika Maurya** — Co-Founder & Chief Creative Strategist. RSI India alumna, neuroscience researcher, designed our complete visual identity.\n\n- **Akshat Kushwaha** — Co-Founder & Technical Lead. AI-native systems engineer who architected our entire production platform and LLMOps infrastructure.\n\n- **Devaansh Pathak** — Founding Member & Backend Lead. Built our high-performance backend systems and partnership economics.\n\n- **Maryam Fatima** — Social Media & Promotions Head. Generates 10k+ impressions through visual storytelling.\n\n- **Sristhi Singh** — Operations & Communications Head. Orchestrates logistics and optimizes our product lifecycle.\n\n[Meet the team](/about \"cta\")",
   },
   {
     patterns: ["discord", "community link", "whatsapp group", "discord server"],
@@ -203,8 +207,8 @@ const SMART_FAQ: FaqEntry[] = [
     answer: "We are based in **Lucknow, India**, and we collaborate with students and partners across other cities as well.\n\n[See events](/events \"cta\")",
   },
   {
-    patterns: ["what do you do", "activities", "what does bits", "programs", "workshops"],
-    answer: "At Bits&Bytes we run:\n\n- **Hackathons**\n- **Workshops**\n- **Build programs**\n- **Mentorship and team projects**\n\n[See our focus areas](/ \"cta\")\n\n[What events are active now?](# \"follow-up\")",
+    patterns: ["what do you do", "activities", "what does bits", "programs", "workshops", "what makes bits different", "why bits"],
+    answer: "At Bits&Bytes we build for **high-agency teen builders** who want to ship real products:\n\n- **Hackathons** — Scrapyard Lucknow, NASA Space Apps, and 48-hour sprints\n- **Workshops** — Web dev, AI/ML, mobile apps, UI/UX, hardware building\n- **Build programs** — Portfolio-ready projects with mentorship at every stage\n- **Mentorship pods** — Pair programming, code reviews, and accountability partners\n\nWe treat participants like **ambitious builders**, not beginners. Every prompt becomes a prototype. You'll ship real impact.\n\n[View our projects](/projects \"cta\")",
   },
   {
     patterns: ["events", "upcoming event", "next event", "what events"],
