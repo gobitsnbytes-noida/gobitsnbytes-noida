@@ -476,7 +476,7 @@ Automatically captures at build time:
 **CSS Framework:** Tailwind CSS 4 with `@tailwindcss/postcss` plugin.
 
 **Theme Colors (Figma System):**
-- Primary: `#3E1E68` (purple)
+- Primary (brand anchor): `#97192C` (burgundy base) — accent: `#3E1E68` (deep purple)
 - Secondary: Pink, Blue (accent)
 - Dark mode theme: Black background + white text
 

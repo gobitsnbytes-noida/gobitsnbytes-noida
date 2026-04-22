@@ -69,7 +69,7 @@ const coreTeam: CoreTeamMember[] = [
       github: "https://github.com/yashclouded",
       website: "https://yashvibe.codes/",
     },
-    accentColor: "#3E1E68", // Deep Purple
+    accentColor: "var(--brand-purple)", // Deep Purple
     isFounder: true,
   },
   {
@@ -91,7 +91,7 @@ const coreTeam: CoreTeamMember[] = [
       github: "https://github.com/Aadrika08",
       website: "https://aadrikasportfolio.framer.website/",
     },
-    accentColor: "#E45A92", // Vibrant Pink
+    accentColor: "var(--brand-pink)", // Vibrant Pink
     isFounder: true,
   },
   {
@@ -114,7 +114,7 @@ const coreTeam: CoreTeamMember[] = [
       github: "https://github.com/a3ro-dev",
       website: "https://a3ro.dev",
     },
-    accentColor: "#5D2F77", // Rich Plum
+    accentColor: "var(--brand-plum)", // Rich Plum
     isFounder: true,
   },
   {

@@ -320,7 +320,7 @@ export default function CodeOfConduct() {
           <GlassContainer className="p-10 md:p-20 text-center" glowColor="both">
             <p className="text-xl md:text-3xl font-black text-white leading-tight max-w-3xl mx-auto tracking-tighter">
               "Bits&Bytes exists to be a positive, creative, exciting space.
-              <span className="block mt-2 text-(--brand-pink)">
+              <span className="block mt-2 text-[var(--brand-pink)]">
                 Help us keep it that way.
               </span>
               "
@@ -329,7 +329,7 @@ export default function CodeOfConduct() {
             <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Button
                 asChild
-                className="group rounded-full bg-(--brand-pink) px-10 py-7 text-lg font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity hover:scale-105 w-full sm:w-auto"
+                className="group rounded-full bg-[var(--brand-pink)] px-10 py-7 text-lg font-black text-white shadow-lg shadow-[var(--brand-pink)/20] hover:shadow-xl hover:shadow-[var(--brand-pink)/40] transition-transform transition-colors transition-opacity hover:scale-105 w-full sm:w-auto"
               >
                 <Link href="/join">
                   Join the Community
