@@ -6,6 +6,7 @@ import { useState, useEffect, useCallback } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
 
 import dynamic from "next/dynamic";
+import { heroEvents } from "@/lib/events-data";
 
 const WebGLShader = dynamic(
   () => import("@/components/ui/web-gl-shader").then((mod) => mod.WebGLShader),
@@ -23,29 +24,6 @@ const stats = [
   { value: "1500+", label: "Active members" },
   { value: "130+", label: "Projects shipped" },
   { value: "100+", label: "Partner schools" },
-];
-
-const heroEvents = [
-  {
-    image: "/images/github-copilot-hero-desktop.png",
-    imageMobile: "/images/github-copilot-hero-mobile.png",
-    alt: "GitHub Copilot Dev Days | Lucknow",
-    badge: "Upcoming Event",
-    status: "upcoming",
-    title: "GitHub Copilot Dev Days",
-    subtitle: "19 Apr 2026 · Lucknow",
-    href: "/events",
-  },
-  {
-    image: "/event_pictures/HEe923uagAATqvy.jpg",
-    imageMobile: "/event_pictures/HEe923uagAATqvy.jpg",
-    alt: "India Innovates 2026 archive",
-    badge: "Archived Event",
-    status: "archived",
-    title: "India Innovates 2026 Archive",
-    subtitle: "28 Mar 2026 · New Delhi",
-    href: "/events",
-  },
 ];
 
 export const HeroFuturistic = () => {
@@ -173,12 +151,16 @@ export const HeroFuturistic = () => {
                 <span
                   className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[0.65rem] font-bold uppercase tracking-widest ${heroEvents[activeSlide].status === "upcoming"
                     ? "bg-emerald-500/10 border border-emerald-500/30 text-emerald-400"
+                    : heroEvents[activeSlide].status === "closed"
+                      ? "bg-amber-500/10 border border-amber-500/30 text-amber-300"
                     : "bg-white/10 border border-white/20 text-white/80"
                     }`}
                 >
                   <span
                     className={`h-1.5 w-1.5 rounded-full ${heroEvents[activeSlide].status === "upcoming"
                       ? "bg-emerald-500 animate-pulse"
+                      : heroEvents[activeSlide].status === "closed"
+                        ? "bg-amber-300"
                       : "bg-white/70"
                       }`}
                   />

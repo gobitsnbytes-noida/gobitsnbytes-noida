@@ -154,6 +154,7 @@ const STORAGE_KEY = "bb-floating-assistant-state-v1"
 const FEEDBACK_STORAGE_KEY = "bb-assistant-feedback-v1"
 const QUICK_PROMPTS = [
   "When is GitHub Copilot Dev Days and how do I register?",
+  "Tell me about Lucknow Build Guild.",
   "What were the official domains for India Innovates 2026?",
   "Who are the founders and core team at Bits&Bytes?",
   "How can I join Bits&Bytes this month?",
@@ -179,7 +180,11 @@ const SMART_FAQ: FaqEntry[] = [
   },
   {
     patterns: ["copilot dev days", "copilot event", "github copilot", "april 19", "cubispace"],
-    answer: "**GitHub Copilot Dev Days | Lucknow**\n\n- **Date:** Sunday, April 19, 2026\n- **Time:** 10:00 AM - 2:00 PM IST\n- **Venue:** Cubispace, Jankipuram, Lucknow\n- **Registration:** Approval required\n\n[Register on Luma](https://luma.com/xtxua1jl \"cta\")\n\n[What will I learn?](# \"follow-up\")",
+    answer: "**GitHub Copilot Dev Days | Lucknow (Archive)**\n\n- **Date:** Sunday, April 19, 2026\n- **Time:** 10:00 AM - 2:00 PM IST\n- **Venue:** Cubispace, Jankipuram, Lucknow\n- **Status:** Registrations closed\n\n[View Event Archive](https://luma.com/xtxua1jl \"cta\")\n\n[What did the event cover?](# \"follow-up\")",
+  },
+  {
+    patterns: ["lucknow build guild", "build guild", "hardware workshop", "shaurya"],
+    answer: "**Lucknow Build Guild (Archive)**\n\n- **Date:** April 19, 2026\n- **Venue:** SureStay by Best Western, Lucknow\n- **Format:** Free hardware workshop and meetup\n- **Host:** Shaurya\n\n[Visit Event Website](https://www.lucknow-build-guild.xyz/ \"cta\")\n[Host Linktree](https://linktr.ee/shauryaashu \"cta\")\n[Host GitHub](https://github.com/Shaurya-Ashu \"cta\")",
   },
   {
     patterns: ["india innovates", "hackathon 2026", "ii 2026", "india innovates 2026"],
@@ -203,7 +208,7 @@ const SMART_FAQ: FaqEntry[] = [
   },
   {
     patterns: ["events", "upcoming event", "next event", "what events"],
-    answer: "**Events Snapshot:**\n\n1. **GitHub Copilot Dev Days | Lucknow** — Upcoming\n2. **India Innovates 2026** — Archived\n\n[View all events](/events \"cta\")\n\n[Tell me about Copilot Dev Days](# \"follow-up\")",
+    answer: "**Events Snapshot:**\n\n1. **Lucknow Build Guild** — Archived\n2. **GitHub Copilot Dev Days | Lucknow** — Archived\n3. **Execron 1.0** — Archived\n4. **India Innovates 2026** — Archived\n\n[View all events](/events \"cta\")\n\n[Tell me about Lucknow Build Guild](# \"follow-up\")",
   },
   {
     patterns: ["akshat achievement", "akshat's achievement", "what has akshat done", "akshat projects", "akshats' achievements"],
