@@ -144,7 +144,7 @@ export default function Events() {
               {/* ── Banner image header ── */}
               <div className="relative w-full overflow-hidden rounded-t-[2.25rem] bg-white/5">
                 <Image
-                  src="/event_pictures/bd1.jpg"
+                  src="images/lucknow-build-guild.jpg"
                   alt="Lucknow Build Guild"
                   width={1920}
                   height={640}
