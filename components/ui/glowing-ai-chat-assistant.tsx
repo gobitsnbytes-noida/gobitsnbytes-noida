@@ -254,7 +254,7 @@ const FloatingAiAssistant: React.FC = () => {
   const [error, setError] = useState<string | null>(null)
   const [voiceError, setVoiceError] = useState<string | null>(null)
   const [isRecording, setIsRecording] = useState(false)
-  const [modelName, setModelName] = useState("qwen3.5-397b-a17b")
+  const [modelName, setModelName] = useState("")
   const [hasHydrated, setHasHydrated] = useState(false)
   const [feedbackMap, setFeedbackMap] = useState<Record<number, FeedbackValue>>({})
   const [sessionId, setSessionId] = useState<string>("")
@@ -926,9 +926,6 @@ const FloatingAiAssistant: React.FC = () => {
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="rounded-2xl bg-zinc-800/70 px-2 py-1 text-[0.65rem] font-medium text-zinc-200">
-                    {modelName}
-                  </span>
                   <div className="relative inline-flex items-center">
                     <span id="export-toast" className="absolute right-full mr-2 whitespace-nowrap opacity-0 transition-opacity duration-300 text-[10px] font-medium text-emerald-400 bg-emerald-400/10 px-1.5 py-0.5 rounded">Copied!</span>
                     <button
@@ -1284,10 +1281,7 @@ const FloatingAiAssistant: React.FC = () => {
                     </span>
                     <span className="sm:hidden">Assistant</span>
                   </div>
-                  <div className="flex items-center justify-end gap-1 min-w-0 pr-1 truncate">
-                    <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400" />
-                    <span className="truncate">Powered by OSM/{modelName}</span>
-                  </div>
+                  {/* model / attribution removed intentionally */}
                 </div>
               </div>
 

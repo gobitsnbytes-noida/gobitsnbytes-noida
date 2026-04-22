@@ -41,7 +41,7 @@ interface TeamCaseStudyProps {
   volunteers: Volunteer[];
 }
 
-const brandColors = ["#3E1E68", "#E45A92", "#5D2F77"];
+const brandColors = ["var(--brand-purple)", "var(--brand-pink)", "var(--brand-plum)"];
 
 function TeamCard({
   member,
