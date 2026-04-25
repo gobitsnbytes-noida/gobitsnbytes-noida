@@ -127,6 +127,22 @@ Quick reference for “who to ping for what”.
 2. **Always Optimized** – Production-grade code is mandatory; no "just for fun" hacks on core infra.
 3. **Use PNPM** – Always use `pnpm` for speed and consistency.
 
+## 6. AI Assistant & RAG Maintenance
+
+- The repository includes an on-page AI assistant that answers from two sources:
+  - live page context (client `pathname` and optional page snippets sent by the client), and
+  - a semantic RAG index stored in Supabase (`site_embeddings`) and queried via `lib/rag.ts`.
+- Embeddings are generated with `openai/text-embedding-3-small` through the Hack Club proxy (`HACKCLUB_PROXY_API_KEY`) by `scripts/embed-site.ts`.
+- The embed script currently indexes `public/llms.txt` and `agents.md` (keeping these files current keeps the RAG index up to date).
+- To refresh the RAG index after content changes run:
+
+```bash
+pnpm tsx scripts/embed-site.ts
+```
+
+- A Husky `pre-push` hook runs the embedding step automatically when tracked source paths change; see `.husky/pre-push` for `EMBED_PATHS`.
+- To add more content to the index, update `scripts/embed-site.ts` `filePaths` and the `.husky/pre-push` `EMBED_PATHS` variable.
+
 ---
 
-*Last updated: April 6, 2026*
+*Last updated: April 25, 2026*

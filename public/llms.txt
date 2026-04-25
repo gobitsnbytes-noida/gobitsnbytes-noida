@@ -137,5 +137,26 @@ Design guidance:
 
 These brand guidelines are a concise reference; for creative executions follow the visual examples and gradients shown in the official brand board.
 
+## AI / LLMs used by the site
+- **Primary chat model (server):** google/gemini-3-flash-preview (used via Hack Club proxy)
+- **Fallback chat model:** google/gemini-2.5-flash
+- **Embedding model (RAG):** openai/text-embedding-3-small (used by `scripts/embed-site.ts` and `lib/rag.ts`)
+- **Image generation:** google/gemini-3.1-flash-image-preview (proxy); optional `stable-diffusion-3` via NVIDIA when `NVIDIA_KEY` is configured
+
+Notes:
+- All AI API calls use the `HACKCLUB_PROXY_API_KEY` environment variable and the Hack Club proxy endpoints.
+- The assistant also relies on Supabase environment variables (`NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY`) for session persistence.
+
+## RAG / Indexing (maintenance)
+- The site uses `scripts/embed-site.ts` to generate embeddings and populate the `site_embeddings` table in Supabase.
+- By default the script currently indexes `public/llms.txt` and `agents.md`. If you update these files, re-run:
+
+```bash
+pnpm tsx scripts/embed-site.ts
+```
+
+- A Husky `pre-push` hook is configured to run the embedding step automatically when tracked source files change; see `.husky/pre-push` for `EMBED_PATHS`.
+- To include additional pages in the RAG index, add them to `scripts/embed-site.ts` `filePaths` and update `.husky/pre-push` `EMBED_PATHS`.
+
 ---
-Last updated: April 22, 2026
+Last updated: April 25, 2026
