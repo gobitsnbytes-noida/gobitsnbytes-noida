@@ -234,6 +234,13 @@ const volunteers: Volunteer[] = [
     linkedin: "https://www.linkedin.com/in/aanjaneya-tripathi-0700a4346/",
     section: "Outreach",
   },
+  {
+    id: 21,
+    name: "Shantanu Joshi",
+    image: "/team/shantanu.jpg",
+    linkedin: "https://www.linkedin.com/in/theshantanujoshi/",
+    section: "Creatives",
+  },
 ];
 
 export default function About() {

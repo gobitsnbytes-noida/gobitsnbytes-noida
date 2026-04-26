@@ -111,6 +111,21 @@ export const TEAM_MEMBERS: TeamMember[] = [
     ],
     department: "Operations"
   }
+  ,
+  {
+    name: "Shantanu Joshi",
+    role: "Creative Contributor",
+    superpowers: ["Visual Design", "Illustration", "Campaign Creative", "Brand Collateral"],
+    achievements: [
+      "Active creative contributor to Bits&Bytes projects",
+      "Contributed design assets and creative support for community campaigns"
+    ],
+    talkToMeWhen: [
+      "You need help with campaign visuals or illustration assets",
+      "You want a fresh creative perspective on brand collateral"
+    ],
+    department: "Design"
+  }
 ]
 
 export function findExperts(query: string): TeamMember[] {
