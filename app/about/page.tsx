@@ -237,7 +237,7 @@ const volunteers: Volunteer[] = [
   {
     id: 21,
     name: "Shantanu Joshi",
-    image: "/team/shantanu.jpg",
+    image: "/team/shantanu.jpeg",
     linkedin: "https://www.linkedin.com/in/theshantanujoshi/",
     section: "Creatives",
   },
