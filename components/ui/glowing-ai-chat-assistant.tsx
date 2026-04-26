@@ -257,7 +257,14 @@ const FloatingAiAssistant: React.FC = () => {
   const [modelName, setModelName] = useState("")
   const [hasHydrated, setHasHydrated] = useState(false)
   const [feedbackMap, setFeedbackMap] = useState<Record<number, FeedbackValue>>({})
-  const [sessionId, setSessionId] = useState<string>("")
+  const [sessionId] = useState<string>(() => {
+    if (typeof window === "undefined") return ""
+    const existing = window.sessionStorage.getItem("bb-session-id")
+    if (existing) return existing
+    const newId = `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`
+    window.sessionStorage.setItem("bb-session-id", newId)
+    return newId
+  })
   const [showProactive, setShowProactive] = useState(false)
   const ctaClickedRef = useRef(false)
 
@@ -598,7 +605,14 @@ const FloatingAiAssistant: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ messages: payloadMessages, pathname, sessionId }),
+        body: JSON.stringify({
+            messages: payloadMessages,
+            pathname,
+            sessionId,
+            pageText: typeof document !== "undefined"
+              ? document.body.innerText.trim().slice(0, 3000)
+              : "",
+          }),
         signal: controller.signal,
       })
 
