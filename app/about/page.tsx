@@ -194,9 +194,9 @@ const volunteers: Volunteer[] = [
   },
   {
     id: 5,
-    name: "Saksham",
-    image: "/team/saksham.jpeg",
-    linkedin: "https://www.linkedin.com/in/sakshm/",
+    name: "Hridyansh",
+    image: "/team/hirdyansh.jpeg",
+    linkedin: "https://www.linkedin.com/in/hridyansh-bhardwaj-739470406/",
     section: "Tech",
   },
   {
