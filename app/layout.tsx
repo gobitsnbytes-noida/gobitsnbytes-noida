@@ -3,14 +3,12 @@ import type { Metadata, Viewport } from "next";
 import { Anton, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Suspense } from "react";
 
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { PageBackground } from "@/components/page-background";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { FloatingAiAssistant } from "@/components/client-only-components";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -56,7 +54,6 @@ export const metadata: Metadata = {
 
   authors: [{ name: "Bits&Bytes Noida Team" }],
   creator: "Bits&Bytes Noida",
-  publisher: "Bits&Bytes Noida",
 
   openGraph: {
     type: "website",
@@ -102,9 +99,9 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
     name: "Bits&Bytes Noida",
-    url: "https://gobitsnbytes-noida.vercel.app",
+    url: "https://bitsnbytes-noida.vercel.app",
     description:
-      "A student-led builder community in Noida focused on real-world projects and execution.",
+      "A student-led builder community in Noida focused on real-world projects.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Noida",
@@ -139,10 +136,6 @@ export default function RootLayout({
             <Navigation />
             <main className="flex-1 w-full">{children}</main>
             <Footer />
-
-            <Suspense fallback={null}>
-              <FloatingAiAssistant />
-            </Suspense>
           </div>
 
           <Analytics />
