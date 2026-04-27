@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     "Learn about Bits&Bytes Noida — a student-led builder community focused on real-world projects. Meet the founding team and the vision behind the Noida chapter.",
   verification: {
     google:"kxsOlXIibWjV2NCJwp_BSTjfu5VoArR2Vh_00bpLoZA"
-  }
+  },
     keywords: [
     "Bits&Bytes Noida",
     "student coding club noida",
