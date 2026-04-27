@@ -1,24 +1,24 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Us - Meet India's Teen-Led Code Club",
+  title: "About Bits&Bytes Noida | Founding Team",
   description:
-    "Learn about Bits&Bytes - India's boldest teen-led code club based in Lucknow. Meet our team, our mission to empower young developers, and our open source culture.",
+    "Learn about Bits&Bytes Noida — a student-led builder community focused on real-world projects. Meet the founding team and the vision behind the Noida chapter.",
   keywords: [
-    "about bits and bytes",
-    "teen code club india",
-    "lucknow coding club",
-    "student developers team",
-    "youth tech organization india",
-    "teen programmers community",
+    "Bits&Bytes Noida",
+    "student coding club noida",
+    "teen developers noida",
+    "school coding community india",
+    "builder community noida",
   ],
   alternates: {
-    canonical: "https://gobitsnbytes.org/about",
+    canonical: "https://your-domain.vercel.app/about",
   },
   openGraph: {
-    title: "About Us - Meet India's Teen-Led Code Club | Bits&Bytes",
-    description: "Learn about Bits&Bytes, our mission, and the teen developers building India's boldest code club.",
-    url: "https://gobitsnbytes.org/about",
+    title: "About Bits&Bytes Noida",
+    description:
+      "Meet the founding team and vision behind Bits&Bytes Noida.",
+    url: "https://bitsnbytes-noida.vercel.app/about",
     type: "website",
   },
 };
