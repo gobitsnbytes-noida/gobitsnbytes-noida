@@ -4,7 +4,10 @@ export const metadata: Metadata = {
   title: "About Bits&Bytes Noida | Founding Team",
   description:
     "Learn about Bits&Bytes Noida — a student-led builder community focused on real-world projects. Meet the founding team and the vision behind the Noida chapter.",
-  keywords: [
+  verification: {
+    google:"kxsOlXIibWjV2NCJwp_BSTjfu5VoArR2Vh_00bpLoZA"
+  }
+    keywords: [
     "Bits&Bytes Noida",
     "student coding club noida",
     "teen developers noida",
@@ -12,7 +15,7 @@ export const metadata: Metadata = {
     "builder community noida",
   ],
   alternates: {
-    canonical: "https://your-domain.vercel.app/about",
+    canonical: "https://gobitsnbytes-noida.vercel.app/about",
   },
   openGraph: {
     title: "About Bits&Bytes Noida",
