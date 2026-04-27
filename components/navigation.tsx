@@ -1,7 +1,5 @@
-"use client";
-
-import { MiniNavbar } from "@/components/ui/mini-navbar";
-
-export default function Navigation() {
-  return <MiniNavbar />;
-}
+const navItems = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Events", href: "/events" },
+];
