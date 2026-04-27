@@ -1,276 +1,106 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { PageSection } from "@/components/page-section";
 import { Button } from "@/components/ui/button";
-import {
-  ArrowRight,
-  CheckCircle2,
-  Clock,
-  Users,
-  Rocket,
-  Heart,
-  Zap,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-// Lazy load WebGL shader
-const WebGLShader = dynamic(
-  () =>
-    import("@/components/ui/web-gl-shader").then((mod) => ({
-      default: mod.WebGLShader,
-    })),
-  {
-    loading: () => null,
-    ssr: false,
-  },
-);
-
-const NOTION_JOIN_FORM_URL =
+const FORM_URL =
   "https://perfect-dinghy-781.notion.site/33949ed2fc338035bd3bef46155035f5?pvs=105";
-
-const benefits = [
-  {
-    icon: Users,
-    title: "Join a tight-knit crew",
-    description:
-      "Connect with 1500+ ambitious teen builders across India who share your passion for tech.",
-  },
-  {
-    icon: Rocket,
-    title: "Ship real projects",
-    description:
-      "Work on portfolio-ready projects with mentorship at every stage—from idea to deployment.",
-  },
-  {
-    icon: Zap,
-    title: "Attend exclusive events",
-    description:
-      "Get priority access to hackathons, workshops, and networking events with industry pros.",
-  },
-  {
-    icon: Heart,
-    title: "Grow together",
-    description:
-      "Pair programming, code reviews, and study groups help everyone level up faster.",
-  },
-];
-
-const expectations = [
-  "Be a student (ages 13-19) passionate about tech",
-  "Commit 2-4 hours per week for activities",
-  "Join our Discord and stay active in discussions",
-  "Participate in at least one project or event per quarter",
-  "Support fellow members and maintain a positive attitude",
-];
-
-const faqs = [
-  {
-    question: "Do I need coding experience to join?",
-    answer:
-      "Not at all! We welcome beginners and pair them with experienced mentors. What matters most is your enthusiasm to learn and build.",
-  },
-  {
-    question: "How much time do I need to commit?",
-    answer:
-      "We recommend 2-4 hours per week, but it's flexible. Some weeks you might attend a workshop, others you might work on a project async.",
-  },
-  {
-    question: "Is there a membership fee?",
-    answer:
-      "Bits&Bytes is completely free to join. We believe tech education should be accessible to all students.",
-  },
-  {
-    question: "I'm not from Lucknow. Can I still join?",
-    answer:
-      "Absolutely! While we started in Lucknow, we now have members across India. Most activities happen online via Discord.",
-  },
-];
-
-import { GlassContainer } from "@/components/ui/glass-container";
 
 export default function Join() {
   return (
     <>
-      {/* Hero Section */}
-      <section
-        className="relative min-h-[40vh] sm:min-h-[50vh] flex items-center justify-center overflow-hidden text-white pt-24 md:pt-32"
-        aria-labelledby="join-hero-title"
-      >
-        <WebGLShader />
-        <div className="relative z-10 w-full mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 md:py-24">
-            <div className="px-6 py-12 md:py-20 sm:px-10 lg:px-16 text-center">
-            <div className="flex flex-col items-center gap-6">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.35em] font-semibold text-white/90 backdrop-blur-md shadow-inner">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-(--brand-pink) opacity-75" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-(--brand-pink)" />
-                </span>
-                Applications Open
-              </span>
-              <h1 id="join-hero-title" className="font-display text-4xl sm:text-5xl md:text-6xl leading-tight font-black text-white tracking-tighter drop-shadow-2xl">
-                Join the crew
-              </h1>
-              <p className="text-base sm:text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed font-medium">
-                Tell us how you want to build with the Bits&Bytes club. We'll
-                connect you with squads, mentors, and live projects.
-              </p>
-            </div>
-          </div>
+      {/* HERO */}
+      <section className="section-shell text-center space-y-6">
+        <p className="section-eyebrow">Join the Founding Team</p>
+
+        <h1 className="text-4xl md:text-6xl font-black">
+          Build something real.
+        </h1>
+
+        <p className="text-lg text-white/70 max-w-2xl mx-auto">
+          Bits&Bytes Noida is forming its founding community of student builders.
+          If you want to create real projects, not just learn — you belong here.
+        </p>
+
+        <p className="text-sm text-white/50">
+          Limited spots • Early members only
+        </p>
+
+        <div className="pt-6">
+          <a href={FORM_URL} target="_blank">
+            <Button size="lg" className="rounded-full">
+              Apply Now
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </a>
         </div>
       </section>
 
-      <main className="relative z-10 bg-transparent">
-        {/* Main CTA Section */}
-        <PageSection align="center">
-          <div className="mx-auto w-full max-w-3xl space-y-6 sm:space-y-8">
-            <GlassContainer className="p-8 md:p-12 text-center" glowColor="both">
-              <div className="flex flex-col items-center gap-6">
-                <div className="inline-flex items-center gap-2 text-xs sm:text-sm text-white/60 font-bold uppercase tracking-widest">
-                  <Clock className="h-4 w-4 text-(--brand-pink)" />
-                  <span>Takes less than 2 minutes</span>
-                </div>
+      {/* WHAT YOU GET */}
+      <PageSection
+        eyebrow="Why Join"
+        title="What you'll actually do"
+        description="This is not a passive community. You’ll build, collaborate, and ship."
+        align="center"
+      >
+        <div className="grid gap-6 md:grid-cols-3 mt-8">
 
-                <Button
-                  asChild
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-(--brand-pink) px-10 py-4 text-lg md:text-xl font-black text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity hover:scale-[1.03] focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 w-full sm:w-auto max-w-xs"
-                >
-                  <a
-                    href={NOTION_JOIN_FORM_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Open Bits&Bytes join form in Notion"
-                  >
-                    Apply to Join
-                    <ArrowRight className="h-6 w-6 shrink-0 transition-transform group-hover:translate-x-1" />
-                  </a>
-                </Button>
+          {[
+            {
+              title: "Build Real Projects",
+              desc: "Work on actual products instead of just tutorials.",
+            },
+            {
+              title: "Work with Builders",
+              desc: "Surround yourself with serious, driven people.",
+            },
+            {
+              title: "Grow Through Execution",
+              desc: "Learn by doing, shipping, and improving.",
+            },
+          ].map((item) => (
+            <div key={item.title} className="card-surface text-center">
+              <h3 className="text-lg font-bold text-white">{item.title}</h3>
+              <p className="text-sm text-white/60">{item.desc}</p>
+            </div>
+          ))}
 
-                <p className="text-sm text-white/50 font-medium">
-                  We review applications weekly · You&apos;ll hear back within 7 days
-                </p>
-              </div>
-            </GlassContainer>
+        </div>
+      </PageSection>
 
-          </div>
-        </PageSection>
+      {/* EXPECTATIONS */}
+      <PageSection
+        eyebrow="Expectations"
+        title="Who should apply"
+        description="We’re looking for people who want to build, not just watch."
+        align="center"
+      >
+        <div className="max-w-xl mx-auto space-y-4 mt-6 text-white/70 text-sm">
 
-        {/* Benefits Section */}
-        <PageSection
-          align="center"
-          eyebrow="Why Join"
-          title="What you'll get as a member"
-          description="Being part of Bits&Bytes means more than just a Discord invite. Here's what awaits you."
-        >
-          <div className="grid gap-6 md:grid-cols-2">
-            {benefits.map((benefit, index) => (
-              <GlassContainer
-                key={benefit.title}
-                className="p-6 md:p-8"
-                glowColor={index % 2 === 0 ? "pink" : "purple"}
-              >
-                <div className="flex items-start gap-4 md:gap-6">
-                  <div className="flex h-12 w-12 md:h-14 md:w-14 shrink-0 items-center justify-center rounded-2xl bg-white/5 border border-white/10 text-(--brand-pink) shadow-inner">
-                    <benefit.icon className="h-6 w-6 md:h-7 md:w-7" />
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="font-display text-xl md:text-2xl font-black text-white">
-                      {benefit.title}
-                    </h3>
-                    <p className="mt-2 text-base text-white/70 font-medium leading-relaxed">
-                      {benefit.description}
-                    </p>
-                  </div>
-                </div>
-              </GlassContainer>
-            ))}
-          </div>
-        </PageSection>
+          <p>• School students interested in tech</p>
+          <p>• Willing to spend time building</p>
+          <p>• Ready to collaborate and learn fast</p>
+          <p>• Curious, consistent, and proactive</p>
 
-        {/* Expectations Section */}
-        <PageSection
-          align="center"
-          eyebrow="Expectations"
-          title="What we look for"
-          description="We want to make sure Bits&Bytes is the right fit for you."
-        >
-          <div className="mx-auto max-w-2xl">
-            <GlassContainer className="p-8 md:p-10" glowColor="purple">
-              <ul className="space-y-4 md:space-y-6">
-                {expectations.map((expectation, index) => (
-                  <li
-                    key={index}
-                    className="flex items-start gap-4 text-base md:text-lg text-white font-medium"
-                  >
-                    <CheckCircle2 className="h-6 w-6 shrink-0 text-(--brand-pink) mt-0.5" />
-                    <span>{expectation}</span>
-                  </li>
-                ))}
-              </ul>
-            </GlassContainer>
-          </div>
-        </PageSection>
+        </div>
+      </PageSection>
 
-        {/* FAQ Section */}
-        <PageSection
-          align="center"
-          eyebrow="FAQ"
-          title="Common questions"
-          description="Everything you need to know before applying."
-        >
-          <div className="mx-auto max-w-3xl space-y-4 md:space-y-6">
-            {faqs.map((faq, index) => (
-              <GlassContainer
-                key={index}
-                className="p-6 md:p-8"
-                glowColor="none"
-              >
-                <h3 className="font-display text-lg md:text-xl font-black text-white">
-                  {faq.question}
-                </h3>
-                <p className="mt-3 text-base text-white/60 font-medium leading-relaxed">
-                  {faq.answer}
-                </p>
-              </GlassContainer>
-            ))}
-          </div>
-        </PageSection>
-
-        {/* Final CTA */}
-        <PageSection align="center">
-          <div className="mx-auto max-w-2xl text-center space-y-4 sm:space-y-6">
-            <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold text-white">
-              Ready to start building?
-            </h2>
-            <p className="text-sm sm:text-base text-white/70 px-4 sm:px-0">
-              Join 1500+ teen builders who are shipping real projects and growing
-              together.
-            </p>
-            <Button
-              asChild
-              className="group rounded-full bg-[var(--brand-pink)] px-8 sm:px-10 py-5 sm:py-6 text-sm sm:text-base font-semibold text-white shadow-lg shadow-[#e45a92]/20 hover:shadow-xl hover:shadow-[#e45a92]/40 transition-transform transition-colors transition-opacity hover:scale-105 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/30 w-full sm:w-auto"
-            >
-              <a
-                href={NOTION_JOIN_FORM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Open Bits&Bytes join form in Notion"
-              >
-                Apply Now
-                <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 transition-transform group-hover:translate-x-1" />
-              </a>
+      {/* FINAL CTA */}
+      <PageSection
+        eyebrow="Start Now"
+        title="Be part of the first batch"
+        description="This is your chance to join early and shape the community."
+        align="center"
+      >
+        <div className="flex justify-center mt-6">
+          <a href={FORM_URL} target="_blank">
+            <Button size="lg" className="rounded-full">
+              Apply to Join
             </Button>
-            <p className="text-xs sm:text-sm text-white/60">
-              Questions? Reach us at{" "}
-              <a
-                href="mailto:hello@gobitsnbytes.org"
-                className="font-bold text-[var(--brand-pink)] hover:underline"
-              >
-                hello@gobitsnbytes.org
-              </a>
-            </p>
-          </div>
-        </PageSection>
-      </main>
+          </a>
+        </div>
+      </PageSection>
     </>
   );
 }
