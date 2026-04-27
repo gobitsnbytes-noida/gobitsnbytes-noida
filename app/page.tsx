@@ -12,14 +12,14 @@ export default function Home() {
 
       {/* HERO */}
       <section className="section-shell text-center space-y-6">
-        <p className="section-eyebrow">Launching Soon</p>
+        <p className="section-eyebrow">Founding Chapter • Noida</p>
 
         <h1 className="text-5xl md:text-7xl font-black tracking-tight">
           Bits&Bytes Noida
         </h1>
 
         <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto">
-          We don’t just ideate, we dominate.
+          We don’t just ideate — we dominate.
         </p>
 
         <p className="text-base md:text-lg text-white/60 max-w-xl mx-auto">
@@ -27,13 +27,29 @@ export default function Home() {
           Currently in planning stage — building the founding team.
         </p>
 
-        <div className="flex justify-center gap-4 pt-4">
+        <p className="text-sm text-white/50">
+          Limited founding spots • Early members only
+        </p>
+
+        <div className="flex flex-wrap justify-center gap-4 pt-6">
+
+          <a
+            href="https://www.instagram.com/gobitsnbytes.noida"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button size="lg" className="rounded-full bg-gradient-to-r from-pink-500 to-orange-400 text-white">
+              Join on Instagram
+            </Button>
+          </a>
+
           <Link href="/join">
-            <Button size="lg" className="rounded-full">
+            <Button size="lg" variant="outline" className="rounded-full">
               Explore
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
           </Link>
+
         </div>
       </section>
 
