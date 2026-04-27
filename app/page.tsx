@@ -1,113 +1,101 @@
 "use client";
 
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import {
-  ArrowRight,
-  CodeXml,
-  Users,
-  Rocket,
-  Lightbulb,
-  Trophy,
-  Sparkles,
-} from "lucide-react";
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
 
-import { HeroFuturistic } from "@/components/ui/hero-futuristic";
 import { PageSection } from "@/components/page-section";
-import { Features } from "@/components/ui/features-8";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardTitle,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { LoadingInline } from "@/components/loading-wrapper";
-import { Partners } from "@/components/partners";
-
-// Lazy load heavy components
-const Testimonial = dynamic(
-  () =>
-    import("@/components/ui/design-testimonial").then((mod) => ({
-      default: mod.Testimonial,
-    })),
-  {
-    loading: () => <LoadingInline />,
-    ssr: true,
-  },
-);
-
-// GlassIcons removed in favor of Features bento grid
-
-const stats = [
-  { value: "1500+", label: "Active members", detail: "across India" },
-  { value: "130+", label: "Projects shipped", detail: "from apps to AI" },
-  { value: "100+", label: "Partner schools", detail: "and growing" },
-];
-
-
-// Focus Areas are now handled within the Features component
-
-import { GlassContainer } from "@/components/ui/glass-container";
 
 export default function Home() {
   return (
-    <>
-      <div className="flex flex-col w-full max-w-full overflow-x-hidden">
-        <HeroFuturistic />
+    <div className="flex flex-col w-full max-w-full overflow-x-hidden">
 
-        <PageSection
-          eyebrow="Impact"
-          title="Club-powered learning with real outcomes"
-          description="We're a teen-led code club where workshops, hackathons, and build nights lead directly to shipped projects and new opportunities."
-        >
-          <div className="grid gap-6 md:grid-cols-3">
-            {stats.map((stat) => (
-              <GlassContainer
-                key={stat.label}
-                className="p-8"
-                glowColor={stat.label === "Projects shipped" ? "pink" : "purple"}
-              >
-                <div className="space-y-4">
-                  <p className="text-5xl font-black text-white tracking-tighter">
-                    {stat.value}
-                  </p>
-                  <div>
-                    <h3 className="text-xl font-bold text-white uppercase tracking-tight">
-                      {stat.label}
-                    </h3>
-                    <p className="text-base text-white/60 font-medium">
-                      {stat.detail}
-                    </p>
-                  </div>
-                </div>
-              </GlassContainer>
-            ))}
-          </div>
-        </PageSection>
+      {/* HERO */}
+      <section className="section-shell text-center space-y-6">
+        <p className="section-eyebrow">Launching Soon</p>
 
-        <PageSection
-          eyebrow="What We Do"
-          title="Our Focus Areas"
-          description="Explore the different ways we help teens build, learn, and grow in tech"
-          align="center"
-        >
-          <Features />
-        </PageSection>
+        <h1 className="text-5xl md:text-7xl font-black tracking-tight">
+          Bits&Bytes Noida
+        </h1>
 
-        <Partners />
+        <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto">
+          We don’t just ideate, we dominate.
+        </p>
 
-        <PageSection
-          eyebrow="Stories"
-          title="Voices from the crew"
-          align="center"
-        >
-          <Suspense fallback={<LoadingInline />}>
-            <Testimonial />
-          </Suspense>
-        </PageSection>
-      </div>
-    </>
+        <p className="text-base md:text-lg text-white/60 max-w-xl mx-auto">
+          A premium student-led builder community focused on creating real-world projects.
+          Currently in planning stage — building the founding team.
+        </p>
+
+        <div className="flex justify-center gap-4 pt-4">
+          <Link href="/join">
+            <Button size="lg" className="rounded-full">
+              Explore
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
+        </div>
+      </section>
+
+
+      {/* ABOUT */}
+      <PageSection
+        eyebrow="About"
+        title="Building the next generation of student builders"
+        description="Bits&Bytes Noida is the upcoming chapter of the Bits&Bytes network. We aim to bring together ambitious school students to build real projects and grow through execution."
+        align="center"
+      />
+
+
+      {/* BACKED BY */}
+      <PageSection
+        eyebrow="Network"
+        title="Backed by Bits&Bytes"
+        description="Bits&Bytes is a teen-led coding community known for high-impact hackathons and real project building. The Noida chapter brings the same vision to a new city."
+        align="center"
+      />
+
+
+      {/* TEAM */}
+      <PageSection
+        eyebrow="Founding Team"
+        title="Meet the builders behind this"
+        align="center"
+      >
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mt-8">
+
+          {[
+            { name: "Aryan Chauhan", role: "Lead & Tech" },
+            { name: "Nisha Rawat", role: "Sponsors" },
+            { name: "Disha Yadav", role: "Operations Head" },
+            { name: "Aditya Veer Kumar", role: "Creative Marketing Head" },
+          ].map((member) => (
+            <div key={member.name} className="card-surface text-center">
+              <h3 className="text-lg font-bold text-white">{member.name}</h3>
+              <p className="text-sm text-white/60">{member.role}</p>
+            </div>
+          ))}
+
+        </div>
+      </PageSection>
+
+
+      {/* CTA */}
+      <PageSection
+        eyebrow="Join Us"
+        title="Be part of something early"
+        description="We’re currently forming our founding community. If you want to build, learn, and grow — this is your place."
+        align="center"
+      >
+        <div className="flex justify-center mt-6">
+          <Link href="/join">
+            <Button size="lg" className="rounded-full">
+              Get Started
+            </Button>
+          </Link>
+        </div>
+      </PageSection>
+
+    </div>
   );
 }

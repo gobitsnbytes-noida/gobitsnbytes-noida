@@ -25,7 +25,6 @@ const jetBrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-// SEO-optimized viewport configuration
 export const viewport: Viewport = {
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#3E1E68" },
@@ -37,246 +36,83 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gobitsnbytes.org"),
-  manifest: "/manifest.webmanifest",
+  metadataBase: new URL("https://your-domain.vercel.app"),
+
   title: {
-    default: "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
-    template: "%s | Bits&Bytes",
+    default: "Bits&Bytes Noida | Student Builder Community",
+    template: "%s | Bits&Bytes Noida",
   },
+
   description:
-    "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members and 2700+ participant submissions evaluated in 3 days.",
+    "Bits&Bytes Noida is a student-led builder community focused on building real-world projects. Currently launching and forming the founding team.",
+
   keywords: [
-    "Bits and Bytes",
-    "bits&bytes",
-    "teen code club india",
-    "india hackathons for students",
-    "student developers india",
-    "coding club lucknow",
-    "tech events india",
-    "learn coding for teens",
-    "teen programmers community",
-    "hackathons in india 2025",
-    "coding classes for teens india",
-    "high school coding club",
-    "teen tech community",
-    "youth coding programs india",
-    "student hackathon india",
-    "free coding club india",
+    "Bits&Bytes Noida",
+    "student coding club noida",
+    "teen developers india",
+    "school coding community",
+    "builder community india",
   ],
-  authors: [{ name: "Bits&Bytes Team", url: "https://gobitsnbytes.org/about" }],
-  creator: "Bits&Bytes",
-  publisher: "Bits&Bytes",
-  formatDetection: {
-    email: true,
-    address: true,
-    telephone: true,
-  },
-  alternates: {
-    canonical: "https://gobitsnbytes.org",
-    languages: {
-      "en-IN": "https://gobitsnbytes.org",
-    },
-  },
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+
+  authors: [{ name: "Bits&Bytes Noida Team" }],
+  creator: "Bits&Bytes Noida",
+  publisher: "Bits&Bytes Noida",
+
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://gobitsnbytes.org",
-    siteName: "Bits&Bytes",
-    title: "Bits&Bytes - India's Teen-Led Code Club | Hackathons & Tech Community",
+    url: "https://your-domain.vercel.app",
+    siteName: "Bits&Bytes Noida",
+    title: "Bits&Bytes Noida",
     description:
-      "Join India's boldest teen-led code club. Build real projects, attend hackathons, and grow as a developer. 1500+ active members with proven high-velocity execution.",
+      "Launching a premium student builder community in Noida.",
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Bits&Bytes - India's Teen-Led Code Club",
-        type: "image/png",
       },
     ],
   },
+
   twitter: {
     card: "summary_large_image",
-    title: "Bits&Bytes - India's Teen-Led Code Club",
+    title: "Bits&Bytes Noida",
     description:
-      "Join India's boldest teen-led code club. 1500+ active members building real products with high-velocity execution.",
+      "Launching a premium student builder community in Noida.",
     images: ["/og-image.png"],
-    creator: "@bitsnbytes_lko",
-    site: "@bitsnbytes_lko",
   },
-  verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION || "google-site-verification-code",
+
+  robots: {
+    index: true,
+    follow: true,
   },
-  category: "education",
-  classification: "Nonprofit Teen Code Club",
-  other: {
-    "msapplication-TileColor": "#3E1E68",
-    "apple-mobile-web-app-capable": "yes",
-    "apple-mobile-web-app-status-bar-style": "black-translucent",
-  },
+
   icons: {
     icon: [{ url: "/logo.svg", type: "image/svg+xml" }],
-    shortcut: [{ url: "/logo.svg", type: "image/svg+xml" }],
   },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
-  // Organization structured data for Google Knowledge Panel
+}) {
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    "@id": "https://gobitsnbytes.org/#organization",
-    name: "Bits&Bytes",
-    alternateName: ["Bits and Bytes", "BitsNBytes", "Bits & Bytes"],
-    url: "https://gobitsnbytes.org",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://gobitsnbytes.org/logo.svg",
-      width: 512,
-      height: 512,
-    },
-    image: "https://gobitsnbytes.org/og-image.png",
+    name: "Bits&Bytes Noida",
+    url: "https://gobitsnbytes-noida.vercel.app",
     description:
-      "India's boldest teen-led code club. We run hackathons, workshops, and build real projects with 1500+ student developers across India.",
-    foundingDate: "2024",
+      "A student-led builder community in Noida focused on real-world projects and execution.",
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Lucknow",
+      addressLocality: "Noida",
       addressRegion: "Uttar Pradesh",
       addressCountry: "IN",
     },
-    areaServed: {
-      "@type": "Country",
-      name: "India",
-    },
     sameAs: [
-      "https://www.linkedin.com/company/gobitsbytes",
-      "https://github.com/gobitsnbytes",
-      "https://twitter.com/bitsnbytes_lko",
-      "https://www.instagram.com/gobitsnbytes",
-    ],
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "customer service",
-      url: "https://gobitsnbytes.org/contact",
-      availableLanguage: ["English", "Hindi"],
-    },
-    memberOf: {
-      "@type": "Organization",
-      name: "Hack Club",
-    },
-    knowsAbout: [
-      "Web Development",
-      "Mobile App Development",
-      "Artificial Intelligence",
-      "Machine Learning",
-      "Hackathons",
-      "Youth Coding Education",
-    ],
-  };
-
-  // WebSite structured data for sitelinks search box
-  const websiteJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https://gobitsnbytes.org/#website",
-    url: "https://gobitsnbytes.org",
-    name: "Bits&Bytes",
-    description: "India's teen-led code club for hackathons, workshops, and building real projects",
-    publisher: {
-      "@id": "https://gobitsnbytes.org/#organization",
-    },
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: "https://gobitsnbytes.org/?search={search_term_string}",
-      },
-      "query-input": "required name=search_term_string",
-    },
-    inLanguage: "en-IN",
-  };
-
-  // Breadcrumb for homepage
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: "https://gobitsnbytes.org",
-      },
-    ],
-  };
-
-  // Navigation/Sitelinks structured data
-  const siteNavigationJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SiteNavigationElement",
-    name: "Main Navigation",
-    url: "https://gobitsnbytes.org",
-    hasPart: [
-      {
-        "@type": "WebPage",
-        name: "About Us",
-        description: "Learn about Bits&Bytes - India's teen-led code club",
-        url: "https://gobitsnbytes.org/about",
-      },
-      {
-        "@type": "WebPage",
-        name: "Projects",
-        description: "Explore 130+ projects built by teen developers",
-        url: "https://gobitsnbytes.org/projects",
-      },
-      {
-        "@type": "WebPage",
-        name: "Events",
-        description: "Hackathons, workshops, and tech events for students",
-        url: "https://gobitsnbytes.org/events",
-      },
-      {
-        "@type": "WebPage",
-        name: "Join Us",
-        description: "Join India's boldest teen code club - free membership",
-        url: "https://gobitsnbytes.org/join",
-      },
-      {
-        "@type": "WebPage",
-        name: "Impact",
-        description: "See our community impact - 1500+ students, 130+ projects",
-        url: "https://gobitsnbytes.org/impact",
-      },
-      {
-        "@type": "WebPage",
-        name: "Contact",
-        description: "Get in touch with Bits&Bytes team",
-        url: "https://gobitsnbytes.org/contact",
-      },
-      {
-        "@type": "WebPage",
-        name: "FAQ",
-        description: "Frequently asked questions about Bits&Bytes",
-        url: "https://gobitsnbytes.org/faq",
-      },
+      "https://www.instagram.com/gobitsnbytes.noida",
     ],
   };
 
@@ -287,35 +123,28 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
-        <link rel="dns-prefetch" href="https://vercel.live" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
       </head>
-      <body className="font-sans antialiased bg-background text-foreground selection:bg-accent/30 selection:text-primary overflow-x-hidden">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationJsonLd) }}
-        />
+
+      <body className="font-sans antialiased bg-background text-foreground overflow-x-hidden">
         <ThemeProvider>
           <PageBackground />
+
           <div className="relative z-10 flex min-h-screen flex-col overflow-x-hidden">
             <Navigation />
-            <main className="flex-1 w-full overflow-x-hidden">{children}</main>
+            <main className="flex-1 w-full">{children}</main>
             <Footer />
+
             <Suspense fallback={null}>
               <FloatingAiAssistant />
             </Suspense>
           </div>
+
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>
