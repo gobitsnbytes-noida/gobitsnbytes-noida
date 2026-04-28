@@ -3,26 +3,18 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Bits&Bytes Noida",
-  description:
-    "Building the next generation of builders in Noida. Join the founding team and start building real projects.",
+  description: "Building the next generation of builders in Noida",
 };
 
 function Navbar() {
   return (
-    <nav
-      style={{
-        padding: "16px 24px",
-        borderBottom: "1px solid #eee",
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
-      <div style={{ fontWeight: "bold" }}>Bits&Bytes Noida</div>
-      <div style={{ display: "flex", gap: "16px" }}>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/events">Events</a>
-        <a href="/join">Join</a>
+    <nav className="flex justify-between items-center px-6 py-4 border-b border-gray-800">
+      <div className="font-bold text-lg">Bits&Bytes Noida</div>
+
+      <div className="flex gap-6 text-sm text-gray-300">
+        <a href="/" className="hover:text-white">Home</a>
+        <a href="/about" className="hover:text-white">About</a>
+        <a href="/join" className="hover:text-white">Join</a>
       </div>
     </nav>
   );
@@ -30,15 +22,8 @@ function Navbar() {
 
 function Footer() {
   return (
-    <footer
-      style={{
-        padding: "20px",
-        borderTop: "1px solid #eee",
-        textAlign: "center",
-        marginTop: "40px",
-      }}
-    >
-      <p>© {new Date().getFullYear()} Bits&Bytes Noida</p>
+    <footer className="text-center text-gray-500 text-sm py-6 border-t border-gray-800 mt-10">
+      © {new Date().getFullYear()} Bits&Bytes Noida
     </footer>
   );
 }
@@ -50,13 +35,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-black text-white">
         <Navbar />
-
-        <main style={{ minHeight: "80vh", padding: "20px" }}>
-          {children}
-        </main>
-
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
