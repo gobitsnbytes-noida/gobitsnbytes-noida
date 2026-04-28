@@ -1,0 +1,93 @@
+[33md9a4832[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m ui: full redesign
+[33m1ff5894[m add google verification file
+[33ma1521ea[m feat: add google verification
+[33md81f05c[m feat: added google verification and updated site2
+[33m750a2ec[m feat: added google verification and updated site
+[33ma0c78d4[m feat: stable layout with navbar and footer
+[33m17fd332[m fix: stable layout
+[33m52fe129[m debug: minimal layout
+[33m585da7b[m fix: not-found page error
+[33m6a70c42[m Removed bot and finalized layout
+[33me8e91ae[m Fixed join page for Noida launch
+[33m35e8a6c[m Updated About page metadata for Noida
+[33m611aa1e[m Fixed about page and removed LKO team
+[33mdc73e3a[m Final homepage upgrade with CTA + positioning
+[33me45781e[m Updated layout for Noida branding
+[33m56d31a3[m shntuanu pic
+[33m243fe12[m Merge branch 'main' of github.com:gobitsnbytes/bitsnbytes
+[33m0b52f75[m Refactor code structure for improved readability and maintainability
+[33mc76cec5[m Merge pull request #14 from Gravity-3d/main
+[33mb5a1ce4[m feat: add RAG-based search utility and AI assistant API route with grounding support
+[33m04e6de9[m Lucknow build-guild image update
+[33mb1a6ab6[m fix: correct image path for Lucknow Build Guild banner
+[33m9595219[m Refactor code structure for improved readability and maintainability
+[33mc00bb57[m docs: add AI assistant and RAG maintenance details to agents handbook and llms file
+[33m423d13d[m refactor: update brand colors to use CSS variables for consistency across components
+[33mc086a87[m refactor: update brand color variables to use canonical palette and improve consistency across components
+[33m07e382e[m refactor: update storage key and enhance quick prompts in chat components
+[33m8057175[m fix: update event banner image source for Lucknow Build Guild
+[33m32a1876[m Refactor code structure for improved readability and maintainability
+[33m43849c4[m mrym photo
+[33md6d9399[m refactor: enhance partner card layout with responsive logo classes and improved spacing
+[33m00d9bb0[m feat: add redirects for favicon and domain-specific paths
+[33m513264a[m fix: correct logo order for GitLab partner and adjust grid layout for better responsiveness
+[33ma4874c8[m Add GitLab logo SVG files in two sizes (100px and 500px)
+[33m74b4df1[m refactor: standardize section closing tags across multiple pages
+[33m670598b[m refactor: replace GlassContainer with div in multiple pages for consistency
+[33m788a9ca[m chore: clean up empty code change sections in the changes log
+[33md3aa537[m Implement streaming assistant response with tool handling and error management
+[33mdfa3ec4[m style: adjust section heights and container widths for improved layout consistency
+[33m91e77ac[m refactor: update PageBackground component styles and remove WebGLShader
+[33m2490771[m Merge branch 'main' of github.com:gobitsnbytes/bitsnbytes
+[33m59474c9[m feat: add FaultyTerminal and PixelBlast components with GLSL shaders for visual effects
+[33m36ddb20[m Merge pull request #13 from gobitsnbytes/new-redesign
+[33me2c1a80[m feat: add UI/UX Pro Max search script with design system generation and persistence options
+[33m4589bf0[m fix: update team member profiles and add new member Kavan
+[33m713df80[m fix: static manifest and team links
+[33mca559b1[m chore: simplify pre-push hook bootstrap
+[33m4b608df[m fix: skip embeddings on non-content pushes
+[33m29e1eef[m fix: improve mobile team portrait framing
+[33m2638159[m fix: add team social links and correct handles
+[33m77419cf[m Improve mobile team card portraits and update Maryam photo
+[33m7192be9[m updated:   app/mission/layout.tsx
+[33m1453e7a[m updated numbers in stats, impact page, join page, and metadata to reflect current community size and impact.
+[33ma3600c9[m updating faq and impact pages
+[33m51b802e[m Refactor code structure for improved readability and maintainability
+[33mc13e13f[m feat: Update statistics and descriptions for community engagement and impact
+[33mb11190a[m feat: Implement GET route for redirect to Notion page
+[33m9214ec4[m feat: Add GET route for cohort join redirect
+[33m00d5177[m fix: Correct image path and extension for Adithya in team section
+[33mf254400[m Refactor code structure for improved readability and maintainability
+[33m90a9cb1[m feat: Add profiles and update last modified date in agents handbook
+[33m76107f5[m feat: Update Notion join form URL and improve link handling in Join page
+[33mdca7764[m docs: Update README and llms.txt for improved clarity and completeness
+[33ma9ee81e[m fix: Update language response handling to default to English and only use Hindi or Hinglish upon explicit request
+[33md6b6be7[m feat: Add CPU architecture demo and QnA assistant layouts; update sitemap and robots.txt for SEO
+[33m063862a[m fix: Update lastmod dates in sitemap.xml for improved SEO; add new feature page entry
+[33m9bed337[m refactor: Replace embedding extraction logic with existing backend to simplify code and reduce dependencies
+[33mbe3a9cd[m fix: Update error handling in assistant API to provide clearer messages and handle Vercel Security Checkpoint responses
+[33m21f03bf[m feat: Enhance QnA chat interface with countdown and project idea cards; add semantic caching and intent bypass functionality in assistant API
+[33m69bfe1f[m Add new ship-it sticker image without background
+[33mc2ad28c[m fix: update Content-Security-Policy and clean up vercel.json formatting
+[33mfd763d4[m feat: Enhance accessibility and improve UI components across various pages, including event sections and chat interfaces
+[33m0b3dea4[m feat: update hero events to include archived status for India Innovates 2026
+[33m66d1de3[m Add new event video: India Innovates 2026 stage address
+[33me0f5e1e[m fix: make husky prepare script non-failing in CI
+[33m036fa86[m feat: use hack club api & setup auto-embed on push
+[33md9641fc[m feat: Introduce About and Projects pages, integrate an AI chat assistant, and restructure the team handbook with an updated mission and detailed member profiles.
+[33md3572bd[m build: Configure Next.js server external packages for `sharp` and `onnxruntime-node`, override `sharp` via pnpm, and update browserslist.
+[33mddee515[m feat: Introduce AI chat assistant with RAG, smart FAQ, feedback, and persistent state.
+[33me5e13e7[m feat: Add Supabase-powered contact and join forms, and introduce an AI chat assistant.
+[33me2967be[m feat: Introduce AI assistant API route with site context and interactive tools, and add a new partners component.
+[33m4f09d99[m feat: Add new homepage and strategic partners section with dedicated component and assets.
+[33m3d846b0[m feat: Add a new page template with an animated loading intro featuring a CPU architecture SVG component.
+[33mc72f427[m feat: Implement Bits&Bytes AI assistant API route with detailed site context, event information, and function calling tools.
+[33m6e5fcc4[m feat: Add API route for Bits&Bytes AI assistant with defined context, rules, and function calling tools.
+[33m0d5ed1a[m feat: Implement a new MiniNavbar component and add the About page with its layout and content.
+[33m724697b[m feat: Implement AI chat assistant with OpenAI integration, custom tools, and dedicated UI components.
+[33m50aae41[m feat: Revamp About section by creating new layout and page components, and removing outdated navigation link
+[33mf7589b5[m fix: Update regex to support additional language formats in QnAChatInterface
+[33m7ef03fb[m feat: Enhance India Innovates 2026 communication by adding Discord widget integration and emphasizing Discord link preference over WhatsApp for community engagement.
+[33m10b24e0[m feat: Update event details and domain categories for India Innovates 2026, merging Cybersecurity into Open Innovation and revising prize pool information.
+[33m34c15bb[m feat: Introduce AI assistant with comprehensive context and new event and impact pages.
+[33mae40ccc[m feat: Add futuristic hero section with event display, AI assistant API, Q&A chat interface, and 
