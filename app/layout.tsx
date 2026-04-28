@@ -3,26 +3,27 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Bits&Bytes Noida",
-  description:
-    "Building the next generation of builders in Noida. Join the founding team and start building real projects.",
+  description: "Building the next generation of builders in Noida",
 };
 
 function Navbar() {
   return (
-    <nav
-      style={{
-        padding: "16px 24px",
-        borderBottom: "1px solid #eee",
-        display: "flex",
-        justifyContent: "space-between",
-      }}
-    >
-      <div style={{ fontWeight: "bold" }}>Bits&Bytes Noida</div>
-      <div style={{ display: "flex", gap: "16px" }}>
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/events">Events</a>
-        <a href="/join">Join</a>
+    <nav className="w-full border-b border-gray-800 bg-black/80 backdrop-blur sticky top-0 z-50">
+      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        
+        {/* Logo */}
+        <div className="text-lg font-semibold tracking-wide">
+          Bits<span className="text-gray-400">&</span>Bytes Noida
+        </div>
+
+        {/* Links */}
+        <div className="flex gap-8 text-sm text-gray-400">
+          <a href="/" className="hover:text-white transition">Home</a>
+          <a href="/about" className="hover:text-white transition">About</a>
+          <a href="/events" className="hover:text-white transition">Events</a>
+          <a href="/join" className="hover:text-white transition">Join</a>
+        </div>
+
       </div>
     </nav>
   );
@@ -30,15 +31,8 @@ function Navbar() {
 
 function Footer() {
   return (
-    <footer
-      style={{
-        padding: "20px",
-        borderTop: "1px solid #eee",
-        textAlign: "center",
-        marginTop: "40px",
-      }}
-    >
-      <p>© {new Date().getFullYear()} Bits&Bytes Noida</p>
+    <footer className="text-center text-gray-500 text-sm py-6 border-t border-gray-800 mt-20">
+      © {new Date().getFullYear()} Bits&Bytes Noida
     </footer>
   );
 }
@@ -50,13 +44,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-black text-white">
         <Navbar />
-
-        <main style={{ minHeight: "80vh", padding: "20px" }}>
-          {children}
-        </main>
-
+        <main className="min-h-screen">{children}</main>
         <Footer />
       </body>
     </html>
