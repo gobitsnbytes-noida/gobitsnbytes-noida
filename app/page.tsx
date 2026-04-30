@@ -1,44 +1,46 @@
 export default function Home() {
   return (
-    <main className="px-6 py-24 max-w-3xl mx-auto">
+    <main className="min-h-screen flex items-center px-6">
 
-      {/* Title */}
-      <h1 className="text-3xl font-semibold tracking-tight">
-        Bits&Bytes Noida
-      </h1>
+      <div className="max-w-4xl mx-auto w-full">
 
-      {/* Subtext */}
-      <p className="text-sm text-gray-500 mt-2">
-        A city fork of Bits&Bytes
-      </p>
+        <h1 className="text-5xl md:text-6xl font-semibold tracking-tight leading-tight">
+          Bits&Bytes Noida
+        </h1>
 
-      {/* Core message */}
-      <div className="mt-10 space-y-4 text-gray-300 text-sm leading-relaxed">
-        <p>
-          This is not a club.
+        <p className="mt-3 text-sm text-white/50">
+          city fork
         </p>
 
-        <p>
-          It’s a group of people who build.
-        </p>
+        <div className="mt-12 space-y-6 text-lg md:text-xl text-white/80 leading-relaxed">
 
-        <p>
-          If you’re here to learn by doing, you’ll fit in.
-        </p>
+          <p>
+            not a club.
+          </p>
 
-        <p>
-          If you’re here to watch, you probably won’t stay.
-        </p>
-      </div>
+          <p>
+            a place where people build.
+          </p>
 
-      {/* Action */}
-      <div className="mt-12">
-        <a
-          href="/join"
-          className="text-sm underline underline-offset-4 hover:text-white transition"
-        >
-          Join the fork →
-        </a>
+          <p>
+            no spectators.
+          </p>
+
+          <p>
+            if you make things, you’ll fit in.
+          </p>
+
+        </div>
+
+        <div className="mt-14">
+          <a
+            href="/join"
+            className="inline-block border border-white/20 px-6 py-3 text-sm hover:bg-white hover:text-black transition"
+          >
+            join the fork →
+          </a>
+        </div>
+
       </div>
 
     </main>

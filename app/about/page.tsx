@@ -1,66 +1,30 @@
-"use client";
-
-import { PageSection } from "@/components/page-section";
-
 export default function About() {
   return (
-    <main className="relative z-10 bg-transparent">
+    <main className="px-6 py-24 max-w-3xl mx-auto">
 
-      {/* ABOUT */}
-      <PageSection
-        align="center"
-        eyebrow="About"
-        title="Bits&Bytes Noida"
-        description="Bits&Bytes Noida is the upcoming chapter of the Bits&Bytes network. We aim to build a strong student-led builder community focused on real-world projects and execution."
-        className="pt-24 md:pt-32"
-      />
+      <h1 className="text-3xl font-semibold">
+        about
+      </h1>
 
-      {/* TEAM */}
-      <PageSection
-        align="center"
-        eyebrow="Core Team"
-        title="The original builders"
-        description="The founding team behind Bits&Bytes."
-      >
-        <div className="grid gap-6 md:grid-cols-3 mt-8">
+      <div className="mt-10 space-y-4 text-white/70 text-sm leading-relaxed">
 
-          {[
-            { name: "Yash Singh", role: "Co-Founder" },
-            { name: "Aadrika Maurya", role: "Co-Founder" },
-            { name: "Akshat Kushwaha", role: "Co-Founder" },
-          ].map((member) => (
-            <div key={member.name} className="card-surface text-center">
-              <h3 className="text-lg font-bold text-white">{member.name}</h3>
-              <p className="text-sm text-white/60">{member.role}</p>
-            </div>
-          ))}
+        <p>
+          Bits&Bytes is a builder-first system.
+        </p>
 
-        </div>
-      </PageSection>
+        <p>
+          This is the Noida fork.
+        </p>
 
-      {/* NOIDA TEAM */}
-      <PageSection
-        align="center"
-        eyebrow="Noida Chapter"
-        title="Founding Team - Noida"
-        description="Building the next chapter."
-      >
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 mt-8">
+        <p>
+          Same principles. Different city.
+        </p>
 
-          {[
-            { name: "Aryan Chauhan", role: "Lead & Tech" },
-            { name: "Nisha Rawat", role: "Sponsors" },
-            { name: "Disha Yadav", role: "Operations Head" },
-            { name: "Aditya Veer Kumar", role: "Creative Marketing Head" },
-          ].map((member) => (
-            <div key={member.name} className="card-surface text-center">
-              <h3 className="text-lg font-bold text-white">{member.name}</h3>
-              <p className="text-sm text-white/60">{member.role}</p>
-            </div>
-          ))}
+        <p>
+          Work matters. Output matters. Nothing else does.
+        </p>
 
-        </div>
-      </PageSection>
+      </div>
 
     </main>
   );
