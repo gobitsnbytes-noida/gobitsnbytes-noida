@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const FORM_URL =
-  "https://perfect-dinghy-781.notion.site/33949ed2fc338035bd3bef46155035f5?pvs=105";
+  "https://forms.gle/SSAbJfczyuJLswPL8";
 
 export default function Join() {
   return (
