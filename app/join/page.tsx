@@ -1,37 +1,41 @@
-export default function Join() {
+export default function Home() {
   return (
-    <main className="px-6 py-24 max-w-xl mx-auto">
+    <main className="relative px-6 py-24 max-w-3xl mx-auto">
 
-      <h1 className="text-2xl font-medium">
-        join
+      {/* subtle industrial grid */}
+      <div className="absolute inset-0 -z-10 opacity-20 
+        bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),
+        linear-gradient(to_bottom,#1f2937_1px,transparent_1px)]
+        bg-[size:40px_40px]" />
+
+      {/* heading */}
+      <h1 className="text-3xl font-medium tracking-tight">
+        Bits&Bytes Noida
       </h1>
 
-      <p className="text-sm text-gray-500 mt-2">
-        if you build, apply.
+      <p className="text-xs text-gray-500 mt-1">
+        city fork
       </p>
 
-      <form className="mt-10 space-y-6">
+      {/* content */}
+      <div className="mt-12 space-y-5 text-sm text-gray-300 leading-relaxed">
 
-        <input
-          placeholder="name"
-          className="w-full bg-transparent border-b border-gray-700 py-2 outline-none"
-        />
+        <p>not a club.</p>
+        <p>people who build.</p>
+        <p>ships publicly.</p>
+        <p>no spectators.</p>
 
-        <input
-          placeholder="email"
-          className="w-full bg-transparent border-b border-gray-700 py-2 outline-none"
-        />
+      </div>
 
-        <textarea
-          placeholder="what do you build?"
-          className="w-full bg-transparent border-b border-gray-700 py-2 outline-none"
-        />
-
-        <button className="text-sm underline">
-          submit →
-        </button>
-
-      </form>
+      {/* CTA */}
+      <div className="mt-12">
+        <a
+          href="/join"
+          className="text-sm underline underline-offset-4 hover:text-white"
+        >
+          join →
+        </a>
+      </div>
 
     </main>
   );
