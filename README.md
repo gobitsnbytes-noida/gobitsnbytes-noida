@@ -1,23 +1,41 @@
-# Bits&Bytes Official Website
+# Bits&Bytes Noida
 
-Official platform for Bits&Bytes, a teen-led coding community based in Lucknow, India. This repository powers the public website, community pages, and an AI assistant with retrieval and tool-calling support.
+The Noida city fork of [Bits&Bytes](https://gobitsnbytes.org) — a teen-led community where young builders ship publicly.
 
-## What This Project Includes
+This fork runs independently in Noida. It shares the Bits&Bytes floor — the Code of Conduct, the founding principles, the non-negotiables — and builds everything else for this city.
 
-- Next.js App Router website for community pages, events, projects, join, and contact.
-- AI assistant API with SSE streaming responses and tool-calling flows.
-- Semantic search (RAG) over selected site content using embeddings.
-- Supabase-backed forms and chat session persistence.
-- Production-oriented frontend with 3D/interactive UI components.
+> This is a fork, not the parent org. For the canonical Bits&Bytes repo, see [gobitsnbytes/bitsnbytes](https://github.com/gobitsnbytes/bitsnbytes).
+
+---
+
+## What This Fork Is
+
+Bits&Bytes Noida is a local instantiation of the Bits&Bytes idea: get teens building and shipping publicly, in their own city, on their own terms.
+
+We are teen-led. We ship publicly. Everything else is up to us.
+
+For the full network protocol — what every fork preserves and what it must adapt — read the [Fork Protocol](https://perfect-dinghy-781.notion.site/Fork-Protocol-34049ed2fc33814da57ac2f3f704e519).
+
+---
+
+## What This Repo Powers
+
+- Next.js App Router website for community pages, events, projects, join, and contact
+- AI assistant API with SSE streaming responses and tool-calling flows
+- Semantic search (RAG) over selected site content using embeddings
+- Supabase-backed forms and chat session persistence
+- Production-oriented frontend with 3D/interactive UI components
 
 ## Tech Stack
 
-- Framework: Next.js 16, React 19, TypeScript 5
-- Styling/UI: Tailwind CSS 4, Radix UI, custom animated components
-- Data: Supabase (PostgreSQL)
-- AI: OpenAI SDK against Hack Club proxy endpoints
-- Deployment: Vercel
-- Package manager: pnpm
+- **Framework:** Next.js 15, React 19, TypeScript 5
+- **Styling/UI:** Tailwind CSS 4, Radix UI, custom animated components
+- **Data:** Supabase (PostgreSQL)
+- **AI:** OpenAI SDK against Hack Club proxy endpoints
+- **Deployment:** Vercel
+- **Package manager:** pnpm
+
+---
 
 ## Getting Started
 
@@ -36,9 +54,7 @@ pnpm install
 
 ### 3. Configure Environment Variables
 
-Copy `.env.example` to `.env.local` and fill in values.
-
-Required in practice (based on current code paths):
+Copy `.env.example` to `.env.local` and fill in:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=...
@@ -50,12 +66,8 @@ GOOGLE_SITE_VERIFICATION=...
 Optional:
 
 ```env
-NVIDIA_KEY=...
+NVIDIA_KEY=        # only needed for Stable Diffusion image generation
 ```
-
-Notes:
-- `HACKCLUB_PROXY_API_KEY` is required for the assistant and embedding generation.
-- `NVIDIA_KEY` is required only for the Stable Diffusion image generation branch.
 
 ### 4. Run Locally
 
@@ -65,29 +77,38 @@ pnpm dev
 
 App runs at `http://localhost:3000`.
 
+---
+
 ## Available Scripts
 
-- `pnpm dev` - Run development server
-- `pnpm build` - Production build
-- `pnpm start` - Start production server
-- `pnpm lint` - Run ESLint
+| Command | What it does |
+|---|---|
+| `pnpm dev` | Run development server |
+| `pnpm build` | Production build |
+| `pnpm start` | Start production server |
+| `pnpm lint` | Run ESLint |
+
+---
 
 ## Project Structure
 
-```text
-.
-|- app/                     # Next.js App Router pages and API routes
-|  |- api/
-|  |  |- assistant/         # AI assistant, feedback, image, voice
-|  |  |- join/              # Join form ingestion
-|  |  |- discord/           # Discord-related endpoint(s)
-|  |- about/ contact/ events/ impact/ join/ projects/ faq/ ...
-|- components/              # Shared and UI components
-|- lib/                     # RAG, Supabase, rate limit, sentiment, team logic
-|- public/                  # Static assets (images, llms.txt, sitemap, etc.)
-|- scripts/embed-site.ts    # Embeds selected docs into site_embeddings table
-|- comic/                   # Comic/sticker generation utilities
 ```
+.
+├── app/                    # Next.js App Router pages and API routes
+│   ├── api/
+│   │   ├── assistant/      # AI assistant, feedback, image, voice
+│   │   ├── join/           # Join form ingestion
+│   │   └── discord/        # Discord-related endpoints
+│   └── about/ contact/ events/ impact/ join/ projects/ faq/ ...
+├── components/             # Shared and UI components
+├── lib/                    # RAG, Supabase, rate limit, sentiment, team logic
+├── public/                 # Static assets (images, llms.txt, sitemap, etc.)
+├── scripts/
+│   └── embed-site.ts       # Embeds selected docs into site_embeddings table
+└── types/
+```
+
+---
 
 ## API Overview
 
@@ -95,28 +116,17 @@ App runs at `http://localhost:3000`.
 
 Main AI assistant endpoint.
 
-- Input: user message history, current pathname, session ID
-- Output: `text/event-stream` (SSE) with token streaming and final action payload
-- Includes:
-	- rate limiting (`10 requests/min/IP`)
-	- intent bypass for fast navigation/contact/WhatsApp responses
-	- tool-calling loop
-	- model fallback behavior
-	- optional semantic response cache
+- **Input:** user message history, current pathname, session ID
+- **Output:** `text/event-stream` (SSE) with token streaming and final action payload
+- Rate limited to 10 requests/min/IP
+- Includes intent bypass, tool-calling loop, model fallback, and optional semantic response cache
 
 ### `POST /api/join`
 
 Stores join requests in Supabase `join_requests`.
 
-Required fields:
-- `name`
-- `email`
-- `message`
-
-Optional fields:
-- `school`
-- `experience`
-- `interests` (array, stored as comma-separated text)
+Required: `name`, `email`, `message`  
+Optional: `school`, `experience`, `interests[]`
 
 ### `POST /api/assistant/feedback`
 
@@ -124,72 +134,73 @@ Appends per-message feedback into `chat_sessions.feedback` in Supabase.
 
 ### `POST /api/assistant/image`
 
-Image generation endpoint used by assistant tools.
+Image generation used by assistant tools. Uses NVIDIA endpoint (`NVIDIA_KEY`) or Hack Club proxy (`HACKCLUB_PROXY_API_KEY`).
 
-- Stable Diffusion path: NVIDIA endpoint (`NVIDIA_KEY`)
-- Gemini path: Hack Club proxy (`HACKCLUB_PROXY_API_KEY`)
+---
 
-## Database Expectations (Supabase)
+## Database (Supabase)
 
-At minimum, the code currently assumes tables like:
+Tables expected:
 
 - `join_requests`
 - `chat_sessions`
-- `site_embeddings`
+- `site_embeddings` (with vector search support for RAG)
 - `contacts`
 - `sponsor_leads`
 
-Also expected:
-- vector search support for embeddings (used by RAG search flows)
+See `TECHNICAL_DOCUMENTATION.md` for schema and function details.
 
-See `TECHNICAL_DOCUMENTATION.md` for deeper schema and function examples.
+---
 
 ## Embedding Site Content for RAG
 
-The script `scripts/embed-site.ts` currently reads:
-
-- `public/llms.txt`
-- `agents.md`
-
-Then it generates embeddings and inserts chunks into `site_embeddings`.
-
-Run with:
+The script `scripts/embed-site.ts` reads `public/llms.txt` and `agents.md`, generates embeddings, and inserts chunks into `site_embeddings`.
 
 ```bash
 pnpm tsx scripts/embed-site.ts
 ```
 
-(Use your preferred TS runtime if `tsx` is not installed globally.)
+---
 
 ## Deployment
 
 Configured for Vercel via `vercel.json`.
 
-- Install command: `pnpm install`
-- Build command: `pnpm run build`
-- Framework: `nextjs`
+- Install: `pnpm install`
+- Build: `pnpm run build`
+- Framework: Next.js
 
-The app also injects git metadata at build time in `next.config.mjs`.
+Git metadata is injected at build time via `next.config.mjs`.
 
-## Operational Notes
+---
 
-- `next.config.mjs` currently has `typescript.ignoreBuildErrors: true`.
-	- This avoids type-check build blocking, but can hide production issues.
-- Rate limiting in `lib/rate-limit.ts` is in-memory.
-	- For multi-instance consistency, move to Redis or a shared store.
+## Known Issues
 
-## Documentation
+- `next.config.mjs` has `typescript.ignoreBuildErrors: true` — type errors won't block builds but can hide production issues. Fix in progress.
+- Rate limiting in `lib/rate-limit.ts` is in-memory and resets on each deployment. Not suitable for multi-instance production; should move to Redis or an edge-compatible store.
 
-- High-level technical reference: `TECHNICAL_DOCUMENTATION.md`
-- Organization and team handbook used for assistant context: `agents.md`
+---
 
 ## Contributing
 
-1. Create a feature branch.
-2. Make focused changes.
-3. Run lint/build locally.
-4. Open a PR with context and screenshots for UI work.
+1. Create a feature branch
+2. Make focused changes
+3. Run `pnpm lint` and `pnpm build` locally
+4. Open a PR with context and screenshots for any UI work
+
+---
+
+## Code of Conduct
+
+This fork follows the Bits&Bytes Code of Conduct exactly as written.  
+Read it at [gobitsnbytes.org/coc](https://gobitsnbytes.org/coc).
+
+---
 
 ## License
 
-This repository does not currently include a license file. Add one if you intend to allow reuse/distribution under specific terms.
+This repository does not currently include a license file.
+
+---
+
+*Bits&Bytes Noida is a city fork of Bits&Bytes. It is not the parent organization.*
