@@ -1,42 +1,106 @@
-export default function Home() {
+"use client";
+
+import { PageSection } from "@/components/page-section";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+
+const FORM_URL =
+  "https://perfect-dinghy-781.notion.site/33949ed2fc338035bd3bef46155035f5?pvs=105";
+
+export default function Join() {
   return (
-    <main className="relative px-6 py-24 max-w-3xl mx-auto">
+    <>
+      {/* HERO */}
+      <section className="section-shell text-center space-y-6">
+        <p className="section-eyebrow">Join the Founding Team</p>
 
-      {/* subtle industrial grid */}
-      <div className="absolute inset-0 -z-10 opacity-20 
-        bg-[linear-gradient(to_right,#1f2937_1px,transparent_1px),
-        linear-gradient(to_bottom,#1f2937_1px,transparent_1px)]
-        bg-[size:40px_40px]" />
+        <h1 className="text-4xl md:text-6xl font-black">
+          Build something real.
+        </h1>
 
-      {/* heading */}
-      <h1 className="text-3xl font-medium tracking-tight">
-        Bits&Bytes Noida
-      </h1>
+        <p className="text-lg text-white/70 max-w-2xl mx-auto">
+          Bits&Bytes Noida is forming its founding community of student builders.
+          If you want to create real projects, not just learn — you belong here.
+        </p>
 
-      <p className="text-xs text-gray-500 mt-1">
-        city fork
-      </p>
+        <p className="text-sm text-white/50">
+          Limited spots • Early members only
+        </p>
 
-      {/* content */}
-      <div className="mt-12 space-y-5 text-sm text-gray-300 leading-relaxed">
+        <div className="pt-6">
+          <a href={FORM_URL} target="_blank">
+            <Button size="lg" className="rounded-full">
+              Apply Now
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </a>
+        </div>
+      </section>
 
-        <p>not a club.</p>
-        <p>people who build.</p>
-        <p>ships publicly.</p>
-        <p>no spectators.</p>
+      {/* WHAT YOU GET */}
+      <PageSection
+        eyebrow="Why Join"
+        title="What you'll actually do"
+        description="This is not a passive community. You’ll build, collaborate, and ship."
+        align="center"
+      >
+        <div className="grid gap-6 md:grid-cols-3 mt-8">
 
-      </div>
+          {[
+            {
+              title: "Build Real Projects",
+              desc: "Work on actual products instead of just tutorials.",
+            },
+            {
+              title: "Work with Builders",
+              desc: "Surround yourself with serious, driven people.",
+            },
+            {
+              title: "Grow Through Execution",
+              desc: "Learn by doing, shipping, and improving.",
+            },
+          ].map((item) => (
+            <div key={item.title} className="card-surface text-center">
+              <h3 className="text-lg font-bold text-white">{item.title}</h3>
+              <p className="text-sm text-white/60">{item.desc}</p>
+            </div>
+          ))}
 
-      {/* CTA */}
-      <div className="mt-12">
-        <a
-          href="/join"
-          className="text-sm underline underline-offset-4 hover:text-white"
-        >
-          join →
-        </a>
-      </div>
+        </div>
+      </PageSection>
 
-    </main>
+      {/* EXPECTATIONS */}
+      <PageSection
+        eyebrow="Expectations"
+        title="Who should apply"
+        description="We’re looking for people who want to build, not just watch."
+        align="center"
+      >
+        <div className="max-w-xl mx-auto space-y-4 mt-6 text-white/70 text-sm">
+
+          <p>• School students interested in tech</p>
+          <p>• Willing to spend time building</p>
+          <p>• Ready to collaborate and learn fast</p>
+          <p>• Curious, consistent, and proactive</p>
+
+        </div>
+      </PageSection>
+
+      {/* FINAL CTA */}
+      <PageSection
+        eyebrow="Start Now"
+        title="Be part of the first batch"
+        description="This is your chance to join early and shape the community."
+        align="center"
+      >
+        <div className="flex justify-center mt-6">
+          <a href={FORM_URL} target="_blank">
+            <Button size="lg" className="rounded-full">
+              Apply to Join
+            </Button>
+          </a>
+        </div>
+      </PageSection>
+    </>
   );
 }
