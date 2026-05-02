@@ -29,7 +29,7 @@ function Navbar() {
           </span>
         </Link>
 
-        <div className="flex items-center gap-3 text-[11px] font-medium uppercase tracking-tight text-[#b5a9cf] sm:gap-5 md:gap-7 md:text-xs">
+        <div className="hidden items-center gap-3 text-[11px] font-medium uppercase tracking-tight text-[#b5a9cf] sm:flex sm:gap-5 md:gap-7 md:text-xs">
           {primaryNavLinks.map((item) => (
             <Link key={item.label} href={item.href} className="transition hover:text-[#e0c3ff]">
               {item.label}
@@ -47,6 +47,30 @@ function Navbar() {
             </a>
           ))}
         </div>
+
+        <details className="group relative sm:hidden">
+          <summary className="cursor-pointer list-none text-xs font-medium uppercase tracking-tight text-[#b5a9cf] transition hover:text-[#e0c3ff]">
+            Menu
+          </summary>
+          <div className="absolute right-0 mt-3 min-w-40 space-y-2 bg-[#140d24] p-3 text-right text-xs font-medium uppercase tracking-tight text-[#b5a9cf]">
+            {primaryNavLinks.map((item) => (
+              <Link key={item.label} href={item.href} className="block transition hover:text-[#e0c3ff]">
+                {item.label}
+              </Link>
+            ))}
+            {socialNavLinks.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+                className="block transition hover:text-[#e0c3ff]"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </details>
       </div>
     </nav>
   );
