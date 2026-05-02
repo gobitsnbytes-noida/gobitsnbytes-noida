@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "bits and bytes support",
   ],
   alternates: {
-    canonical: "https://gobitsnbytes.org/contact",
+    canonical: "https://gobitsnby",
   },
   openGraph: {
     title: "Contact Us | Bits&Bytes",
