@@ -15,7 +15,7 @@ export default function About() {
   return (
     <main className="min-h-screen bg-[#050505] px-6 py-16 text-[#e5e5e5] md:py-20">
       <div className="mx-auto max-w-6xl">
-        <h1 className="text-4xl font-semibold uppercase tracking-tight md:text-6xl">ABOUT</h1>
+        <h1 className="text-5xl font-semibold uppercase tracking-tight md:text-7xl md:leading-[0.95]">ABOUT</h1>
 
         <section className="mt-14">
           <h2 className="text-xs font-medium uppercase tracking-[0.18em] text-[#9a9a9a]">FOUNDERS</h2>
